@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/b49ffd_500b234dccd544ec85f111c9702ef44e_mv2.jpg</file>
+        <file>image/be-our-service.jpg</file>
+        <file>image/parking-dentreprise-e1561984478242.jpg</file>
+        <file>image/png-clipart-user-interface-design-web-design-software-testing-adherence-to-deadlines-with-quality-assurance-web-design-user-interface-design.png</file>
+        <file>image/smart-parking-man-user-with-smartphone-touch-screen-control-car-driving-park_33099-165.jpg</file>
+        <file>image/aaa.jpg</file>
+        <file>image/assurance1.jpg</file>
+        <file>image/Service-1-tabkey.jpg</file>
+        <file>image/icon-think-user-centric-1.png</file>
+        <file>image/fff.png</file>
+        <file>image/white-300x225.jpg</file>
+        <file>image/logo.png</file>
+    </qresource>
+</RCC>
