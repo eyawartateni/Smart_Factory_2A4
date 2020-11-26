@@ -6,10 +6,6 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 
-
-
-
-
 dialog_assurance::dialog_assurance(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::dialog_assurance)

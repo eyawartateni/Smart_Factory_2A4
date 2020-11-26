@@ -1,5 +1,6 @@
 #ifndef DIALOG_ASSURANCE_H
 #define DIALOG_ASSURANCE_H
+
 #include"assurance.h"
 #include <QDialog>
 
@@ -16,8 +17,6 @@ public:
     ~dialog_assurance();
 
 private slots:
-    void on_pushButton_14_clicked();
-
     void on_supprimer_clicked();
 
     void on_ajouter_assu_clicked();

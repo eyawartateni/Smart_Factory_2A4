@@ -1,7 +1,7 @@
 #include "admin.h"
 #include "ui_admin.h"
 #include "dialog_assurance.h"
-#include "parking.h"
+#include "dialog_parking.h"
 
 admin::admin(QWidget *parent) :
     QDialog(parent),
@@ -21,8 +21,10 @@ void admin::on_assurance_clicked()
     a.exec();
 }
 
+
+
 void admin::on_parking_clicked()
 {
-    parking f;
+    dialog_parking f;
     f.exec();
 }

@@ -1,33 +1,29 @@
 #ifndef PARKING_H
 #define PARKING_H
-#include"cparking.h"
-#include <QDialog>
+#include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
-namespace Ui {
-class parking;
-}
-
-class parking : public QDialog
+class Parking
 {
-    Q_OBJECT
-
+    QString nom;
+    int reference,place;
 public:
-    explicit parking(QWidget *parent = nullptr);
-    ~parking();
+    Parking();
+    Parking(int,int,QString);
 
-private slots:
-    void on_pushButton_clicked();
+    int getreference(){return reference;}
+    int getplace(){return place;}
+    QString getnom(){return nom;}
 
-    void on_supp_park_clicked();
+    void setreference(int Reference){reference=Reference;}
+    void setplace(int Place){place=Place;}
+    void setnom(QString Nom){nom=Nom;}
 
-    void on_park_ajout_clicked();
 
-    void on_mod_park_clicked();
-
-private:
-    Ui::parking *ui;
-    Cparking tmp1;
-
+    bool ajouter();
+    QSqlQueryModel * afficher();
+    bool supprimer(int reference);
 };
 
 #endif // PARKING_H

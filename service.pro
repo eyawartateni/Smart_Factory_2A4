@@ -19,8 +19,8 @@ SOURCES += \
     admin.cpp \
     assurance.cpp \
     connection.cpp \
-    cparking.cpp \
     dialog_assurance.cpp \
+    dialog_parking.cpp \
     main.cpp \
     mainwindow.cpp \
     parking.cpp
@@ -29,16 +29,16 @@ HEADERS += \
     admin.h \
     assurance.h \
     connection.h \
-    cparking.h \
     dialog_assurance.h \
+    dialog_parking.h \
     mainwindow.h \
     parking.h
 
 FORMS += \
     admin.ui \
     dialog_assurance.ui \
-    mainwindow.ui \
-    parking.ui
+    dialog_parking.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
