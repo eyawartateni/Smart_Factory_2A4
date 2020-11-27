@@ -13,7 +13,7 @@ class chaine
 
 public:
     chaine();
-    chaine(QString,int,int);
+    chaine(int,int,QString);
     void setnb_machine(int nb)
     {
        nb_machine=nb;
@@ -40,8 +40,9 @@ public:
     }
     bool ajouter();
     QSqlQueryModel * afficher();
-    //bool supprimer(int);
+    bool supprimer(int);
     bool imprimer();
+    QSqlQueryModel * load_ch();
 
 };
 

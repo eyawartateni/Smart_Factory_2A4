@@ -9,6 +9,18 @@
 #include <QSortFilterProxyModel>
 #include <QSqlRelationalTableModel>
 #include<QDebug>
+#include"statistique.h"
+
+#include <QPrinter>
+#include <QPrintPreviewDialog>
+#include <QPainter>
+#include <QDebug>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlTableModel>
+class QPrinter;
+class QSqlTableModel;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,8 +33,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QSqlRelationalTableModel *modVoiture;
-    QSortFilterProxyModel * proxyVoiture;
+
 private slots:
     void on_ajouter_clicked();
 
@@ -56,29 +67,35 @@ private slots:
 
     void on_pushButton_ajouter_chaine_clicked();
 
-    void on_recherche_2_clicked();
-
-
 
     void on_load_data_clicked();
-
-    //void on_comboBox_currentIndexChanged(const QString &arg1);
-
     void on_modifier_3_clicked();
 
     void on_comboBox_currentIndexChanged();
 
-  //  void on_recherche_clicked();
-
     void on_sup_clicked();
+    void on_tri_clicked();
 
+    void on_recherche_clicked();
 
-    void on_lineEdit_referencee_textChanged(const QString &arg1);
+    void on_load_ch_clicked();
+
+    void on_modifier_ch_clicked();
+
+    void on_comboBox_ch_currentIndexChanged();
+
+    void on_sup_ch_clicked();
+
+    void on_pushButton_4_clicked();
+    void print(QPrinter *printer);
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
     chaine ctmp;
-    voiture *v;
+    Statistique *stat;
+    QSqlTableModel *model;
 };
 #endif // MAINWINDOW_H

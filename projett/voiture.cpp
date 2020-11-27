@@ -19,7 +19,7 @@ voiture::voiture(QString m,int r,QString mo,int p,QString t,int po,QString c,QSt
 bool voiture::ajouter()
 {
     QSqlQuery query;
-    QString res = QString::number(reference);
+   QString res = QString::number(reference);
     query.prepare("INSERT INTO voiture1(reference,marque,modele,prix,type,prix_option,couleur,options)"
                   "VALUES (:reference,:marque,:modele,:prix,:type,:prix_option,:couleur,:options)");
     query.bindValue(":marque",marque);
@@ -62,43 +62,6 @@ bool voiture::supprimer(int reference)
      return query.exec();
  }
 
- /* bool voiture::modifier()
-  {
-      QSqlQuery query;
-      QString referenc=QString::number(reference);
-      query.prepare("update VOITURE1 SET REFERENCE=:referenc,MARQUE=:marque, MODELE=:modele, PRIX=:prix ,TYPE=:type,PRIX_OPTION=:prix_option,COULEUR=:couleur, OPTIONS=:options where REFERENCE=:referenc");
-      query.bindValue(":marque","3");
-      query.bindValue(":reference",3);
-      query.bindValue(":modele","3");
-      query.bindValue(":prix",37);
-      query.bindValue(":type","3");
-      query.bindValue(":prix_option",3);
-      query.bindValue(":couleur","3");
-      query.bindValue(":options","3");
-
-      return query.exec();
-
-
-  }*/
-
- QSqlQueryModel *recherche(int x)
- {
-       QSqlQuery query;
-     QSqlQueryModel *model = new QSqlQueryModel();
-
-         query.prepare("SELECT *reference,marque,modele,prix,type,prix_option,couleur,options FROM  voiture1 where reference LiKE "+QString::number(x));
-         model->setQuery(query);
-         model->setHeaderData(0, Qt::Horizontal,QObject:: tr("reference"));
-         model->setHeaderData(1, Qt::Horizontal,QObject:: tr("marque"));
-         model->setHeaderData(2, Qt::Horizontal,QObject:: tr("modele"));
-         model->setHeaderData(3, Qt::Horizontal,QObject:: tr("prix"));
-         model->setHeaderData(4, Qt::Horizontal,QObject:: tr("type"));
-         model->setHeaderData(5, Qt::Horizontal,QObject:: tr("prix_option"));
-         model->setHeaderData(6, Qt::Horizontal,QObject:: tr("couleur"));
-         model->setHeaderData(7, Qt::Horizontal,QObject:: tr("options"));
-
-         return model;
- }
 
  QSqlQueryModel *voiture::load()
  {
@@ -107,4 +70,43 @@ bool voiture::supprimer(int reference)
      model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
      return model;
  }
+
+    QSqlQueryModel *recherche(int REFERENCE,QString MARQUE,QString MODELE)
+ {
+        QSqlQuery query;
+      QSqlQueryModel *model = new QSqlQueryModel();
+      int count =0;
+      query.prepare("SELECT *from VOITURE1 where REFERENCE:=REFERENCE or MODELE=:MODELE or MARQUE=:MARQUE");
+      query.bindValue(":REFERENCE",REFERENCE);
+      query.bindValue(":MODELE",MODELE);
+      query.bindValue(":MARQUE",MARQUE);
+      if(query.exec())
+      {
+        while(query.next())
+        {
+            count++;
+        }
+        if(count==1)
+        {
+            QMessageBox msgBox;
+            msgBox.setText("found");
+             msgBox.exec();
+             model->setQuery(query);
+        }
+        if(count<1)
+        {
+            QMessageBox msgBox;
+            msgBox.setText("not found");
+             msgBox.exec();
+             model=0;
+        }
+      }
+      return model;
+  }
+
+
+
+
+
+
 

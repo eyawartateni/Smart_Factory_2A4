@@ -6,6 +6,8 @@
 #include <QSqlTableModel>
 #include <QSortFilterProxyModel>
 #include <QSqlRelationalTableModel>
+#include<QMessageBox>
+
 
 class voiture
 {
@@ -82,7 +84,7 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
   //  bool modifier();
-    QSqlQueryModel *recherche(int x);
+    QSqlQueryModel *recherche(int REFERENCE,QString modele,QString marque);
     QSqlQueryModel * load();
 
 

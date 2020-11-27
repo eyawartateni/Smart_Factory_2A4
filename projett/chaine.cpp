@@ -8,7 +8,7 @@ chaine::chaine()
     nb_machine=0;
 }
 
-chaine::chaine(QString t,int r,int n)
+chaine::chaine(int r,int n,QString t)
 {
        type_produit=t;
        reference=r;
@@ -19,8 +19,8 @@ bool chaine::ajouter()
  {
      QSqlQuery query;
      QString res = QString::number(reference);
-     query.prepare("INSERT INTO chaine(type_produit,reference,nb_machine)"
-                   "VALUES (:type_produit,:reference,:nb_machine)");
+     query.prepare("INSERT INTO chaine(reference,nb_machine,type_produit)"
+                   "VALUES (:reference,:nb_machine,:type_produit)");
      query.bindValue(":type_produit",type_produit);
      query.bindValue(":reference",res);
      query.bindValue(":nb_machine",nb_machine);
@@ -34,55 +34,31 @@ bool chaine::ajouter()
   {
       QSqlQueryModel * model=new QSqlQueryModel();
       model->setQuery("select* from chaine");
-      model->setHeaderData(0,Qt::Horizontal,QObject::tr("type_produit"));
-      model->setHeaderData(1,Qt::Horizontal,QObject::tr("reference"));
-      model->setHeaderData(2,Qt::Horizontal,QObject::tr("nb_machine"));
+
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("nb_machine"));
+       model->setHeaderData(2,Qt::Horizontal,QObject::tr("type_produit"));
       return  model;
   }
-/*
-    bool chaine::imprimer()
+
+
+
+
+  bool chaine::supprimer(int reference)
+   {
+       QSqlQuery query;
+       QString res = QString::number(reference);
+       query.prepare("Delete from CHAINE where REFERENCE=:REFERENCE");
+       query.bindValue(":reference",res);
+       return query.exec();
+   }
+
+
+
+  QSqlQueryModel *chaine::load_ch()
     {
-        QString format = "dd.MM.yyyy";
-            QString ch=date_de_commande.toString(format);
-
-            QFile file("Commande_de_production.txt");
-                     if (!file.open(QIODevice::ReadWrite))
-                         return 0;
-
-                   QTextStream flux(&file);
-
-                   // On choisit le codec correspondant au jeu de caract�re que l'on souhaite ; ici, UTF-8
-
-                   flux.setCodec(QTextCodec::codecForName("ISO-8859-1"));
-
-
-                   // �criture des diff�rentes lignes dans le fichier
-                   flux << " commande_de_production " << endl << endl;
-                   flux << "       Numero_com_prod :    " <<Numero_com_prod<< endl;
-                   flux <<"        date_de_commandee :  " << ch<<endl;
-                   flux <<"       Type_de_production : " << Type_de_production<<endl;
-                   flux <<"      Quantite : " << Quantite<< endl;
-                   flux <<"        CIN_emp " << CIN_emp<< endl;
-
-                          flux <<"        SOTUPA.com" << endl;
-
-                     QPrinter printer;
-                   flux.seek(0);
-
-                   // Lecture du fichier et stockage dans un QString :
-                   QString text = file.readAll();
-
-                   // Initialisation de document avec le texte simple :
-                   QTextDocument document(text);
-
-                   // Cr�ation du QPrintDialog pour le printer :
-                   QPrintDialog *dialog = new QPrintDialog(&printer);
-
-                   // Si l'utilisateur a fait "Accepter" :
-                   if (dialog->exec() == QDialog::Accepted)
-                   {
-                       // On imprime :
-                       document.print(&printer);
-                   }
+        QSqlQueryModel * model=new QSqlQueryModel();
+        model->setQuery("select* from chaine");
+        model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+        return model;
     }
-*/
