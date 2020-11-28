@@ -1,4 +1,4 @@
-#include "voiture.h"
+     #include "voiture.h"
 
 voiture::voiture()
 {
@@ -71,12 +71,12 @@ bool voiture::supprimer(int reference)
      return model;
  }
 
-    QSqlQueryModel *recherche(int REFERENCE,QString MARQUE,QString MODELE)
+    QSqlQueryModel *recherche(QString REFERENCE,QString MARQUE,QString MODELE)
  {
         QSqlQuery query;
       QSqlQueryModel *model = new QSqlQueryModel();
       int count =0;
-      query.prepare("SELECT *from VOITURE1 where REFERENCE:=REFERENCE or MODELE=:MODELE or MARQUE=:MARQUE");
+      query.prepare("SELECT *from VOITURE1 where REFERENCE=:REFERENCE or MODELE=:MODELE or MARQUE=:MARQUE");
       query.bindValue(":REFERENCE",REFERENCE);
       query.bindValue(":MODELE",MODELE);
       query.bindValue(":MARQUE",MARQUE);

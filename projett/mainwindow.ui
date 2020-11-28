@@ -19,15 +19,15 @@
      <rect>
       <x>120</x>
       <y>0</y>
-      <width>701</width>
-      <height>441</height>
+      <width>751</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/new/prefix1/1.jpg);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -46,7 +46,7 @@
        <string notr="true">background-image: url(:/new/prefix1/1.jpg);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QLabel" name="marque">
@@ -372,7 +372,7 @@
        <widget class="QLineEdit" name="lineEdit_modelee">
         <property name="geometry">
          <rect>
-          <x>340</x>
+          <x>570</x>
           <y>50</y>
           <width>113</width>
           <height>21</height>
@@ -382,7 +382,7 @@
        <widget class="QLineEdit" name="lineEdit_marquee">
         <property name="geometry">
          <rect>
-          <x>570</x>
+          <x>340</x>
           <y>50</y>
           <width>113</width>
           <height>21</height>
@@ -405,7 +405,7 @@
        <widget class="QLabel" name="modele_2">
         <property name="geometry">
          <rect>
-          <x>240</x>
+          <x>470</x>
           <y>50</y>
           <width>91</width>
           <height>20</height>
@@ -418,7 +418,7 @@
        <widget class="QLabel" name="marque_2">
         <property name="geometry">
          <rect>
-          <x>480</x>
+          <x>250</x>
           <y>50</y>
           <width>81</width>
           <height>20</height>
@@ -560,7 +560,7 @@
        <widget class="QLineEdit" name="lineEdit_refer">
         <property name="geometry">
          <rect>
-          <x>210</x>
+          <x>220</x>
           <y>40</y>
           <width>113</width>
           <height>21</height>
@@ -640,8 +640,8 @@
        <widget class="QPushButton" name="modifier_3">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>150</y>
+          <x>460</x>
+          <y>160</y>
           <width>151</width>
           <height>51</height>
          </rect>
@@ -689,10 +689,10 @@
      <widget class="QStackedWidget" name="stackedWidget_2">
       <property name="geometry">
        <rect>
-        <x>-10</x>
+        <x>0</x>
         <y>0</y>
-        <width>691</width>
-        <height>421</height>
+        <width>751</width>
+        <height>401</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1081,7 +1081,7 @@
      <widget class="QPushButton" name="quitter_2">
       <property name="geometry">
        <rect>
-        <x>560</x>
+        <x>580</x>
         <y>370</y>
         <width>91</width>
         <height>31</height>

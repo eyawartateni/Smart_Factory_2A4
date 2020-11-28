@@ -7,7 +7,6 @@
 #include <QSortFilterProxyModel>
 #include <QSqlRelationalTableModel>
 #include "C:\Users\Mayssa\Desktop\Qt-Table-Printer-master\Qt-Table-Printer-master/tableprinter.h"
-
 #include <QPrinter>
 #include <QPrintPreviewDialog>
 #include <QPainter>
@@ -39,18 +38,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
      ui->setupUi(this);
      ui->tableView->setModel(vtmp.afficher());
-     ui->tableView->setModel(vtmp.afficher());
-     ui->comboBox->setModel(vtmp.load());
+     ui->tableView_2->setModel(ctmp.afficher());
+      ui->comboBox->setModel(vtmp.load());
      ui->comboBox_2->addItem("REFERENCE");
      ui->comboBox_2->addItem("NB_MACHINE");
      ui->comboBox_2->addItem("TYPE_PRODUIT");
-     ui->tableView_2->setModel(ctmp.afficher());
-     ui->tableView_2->setModel(ctmp.afficher());
      ui->comboBox_ch->setModel(ctmp.load_ch());
      model = new QSqlTableModel;
-             model->setTable("chaine");
-             model->select();
-             ui->tableView_2->setModel(model);
+     model->setTable("chaine");
+     model->select();
+     ui->tableView_2->setModel(model);
 
 }
 
@@ -248,11 +245,11 @@ void MainWindow::on_comboBox_currentIndexChanged()
              ui->lineEdit_refer->setText(query.value(0).toString());
             ui->lineEdit_maq->setText(query.value(1).toString());
             ui->lineEdit_mod->setText(query.value(2).toString());
-            ui->lineEdit_typ->setText(query.value(3).toString());
-            ui->lineEdit_ops->setText(query.value(4).toString());
-            ui->lineEdit_col->setText(query.value(5).toString());
-            ui->lineEdit_p->setText(query.value(6).toString());
-            ui->lineEdit_po->setText(query.value(7).toString());
+             ui->lineEdit_p->setText(query.value(3).toString());
+            ui->lineEdit_typ->setText(query.value(4).toString());
+            ui->lineEdit_po->setText(query.value(5).toString());
+             ui->lineEdit_col->setText(query.value(6).toString());
+            ui->lineEdit_ops->setText(query.value(7).toString());
 
        }
     }
@@ -298,9 +295,9 @@ void MainWindow::on_tri_clicked()
           else
 
             if (ui->comboBox_2->currentText()=="TYPE_PRODUIT")
-             query.prepare("SELECT *  FROM CHAINE ORDER BY TYPE_PRODUIT ASC ") ;
+         query.prepare("SELECT *  FROM CHAINE ORDER BY TYPE_PRODUIT ASC ") ;
 
-            if (query.exec()&&query.next()) {
+            if (query.exec()&& query.next()) {
                 model->setQuery(query) ;
 
                 ui->tableView_2->setModel(model) ;
@@ -316,11 +313,11 @@ void MainWindow::on_tri_clicked()
 
 
 void MainWindow::on_recherche_clicked()
-{/*
-      QString marque = ui->lineEdit_marquee->text();
+{
+    /* QString marque = ui->lineEdit_marquee->text();
       QString modele=ui->lineEdit_modelee->text();
-      int reference=ui->lineEdit_referencee->text().toInt();
-      ui->tableView->setModel(vtmp.recherche(reference,marque,modele));*/
+      int reference=ui->lineEdit_referencee->text().toInt();*/
+      ui->tableView->setModel(vtmp.recherche(ui->lineEdit_referencee->text(),ui->lineEdit_marquee->text(),ui->lineEdit_modelee->text()));
 }
 
 void MainWindow::on_load_ch_clicked()
@@ -332,17 +329,18 @@ void MainWindow::on_load_ch_clicked()
 
 void MainWindow::on_comboBox_ch_currentIndexChanged()
 {
-    //int REFERENCE = ui->comboBox_2->currentText().toInt();
+   QString REFERENCE = ui->comboBox_ch->currentText();
     QSqlQuery query;
-    query.prepare("select*  from CHAINE where REFERENCE=:REFERENCE");
+    query.prepare("select*  from CHAINE where REFERENCE ='"+REFERENCE+"'");
+     //query.bindValue(":REFERENCE",REFERENCE);
        if(query.exec())
     {
-        while(query.next())
-        {
-             ui->lineEdit_ref_ch->setText(query.value(0).toString());
+       while(query.next())
+{
+            ui->lineEdit_ref_ch->setText(query.value(0).toString());
             ui->lineEdit_nb_mach->setText(query.value(1).toString());
             ui->lineEdit_type_prod->setText(query.value(2).toString());
-       }
+}
     }
 
 }
@@ -352,10 +350,13 @@ void MainWindow::on_modifier_ch_clicked()
     QSqlQuery query;
     QMessageBox msgBox;
     QMessageBox msgBox1;
-    query.prepare("update CHAINE SET  NB_MACHINE=:NB_MACHINE, TYPE_PRODUIT=:TYPE_PRODUIT where REFERENCE=:REFERENCE");
-     query.bindValue(":REFERENCE",ui->lineEdit_reff_ch->text().toInt());
-    query.bindValue(":NB_MACHINE",ui->lineEdit_nb_mach->text());
-    query.bindValue(":TYPE_PRODUIT",ui->lineEdit_type_prod->text());
+    QString REFERENCE = ui->lineEdit_ref_ch->text();
+    QString NB_MACHINE = ui->lineEdit_nb_mach->text();
+    QString TYPE_PRODUIT = ui->lineEdit_type_prod->text();
+    query.prepare("update CHAINE SET  NB_MACHINE='"+NB_MACHINE+"' , TYPE_PRODUIT='"+TYPE_PRODUIT+"' where REFERENCE='"+REFERENCE+"'");
+    /* query.bindValue(":REFERENCE",ui->lineEdit_reff_ch->text().toInt());
+    query.bindValue(":NB_MACHINE",ui->lineEdit_nb_mach->text().toInt());
+    query.bindValue(":TYPE_PRODUIT",ui->lineEdit_type_prod->text());*/
     if(query.exec())
     {
        ui->tableView_2->setModel(ctmp.afficher());
@@ -373,15 +374,15 @@ else
 
 void MainWindow::on_sup_ch_clicked()
 {
-    int reference=ui->lineEdit_reff_ch->text().toInt();
-   bool test=ctmp.supprimer(reference);
+    //int reference=ui->lineEdit_reff_ch->text().toInt();
+   bool test=ctmp.supprimer(ui->lineEdit_reff_ch->text().toInt());
    if(test)
    {
         ui->tableView_2->setModel(ctmp.afficher());
        QMessageBox::information(nullptr, QObject::tr("suppression effectuee"),
                    QObject::tr("chaine supprimé.\n"
                                "Click Cancel to exit."), QMessageBox::Cancel);
-}
+  }
    else
        QMessageBox::critical(nullptr, QObject::tr("suppression non effectuee"),
                              QObject::tr("chaine non supprimé.\n"

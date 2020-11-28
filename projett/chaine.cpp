@@ -44,12 +44,12 @@ bool chaine::ajouter()
 
 
 
-  bool chaine::supprimer(int reference)
+  bool chaine::supprimer(int REFERENCE)
    {
        QSqlQuery query;
-       QString res = QString::number(reference);
+       QString res = QString::number(REFERENCE);
        query.prepare("Delete from CHAINE where REFERENCE=:REFERENCE");
-       query.bindValue(":reference",res);
+       query.bindValue(":REFERENCE",res);
        return query.exec();
    }
 
