@@ -17,6 +17,9 @@ public:
      void setClient(Client C);
     ~Dialog();
 
+private slots:
+     void on_exporterExcel_clicked();
+
 private:
     Ui::Dialog *ui;
 };

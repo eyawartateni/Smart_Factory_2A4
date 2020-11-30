@@ -1,7 +1,7 @@
 QT       += core gui sql
 QT  +=core gui printsupport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 CONFIG += c++11
 
@@ -10,6 +10,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../../Qt-Table-Printer-master/tableprinter.cpp \
+    authentification.cpp \
     client.cpp \
     connection.cpp \
     dialog.cpp \
@@ -19,6 +21,8 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    ../../../Qt-Table-Printer-master/tableprinter.h \
+    authentification.h \
     client.h \
     connection.h \
     dialog.h \
@@ -27,6 +31,7 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
+    authentification.ui \
     dialog.ui \
     dialog_fournisseur.ui \
     mainwindow.ui
@@ -37,4 +42,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    resources.qrc \
     sound.qrc

@@ -10,8 +10,12 @@
 #include <QSortFilterProxyModel>
 #include <QSqlRelationalTableModel>
 #include <connection.h>
+#include <QSound>
+#include <QPrinter>
+#include <QSqlTableModel>
 
-
+class QPrinter;
+class QSqlTableModel;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -82,10 +86,27 @@ private slots:
 
     void on_exportpdf_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_terminer_2_clicked();
+
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_comboBox_2_currentIndexChanged(int index);
+    void print(QPrinter *printer);
+
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
     fournisseur tmpfournisseur;
+    QSound *son;
+     QSqlTableModel *model;
+    fournisseur tmpc;
+
+
 
 };
 #endif // MAINWINDOW_H

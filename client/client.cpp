@@ -1,10 +1,13 @@
 #include "client.h"
-
+#include <QPrinter>
+#include <QPainter>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 Client::Client()
 {
 
 }
- Client::Client(QString cn,QString nm,QString pr,QString ach,QString pm,QString md,QDate dt)
+ Client::Client(QString cn,QString nm,QString pr,QString ach,QString pm,QString md,QString dt)
  {
      cin=cn;
       nom=nm;
@@ -60,10 +63,35 @@ bool Client::modifier(QString CIN)
 {
     QSqlQuery query;
 
-          query.prepare("update client set nom='"+nom+"',prenom='"+prenom+"',model='"+model_choisi+"',achat='"+achat+"',paiement='"+paiement+"' where CIN=:cin");
+          query.prepare("update client set nom='"+nom+"',prenom='"+prenom+"',model='"+model_choisi+"',achat='"+achat+"',paiement='"+paiement+"',date_naissance='"+date_naissance+"' where CIN=:cin");
          query.bindValue(":cin", CIN);
 
       return   query.exec();
 
 
 }
+
+
+bool Client::exporterpdf()
+{
+
+
+    QPrinter printer;
+          printer.setOutputFormat(QPrinter::PdfFormat);
+          printer.setOutputFileName("C:/Users/eyaou/Desktop/Smart_Factory_2A4/fichier.pdf");
+          QPainter painter;
+          if (! painter.begin(&printer)) { // failed to open file
+              qWarning("failed to open file, is it writable?");
+              return 1;
+          }
+          painter.drawText(10, 10,"le montant de votre facture est :");
+          if (! printer.newPage()) {
+              qWarning("failed in flushing page to disk, disk full?");
+              return 1;
+          }
+          painter.drawText(10, 10, "Test 2");
+          painter.end();
+
+}
+
+

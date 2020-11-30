@@ -1,6 +1,8 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include "client.h"
+#include <QPrinter>
+#include <QPrintDialog>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -16,13 +18,23 @@ Dialog::~Dialog()
 
 void Dialog::setClient(Client C)
 {
-ui->lineEdit_nom->setText(C.getNom());
-ui->lineEdit_prenom->setText(C.getPrenom());
-ui->lineEdit_paiement->setText(C.getpaiement());
-ui->dateEdit->setDate(C.getdate_naissance());
-ui->lineEdit_cin->setText(C.getCin());
-ui->lineEdit_achat->setText(C.getachat());
-ui->lineEdit_model->setText(C.getModelChoisi());
+ui->textEdit->setText(C.getNom());
+ui->textEdit->setText(C.getPrenom());
+ui->textEdit->setText(C.getpaiement());
 
+ui->textEdit->setText(C.getCin());
+ui->textEdit->setText(C.getachat());
+ui->textEdit->setText(C.getModelChoisi());
+
+
+}
+
+void Dialog::on_exporterExcel_clicked()
+{
+   /* QPrinter printer;
+     printer.setPrinterName("cc");
+     QPrintDialog dialog(&printer,this);
+     if(dialog.exec()==QDialog::Rejected)return;
+     ui->textEdit->print(&printer);*/
 
 }

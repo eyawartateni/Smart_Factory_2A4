@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/user.png</file>
+        <file>images/pngtree-outline-user-icon-png-image_1727916.jpg</file>
+        <file>images/back.jpg</file>
+        <file>images/images.jfif</file>
+        <file>images/a89546df3b5085b7bde157f37b5c02a4.jpg</file>
+        <file>images/User_icon_BLACK-01.png</file>
+        <file>../../../../Pictures/client.png</file>
+        <file>images/client.png</file>
+        <file>images/unnamed.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/smart.jpg</file>
+        <file>images/pngtree-outline-user-icon-png-image_1727916.jpg</file>
+    </qresource>
+</RCC>

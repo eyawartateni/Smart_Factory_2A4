@@ -4,7 +4,7 @@ fournisseur::fournisseur()
 {
 
 }
-fournisseur::fournisseur(QString cn,QString nm,QString prn,QString pdm,QString nbp,QString pr,QDate dl)
+fournisseur::fournisseur(QString cn,QString nm,QString prn,QString pdm,QString nbp,QString pr,QString dl)
 {
     nom=nm;
     cin=cn;
@@ -61,7 +61,33 @@ bool fournisseur::supprimerFour(QString CIN)
 bool fournisseur::modifierFour(QString CIN)
 {
    QSqlQuery query;
-    query.prepare("update fournisseur set nom='"+nom+"',prenom='"+prenom+"',piece_demandee='"+piece_demandee+"',nbre_piece='"+nbre_piece+"',prix_apayer='"+prix_apayer+"' where CIN=:cin");
+    query.prepare("update fournisseur set nom='"+nom+"',prenom='"+prenom+"',piece_demandee='"+piece_demandee+"',nbre_piece='"+nbre_piece+"',prix_apayer='"+prix_apayer+"',datelimite='"+dateLimite+"' where CIN=:cin");
     query.bindValue(":cin",CIN);
     return query.exec();
+}
+QSqlQueryModel * fournisseur::trier(int test)
+{
+
+    QSqlQueryModel *model=new QSqlQueryModel() ;
+     QSqlQuery query ;
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM "));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRENOM"));
+    if(test==1)
+    {
+        query.prepare("SELECT *  FROM FOURNISSEUR ORDER BY CIN ASC ") ;
+    }
+    else if(test==2)
+    {
+        query.prepare("SELECT *  FROM FOURNISSEUR ORDER BY NOM ASC ") ;
+
+    }
+    else if(test==3)
+    {
+        query.prepare("SELECT *  FROM FOURNISSEUR ORDER BY PRENOM ASC ") ;
+
+    }
+    if (query.exec()&&query.next()) {
+        model->setQuery(query) ;}
+    return model;
 }
