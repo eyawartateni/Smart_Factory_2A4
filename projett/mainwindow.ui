@@ -32,9 +32,14 @@ font: 10pt &quot;PMingLiU-ExtB&quot;;</string>
     <property name="currentIndex">
      <number>0</number>
     </property>
+    <widget class="QWidget" name="bienvenue">
+     <attribute name="title">
+      <string>Bienvenue</string>
+     </attribute>
+    </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>gestion des voitures</string>
+      <string>Gestion des voitures</string>
      </attribute>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="geometry">
@@ -1029,7 +1034,7 @@ QPushButton:hover,QPushButton:hover
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>gestion des chaines</string>
+      <string>Gestion des chaines</string>
      </attribute>
      <widget class="QStackedWidget" name="stackedWidget_2">
       <property name="geometry">
