@@ -481,7 +481,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
       <x>30</x>
       <y>10</y>
       <width>841</width>
-      <height>481</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1073,169 +1073,6 @@ background-color:orange;
 }</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>300</y>
-        <width>481</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>40</y>
-         <width>161</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>donner le CIN à chercher</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="cin_chercher">
-       <property name="geometry">
-        <rect>
-         <x>200</x>
-         <y>40</y>
-         <width>113</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit
-{
-color:black;
-background-color:orange;
-}</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="modifier">
-       <property name="geometry">
-        <rect>
-         <x>370</x>
-         <y>70</y>
-         <width>81</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"> QPushButton
-{
-  color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 1px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 6;
-    padding: 3px;
-    font-size: 12px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-QPushButton:hover
-{
-    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
-}
-
-
-
-</string>
-       </property>
-       <property name="text">
-        <string>modifier</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="supprimer_client">
-       <property name="geometry">
-        <rect>
-         <x>370</x>
-         <y>40</y>
-         <width>81</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"> QPushButton
-{
-  color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 1px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 6;
-    padding: 3px;
-    font-size: 12px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-QPushButton:hover
-{
-    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
-}
-
-
-
-</string>
-       </property>
-       <property name="text">
-        <string>supprimer</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox">
-       <property name="geometry">
-        <rect>
-         <x>370</x>
-         <y>10</y>
-         <width>81</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"> QComboBox
-{
-  color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 1px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 6;
-    padding: 3px;
-    font-size: 12px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-QComboBox:hover
-{
-    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
-}
-
-
-
-</string>
-       </property>
-       <item>
-        <property name="text">
-         <string>    CIN</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>PRENOM</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>   NOM</string>
-        </property>
-       </item>
-      </widget>
-     </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
@@ -1295,7 +1132,7 @@ color:black;</string>
         <x>20</x>
         <y>10</y>
         <width>811</width>
-        <height>431</height>
+        <height>471</height>
        </rect>
       </property>
       <property name="title">
@@ -1359,7 +1196,7 @@ QPushButton:hover
        <property name="geometry">
         <rect>
          <x>70</x>
-         <y>350</y>
+         <y>380</y>
          <width>91</width>
          <height>23</height>
         </rect>
@@ -1915,6 +1752,238 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>350</y>
+         <width>91</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}</string>
+       </property>
+       <property name="text">
+        <string>afficher</string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>290</y>
+         <width>481</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>20</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Donner le cin à chercher</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="cin_chercher">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>20</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color:black;
+background-color:orange;
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="modifier">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>120</y>
+          <width>81</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"> QPushButton
+{
+  color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>modifier</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="supprimer_client">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>120</y>
+          <width>81</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"> QPushButton
+{
+  color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>supprimer</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>50</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Donner le nom à chercher</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="cher_nom">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>50</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:orange;
+color:black;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="cher_prenom">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>80</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:orange;
+color:black;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>80</y>
+          <width>151</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Donner le prenom à chercher</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>120</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}</string>
+        </property>
+        <property name="text">
+         <string>chercher</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <zorder>groupBox_4</zorder>
      <zorder>lineEdit_nom</zorder>
@@ -1924,7 +1993,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <zorder>label_date</zorder>
      <zorder>lineEdit_model</zorder>
      <zorder>lineEdit_paiement</zorder>
-     <zorder>groupBox_3</zorder>
      <zorder>label_2</zorder>
      <zorder>label_3</zorder>
      <zorder>date_naissance</zorder>
@@ -1939,7 +2007,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <x>20</x>
         <y>10</y>
         <width>811</width>
-        <height>411</height>
+        <height>441</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -3023,7 +3091,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>350</y>
+         <y>380</y>
          <width>101</width>
          <height>23</height>
         </rect>
@@ -3567,7 +3635,7 @@ background-color:orange;
          <x>270</x>
          <y>10</y>
          <width>501</width>
-         <height>241</height>
+         <height>231</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -3578,7 +3646,7 @@ background-color:orange;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>320</y>
+         <y>350</y>
          <width>101</width>
          <height>23</height>
         </rect>
@@ -4051,10 +4119,10 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
       <widget class="QGroupBox" name="groupBox_2">
        <property name="geometry">
         <rect>
-         <x>270</x>
-         <y>270</y>
-         <width>501</width>
-         <height>101</height>
+         <x>290</x>
+         <y>260</y>
+         <width>471</width>
+         <height>171</height>
         </rect>
        </property>
        <property name="title">
@@ -4063,9 +4131,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <widget class="QLineEdit" name="cincherf">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>40</y>
-          <width>121</width>
+          <x>270</x>
+          <y>50</y>
+          <width>111</width>
           <height>21</height>
          </rect>
         </property>
@@ -4081,20 +4149,20 @@ background-color:orange;
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>40</y>
-          <width>151</width>
+          <y>50</y>
+          <width>171</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
-         <string>donner le CIN à chercher</string>
+         <string>Donner le cin à chercher</string>
         </property>
        </widget>
        <widget class="QPushButton" name="modifierFour">
         <property name="geometry">
          <rect>
-          <x>380</x>
-          <y>40</y>
+          <x>220</x>
+          <y>130</y>
           <width>81</width>
           <height>23</height>
          </rect>
@@ -4567,8 +4635,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <widget class="QPushButton" name="supprimer_fournisseur">
         <property name="geometry">
          <rect>
-          <x>380</x>
-          <y>70</y>
+          <x>350</x>
+          <y>130</y>
           <width>81</width>
           <height>23</height>
          </rect>
@@ -5038,20 +5106,72 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
          <string>supprimer</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox_2">
+       <widget class="QLineEdit" name="cherf_nom">
         <property name="geometry">
          <rect>
-          <x>380</x>
-          <y>10</y>
-          <width>81</width>
-          <height>22</height>
+          <x>270</x>
+          <y>20</y>
+          <width>111</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">
- QComboBox
-{
-  color: #b1b1b1;
+         <string notr="true">background-color:orange;
+color:black;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>20</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Donner le nom à chercher</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>80</y>
+          <width>191</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Donner le prenom à chercher</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="cherf_prenom">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>80</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:orange;
+color:black;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="chercherfour">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>130</y>
+          <width>81</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton
+{color: #b1b1b1;
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
     border-width: 1px;
     border-color: #1e1e1e;
@@ -5061,37 +5181,23 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     font-size: 12px;
     padding-left: 5px;
     padding-right: 5px;
+
 }
-QComboBox:hover
+QPushButton:hover
 {
     border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
-}
-
-
-</string>
+}</string>
         </property>
-        <item>
-         <property name="text">
-          <string>     CIN</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>NOM</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>PRENOM</string>
-         </property>
-        </item>
+        <property name="text">
+         <string>chercher</string>
+        </property>
        </widget>
       </widget>
       <widget class="QComboBox" name="tri">
        <property name="geometry">
         <rect>
          <x>140</x>
-         <y>320</y>
+         <y>350</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -5133,6 +5239,38 @@ color:black;</string>
         <string>01/01/2000</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="afficherfour">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>101</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}</string>
+       </property>
+       <property name="text">
+        <string>afficher</string>
+       </property>
+      </widget>
       <zorder>groupBox_2</zorder>
       <zorder>NomFournisseur</zorder>
       <zorder>NomFournisseur_2</zorder>
@@ -5153,6 +5291,7 @@ color:black;</string>
       <zorder>tri</zorder>
       <zorder>nbre</zorder>
       <zorder>date_limite</zorder>
+      <zorder>afficherfour</zorder>
      </widget>
     </widget>
    </widget>

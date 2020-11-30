@@ -1,6 +1,7 @@
 #include "client.h"
 #include <QPrinter>
 #include <QPainter>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 Client::Client()
@@ -49,6 +50,46 @@ Client::Client()
     model->setHeaderData(6,Qt::Horizontal,QObject::tr("date_naissance"));
     return model;
 
+ }
+
+ QSqlQueryModel *Client::rechercherclient(QString CIN,QString NOM,QString PRENOM)
+ {
+     QSqlQueryModel *model = new QSqlQueryModel();
+         QSqlQuery query;
+
+ int count =0;
+         query.prepare("select * from client where CIN= :CIN or NOM = :NOM or PRENOM =:PRENOM ");
+         query.bindValue(":CIN", CIN);
+         query.bindValue(":NOM", NOM);
+         query.bindValue(":PRENOM", PRENOM);
+
+
+         if(query.exec())
+         {
+
+             while(query.next())
+             {
+                 count++;
+             }
+             if(count==1)
+             {
+                 QMessageBox msgBox;
+                 msgBox.setText(" fOUND");
+                 msgBox.exec();
+                model->setQuery(query);
+             }
+             if(count<1 )
+             {
+                 QMessageBox msgBox;
+                 msgBox.setText("NOT fOUND");
+                 msgBox.exec();
+                 model=0;
+             }
+
+
+         }
+
+         return model;
  }
 bool Client::supprimer(QString CIN)
 {

@@ -98,13 +98,25 @@ private slots:
     void print(QPrinter *printer);
 
 
+
+    void on_pushButton_3_clicked();
+
+    void on_chercherfour_clicked();
+
+    void on_afficherfour_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
+    Client tmpclient2;
+
     fournisseur tmpfournisseur;
+    fournisseur tmpfournisseur2;
     QSound *son;
      QSqlTableModel *model;
     fournisseur tmpc;
+
+
 
 
 

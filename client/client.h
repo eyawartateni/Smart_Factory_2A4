@@ -5,6 +5,8 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSortFilterProxyModel>
+#include <QSqlRelationalTableModel>
 
 
 
@@ -14,6 +16,7 @@ class Client
 private:
     QString  cin, nom ,prenom,achat,paiement,model_choisi;
 QString  date_naissance;
+
 public:
     Client();
     Client(QString,QString,QString,QString,QString,QString,QString);
@@ -39,7 +42,10 @@ public:
     bool supprimer(QString cin);
     bool modifier(QString cin);
     bool exporterpdf();
-
+    QSqlRelationalTableModel *chercherclient();
+    QSqlRelationalTableModel *modClient;
+    QSortFilterProxyModel * proxyclient;
+    QSqlQueryModel  *rechercherclient(QString CIN,QString NOM,QString PRENOM);
 
 
 

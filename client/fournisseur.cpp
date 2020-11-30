@@ -1,4 +1,5 @@
 #include "fournisseur.h"
+#include <QMessageBox>
 
 fournisseur::fournisseur()
 {
@@ -90,4 +91,44 @@ QSqlQueryModel * fournisseur::trier(int test)
     if (query.exec()&&query.next()) {
         model->setQuery(query) ;}
     return model;
+}
+
+QSqlQueryModel *fournisseur::rechercherfournisseur(QString CIN,QString NOM,QString PRENOM)
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+        QSqlQuery query;
+
+int count =0;
+        query.prepare("select * from fournisseur where CIN= :CIN or NOM = :NOM or PRENOM =:PRENOM ");
+        query.bindValue(":CIN", CIN);
+        query.bindValue(":NOM", NOM);
+        query.bindValue(":PRENOM", PRENOM);
+
+
+        if(query.exec())
+        {
+
+            while(query.next())
+            {
+                count++;
+            }
+            if(count==1)
+            {
+                QMessageBox msgBox;
+                msgBox.setText(" fOUND");
+                msgBox.exec();
+               model->setQuery(query);
+            }
+            if(count<1 )
+            {
+                QMessageBox msgBox;
+                msgBox.setText("NOT fOUND");
+                msgBox.exec();
+                model=0;
+            }
+
+
+        }
+
+        return model;
 }

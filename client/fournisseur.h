@@ -44,6 +44,7 @@ public:
 
 
     QSqlQueryModel *trier(int test);
+    QSqlQueryModel  *rechercherfournisseur(QString CIN,QString NOM,QString PRENOM);
 
 
 
