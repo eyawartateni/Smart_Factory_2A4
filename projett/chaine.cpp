@@ -63,3 +63,68 @@ bool chaine::ajouter()
         model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
         return model;
     }
+
+  QSqlQueryModel * chaine::trier(int test)
+
+  {
+
+               QSqlQueryModel *model=new QSqlQueryModel() ;
+
+               QSqlQuery query ;
+
+
+
+               model->setHeaderData(0, Qt::Horizontal, QObject::tr("REFERENCE"));
+
+               model->setHeaderData(1, Qt::Horizontal, QObject::tr("NB_MACHINE "));
+
+               model->setHeaderData(2, Qt::Horizontal, QObject::tr("TYPE_PRODUIT"));
+
+
+
+               if(test==1)
+
+               {
+
+                   query.prepare("SELECT *  FROM chaine ORDER BY REFERENCE ASC ") ;
+
+               }
+
+               else if(test==2)
+
+               {
+
+                   query.prepare("SELECT *  FROM chaine ORDER BY NB_MACHINE ASC ") ;
+
+               }
+
+               else if(test==3)
+
+               {
+
+                    query.prepare("SELECT *  FROM chaine ORDER BY TYPE_PRODUIT ASC ") ;
+
+               }
+
+
+
+               if (query.exec()&&query.next())
+
+               {
+
+                   model->setQuery(query) ;
+
+               }
+               return model;
+
+
+}
+
+  bool chaine::modifier()
+  {
+      QSqlQuery query;
+       query.prepare("update CHAINE SET  NB_MACHINE=:NB_MACHINE , TYPE_PRODUIT=:TYPE_PRODUIT where REFERENCE=:REFERENCE");
+       query.bindValue(":TYPE_PRODUIT",type_produit);
+       query.bindValue(":REFERENCE",reference);
+       query.bindValue(":NB_MACHINE",nb_machine);
+       return query.exec();  }

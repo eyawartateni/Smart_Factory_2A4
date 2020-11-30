@@ -105,12 +105,21 @@ bool voiture::supprimer(int reference)
       return model;
   }
 
-    /*bool voiture::modifier()
+    bool voiture::modifier()
     {
          QSqlQuery query;
-           query.prepare("update VOITURE1 SET  MARQUE=:marque, MODELE=:modele, PRIX=:prix ,TYPE=:type,PRIX_OPTION=:prix_option,COULEUR=:couleur, OPTIONS=:options where REFERENCE=:reference");
+         query.prepare("update VOITURE1 SET  MARQUE=:marque, MODELE=:modele, PRIX=:prix ,TYPE=:type,PRIX_OPTION=:prix_option,COULEUR=:couleur, OPTIONS=:options where REFERENCE=:reference");
+         query.bindValue(":marque",marque);
+          query.bindValue(":reference",reference);
+         query.bindValue(":modele",modele);
+          query.bindValue(":prix",prix);
+         query.bindValue(":type",type);
+           query.bindValue(":prix_option",prix_option);
+         query.bindValue(":couleur",couleur);
+              query.bindValue(":options",options);
 
-    }*/
+              return query.exec();
+    }
 
 
 

@@ -42,7 +42,7 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier();
-    bool imprimer();
+   // bool imprimer();
     QSqlQueryModel * load_ch();
     QSqlQueryModel * trier(int test);
 

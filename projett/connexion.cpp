@@ -1,6 +1,7 @@
 #include "connexion.h"
 
-//test tutoriel git
+
+
 connexion::connexion()
 {
  db = QSqlDatabase::addDatabase("QODBC");

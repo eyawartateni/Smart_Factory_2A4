@@ -237,19 +237,11 @@ void MainWindow::on_load_data_clicked()
 void MainWindow::on_modifier_3_clicked()//voiture
 {
     son->play();
-    QSqlQuery query;
     QMessageBox msgBox;
     QMessageBox msgBox1;
-    query.prepare("update VOITURE1 SET  MARQUE=:marque, MODELE=:modele, PRIX=:prix ,TYPE=:type,PRIX_OPTION=:prix_option,COULEUR=:couleur, OPTIONS=:options where REFERENCE=:reference");
-    query.bindValue(":marque",ui->lineEdit_maq->text());
-    query.bindValue(":reference",ui->lineEdit_refer->text().toInt());
-    query.bindValue(":modele",ui->lineEdit_mod->text());
-    query.bindValue(":prix",ui->lineEdit_p->text().toInt());
-    query.bindValue(":type",ui->lineEdit_typ->text());
-    query.bindValue(":prix_option",ui->lineEdit_po->text().toInt());
-    query.bindValue(":couleur",ui->lineEdit_col->text());
-    query.bindValue(":options",ui->lineEdit_ops->text());
-    if(query.exec())
+     voiture v(ui->lineEdit_maq->text(),ui->lineEdit_refer->text().toInt(),ui->lineEdit_mod->text(),ui->lineEdit_p->text().toInt(),ui->lineEdit_typ->text(),ui->lineEdit_po->text().toInt(),ui->lineEdit_col->text(),ui->lineEdit_ops->text());
+     bool test=v.modifier();
+    if(test)
     {
        ui->tableView->setModel(vtmp.afficher());
        msgBox.setText("voiture modifié");
@@ -311,10 +303,24 @@ void MainWindow::on_sup_clicked()
 
 void MainWindow::on_tri_clicked()
 {
- son->play();
-    QSqlQueryModel *model=new QSqlQueryModel() ;
 
-        model->setHeaderData(0, Qt::Horizontal, QObject::tr("REFERENCE"));
+ son->play();
+    int test=0;
+
+      if (ui->comboBox_2->currentText()=="REFERENCE")
+                 {test=1;}
+
+      else if (ui->comboBox_2->currentText()=="NB_MACHINE")
+                  {test=2;}
+
+      else if (ui->comboBox_2->currentText()=="TYPE_PRODUIT")
+                  {test=3;}
+
+      ui->tableView_2->setModel(ctmp.trier(test)) ;
+
+   /* QSqlQueryModel *model=new QSqlQueryModel() ;
+
+       model->setHeaderData(0, Qt::Horizontal, QObject::tr("REFERENCE"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("NB_MACHINE"));
         model->setHeaderData(2, Qt::Horizontal, QObject::tr("TYPE_PRODUIT"));
         ui->tableView_2->setModel(model);
@@ -337,7 +343,7 @@ void MainWindow::on_tri_clicked()
             }
 
 
-
+*/
 }
 
 
@@ -367,8 +373,8 @@ void MainWindow::on_comboBox_ch_currentIndexChanged()
      son->play();
    QString REFERENCE = ui->comboBox_ch->currentText();
     QSqlQuery query;
-    query.prepare("select*  from CHAINE where REFERENCE ='"+REFERENCE+"'");
-     //query.bindValue(":REFERENCE",REFERENCE);
+    query.prepare("select*  from CHAINE where REFERENCE =:REFERENCE");
+    query.bindValue(":REFERENCE",REFERENCE);
        if(query.exec())
     {
        while(query.next())
@@ -381,20 +387,15 @@ void MainWindow::on_comboBox_ch_currentIndexChanged()
 
 }
 
-void MainWindow::on_modifier_ch_clicked()
+void MainWindow::on_modifier_ch_clicked()//chaine
 {
      son->play();
     QSqlQuery query;
     QMessageBox msgBox;
     QMessageBox msgBox1;
-    QString REFERENCE = ui->lineEdit_ref_ch->text();
-    QString NB_MACHINE = ui->lineEdit_nb_mach->text();
-    QString TYPE_PRODUIT = ui->lineEdit_type_prod->text();
-    query.prepare("update CHAINE SET  NB_MACHINE='"+NB_MACHINE+"' , TYPE_PRODUIT='"+TYPE_PRODUIT+"' where REFERENCE='"+REFERENCE+"'");
-    /* query.bindValue(":REFERENCE",ui->lineEdit_reff_ch->text().toInt());
-    query.bindValue(":NB_MACHINE",ui->lineEdit_nb_mach->text().toInt());
-    query.bindValue(":TYPE_PRODUIT",ui->lineEdit_type_prod->text());*/
-    if(query.exec())
+     chaine c(ui->lineEdit_ref_ch->text().toInt(),ui->lineEdit_nb_mach->text().toInt(),ui->lineEdit_type_prod->text());
+     bool test=c.modifier();
+    if(test)
     {
        ui->tableView_2->setModel(ctmp.afficher());
        msgBox.setText("chaine modifié");
