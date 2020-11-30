@@ -83,7 +83,7 @@ public:
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
-  //  bool modifier();
+  // bool modifier();
     QSqlQueryModel *recherche(QString REFERENCE,QString modele,QString marque);
     QSqlQueryModel * load();
 

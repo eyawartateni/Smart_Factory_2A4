@@ -36,10 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    son =new QSound("C:/Users/Mayssa/Desktop/gestion_production/projett/son.wav");
      ui->setupUi(this);
      ui->tableView->setModel(vtmp.afficher());
      ui->tableView_2->setModel(ctmp.afficher());
-      ui->comboBox->setModel(vtmp.load());
+     ui->comboBox->setModel(vtmp.load());
      ui->comboBox_2->addItem("REFERENCE");
      ui->comboBox_2->addItem("NB_MACHINE");
      ui->comboBox_2->addItem("TYPE_PRODUIT");
@@ -48,6 +49,17 @@ MainWindow::MainWindow(QWidget *parent)
      model->setTable("chaine");
      model->select();
      ui->tableView_2->setModel(model);
+     ui->lineEdit_prix->setValidator(new QIntValidator(0,999999,this));
+     ui->lineEdit_p->setValidator(new QIntValidator(0,999999,this));
+     ui->lineEdit_p_op->setValidator(new QIntValidator(0,999999,this));
+     ui->lineEdit_po->setValidator(new QIntValidator(0,999999,this));
+     ui->lineEdit_ref->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_ref_ch->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_refer->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_reference->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_referencee->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_reff_ch->setValidator(new QIntValidator(0,99999999,this));
+     ui->lineEdit_nb_mach->setValidator(new QIntValidator(0,999999,this));
 
 }
 
@@ -59,6 +71,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ajouter_clicked()
 {
+    son->play();
     QString marque = ui->lineEdit_marque->text();
      QString modele=ui->lineEdit_modele->text();
      QString type=ui->lineEdit_type->text();
@@ -86,6 +99,7 @@ void MainWindow::on_ajouter_clicked()
 
 void MainWindow::on_pushButton_ajouter_chaine_clicked()
 {
+     son->play();
     QString type_produit = ui->lineEdit_type_p->text();
      int  reference=ui->lineEdit_ref->text().toInt();
      int nb_machine=ui->spinBox->text().toInt();
@@ -108,11 +122,14 @@ void MainWindow::on_pushButton_ajouter_chaine_clicked()
 
 void MainWindow::on_afficher_clicked()
 {
+     son->play();
      ui->stackedWidget->setCurrentIndex(1);
+ ui->tableView->setModel(vtmp.afficher());
 }
 
 void MainWindow::on_retour_clicked()
 {
+     son->play();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -121,6 +138,7 @@ void MainWindow::on_retour_clicked()
 
 void MainWindow::on_quitter_clicked()
 {
+     son->play();
     QMessageBox::StandardButton reply=QMessageBox::question
             (this,"quitter","voulez-vous vraiment quitter?",QMessageBox::Yes |QMessageBox::No);
     if(reply==QMessageBox::Yes)
@@ -135,51 +153,62 @@ void MainWindow::on_quitter_clicked()
 
 void MainWindow::on_retour_2_clicked()
 {
+     son->play();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_modifier_clicked()
 {
+     son->play();
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_retour_3_clicked()
 {
+     son->play();
      ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_supprimer_clicked()
 {
+     son->play();
      ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_retour_4_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(0);
 }
 
 void MainWindow::on_pushButton_retour_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(0);
 }
 
 void MainWindow::on_pushButton_retour_2_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(0);
 }
 
 void MainWindow::on_pushButton_afficher_chaine_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(1);
+       ui->tableView_2->setModel(ctmp.afficher());
 }
 
 void MainWindow::on_pushButton_modifier_chaine_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(2);
 }
 
 void MainWindow::on_pushButton_supprimer_chaine_clicked()
 {
+     son->play();
       ui->stackedWidget_2->setCurrentIndex(1);
 }
 
@@ -187,6 +216,7 @@ void MainWindow::on_pushButton_supprimer_chaine_clicked()
 
 void MainWindow::on_quitter_2_clicked()
 {
+     son->play();
     QMessageBox::StandardButton reply=QMessageBox::question
          (this,"quitter","voulez-vous vraiment quitter?",QMessageBox::Yes |QMessageBox::No);
     if(reply==QMessageBox::Yes)
@@ -200,12 +230,13 @@ void MainWindow::on_quitter_2_clicked()
 
 void MainWindow::on_load_data_clicked()
 {
+     son->play();
      ui->comboBox->setModel(vtmp.load());
 }
 
-void MainWindow::on_modifier_3_clicked()
+void MainWindow::on_modifier_3_clicked()//voiture
 {
-
+    son->play();
     QSqlQuery query;
     QMessageBox msgBox;
     QMessageBox msgBox1;
@@ -235,6 +266,7 @@ else
 
 void MainWindow::on_comboBox_currentIndexChanged()
 {
+     son->play();
     QString reference = ui->comboBox->currentText();
     QSqlQuery query;
     query.prepare("select*  from voiture1 where reference='"+reference+"'");
@@ -243,13 +275,13 @@ void MainWindow::on_comboBox_currentIndexChanged()
         while(query.next())
         {
              ui->lineEdit_refer->setText(query.value(0).toString());
-            ui->lineEdit_maq->setText(query.value(1).toString());
-            ui->lineEdit_mod->setText(query.value(2).toString());
+             ui->lineEdit_maq->setText(query.value(1).toString());
+             ui->lineEdit_mod->setText(query.value(2).toString());
              ui->lineEdit_p->setText(query.value(3).toString());
-            ui->lineEdit_typ->setText(query.value(4).toString());
-            ui->lineEdit_po->setText(query.value(5).toString());
+             ui->lineEdit_typ->setText(query.value(4).toString());
+             ui->lineEdit_po->setText(query.value(5).toString());
              ui->lineEdit_col->setText(query.value(6).toString());
-            ui->lineEdit_ops->setText(query.value(7).toString());
+             ui->lineEdit_ops->setText(query.value(7).toString());
 
        }
     }
@@ -259,6 +291,7 @@ void MainWindow::on_comboBox_currentIndexChanged()
 
 void MainWindow::on_sup_clicked()
 {
+     son->play();
      int reference=ui->lineEdit_referencee->text().toInt();
     bool test=vtmp.supprimer(reference);
     if(test)
@@ -278,7 +311,7 @@ void MainWindow::on_sup_clicked()
 
 void MainWindow::on_tri_clicked()
 {
-
+ son->play();
     QSqlQueryModel *model=new QSqlQueryModel() ;
 
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("REFERENCE"));
@@ -314,14 +347,16 @@ void MainWindow::on_tri_clicked()
 
 void MainWindow::on_recherche_clicked()
 {
+     son->play();
     /* QString marque = ui->lineEdit_marquee->text();
       QString modele=ui->lineEdit_modelee->text();
       int reference=ui->lineEdit_referencee->text().toInt();*/
-      ui->tableView->setModel(vtmp.recherche(ui->lineEdit_referencee->text(),ui->lineEdit_marquee->text(),ui->lineEdit_modelee->text()));
+     ui->tableView->setModel(vtmp.recherche(ui->lineEdit_referencee->text(),ui->lineEdit_marquee->text(),ui->lineEdit_modelee->text()));
 }
 
 void MainWindow::on_load_ch_clicked()
 {
+     son->play();
      ui->comboBox_ch->setModel(ctmp.load_ch());
 }
 
@@ -329,6 +364,7 @@ void MainWindow::on_load_ch_clicked()
 
 void MainWindow::on_comboBox_ch_currentIndexChanged()
 {
+     son->play();
    QString REFERENCE = ui->comboBox_ch->currentText();
     QSqlQuery query;
     query.prepare("select*  from CHAINE where REFERENCE ='"+REFERENCE+"'");
@@ -347,6 +383,7 @@ void MainWindow::on_comboBox_ch_currentIndexChanged()
 
 void MainWindow::on_modifier_ch_clicked()
 {
+     son->play();
     QSqlQuery query;
     QMessageBox msgBox;
     QMessageBox msgBox1;
@@ -374,6 +411,7 @@ else
 
 void MainWindow::on_sup_ch_clicked()
 {
+     son->play();
     //int reference=ui->lineEdit_reff_ch->text().toInt();
    bool test=ctmp.supprimer(ui->lineEdit_reff_ch->text().toInt());
    if(test)
@@ -389,11 +427,6 @@ void MainWindow::on_sup_ch_clicked()
                                          "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
-void MainWindow::on_pushButton_4_clicked()
-{
-  stat=new Statistique (this);
-  stat->exec();
-}
 
 void MainWindow::print(QPrinter *printer)
 {
@@ -416,9 +449,17 @@ void MainWindow::print(QPrinter *printer)
     painter.end();
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_imprimer_clicked()
 {
+     son->play();
     QPrintPreviewDialog dialog;
       connect(&dialog, SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
       dialog.exec();
+}
+
+void MainWindow::on_pushButton_stat_clicked()
+{
+     son->play();
+    stat=new Statistique (this);
+    stat->exec();
 }

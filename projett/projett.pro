@@ -3,7 +3,7 @@ QT       += core gui sql
 QT       += core gui sql printsupport
 QT       += core gui charts
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 CONFIG += c++11
 
@@ -45,4 +45,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    pp.qrc
+    2.qrc
+
+DISTFILES +=

@@ -19,6 +19,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlTableModel>
+#include<QSound>
+
+
 class QPrinter;
 class QSqlTableModel;
 
@@ -86,10 +89,11 @@ private slots:
 
     void on_sup_ch_clicked();
 
-    void on_pushButton_4_clicked();
     void print(QPrinter *printer);
 
-    void on_pushButton_3_clicked();
+    void on_pushButton_imprimer_clicked();
+
+    void on_pushButton_stat_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -97,5 +101,6 @@ private:
     chaine ctmp;
     Statistique *stat;
     QSqlTableModel *model;
+    QSound *son;
 };
 #endif // MAINWINDOW_H

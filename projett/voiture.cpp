@@ -71,7 +71,7 @@ bool voiture::supprimer(int reference)
      return model;
  }
 
-    QSqlQueryModel *recherche(QString REFERENCE,QString MARQUE,QString MODELE)
+    QSqlQueryModel *voiture::recherche(QString REFERENCE,QString MARQUE,QString MODELE)
  {
         QSqlQuery query;
       QSqlQueryModel *model = new QSqlQueryModel();
@@ -93,6 +93,7 @@ bool voiture::supprimer(int reference)
              msgBox.exec();
              model->setQuery(query);
         }
+        else
         if(count<1)
         {
             QMessageBox msgBox;
@@ -104,6 +105,12 @@ bool voiture::supprimer(int reference)
       return model;
   }
 
+    /*bool voiture::modifier()
+    {
+         QSqlQuery query;
+           query.prepare("update VOITURE1 SET  MARQUE=:marque, MODELE=:modele, PRIX=:prix ,TYPE=:type,PRIX_OPTION=:prix_option,COULEUR=:couleur, OPTIONS=:options where REFERENCE=:reference");
+
+    }*/
 
 
 

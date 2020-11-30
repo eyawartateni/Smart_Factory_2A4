@@ -55,6 +55,7 @@ bool chaine::ajouter()
 
 
 
+
   QSqlQueryModel *chaine::load_ch()
     {
         QSqlQueryModel * model=new QSqlQueryModel();
