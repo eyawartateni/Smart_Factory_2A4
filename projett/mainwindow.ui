@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Production</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="production">
@@ -36,6 +36,19 @@ font: 10pt &quot;PMingLiU-ExtB&quot;;</string>
      <attribute name="title">
       <string>Bienvenue</string>
      </attribute>
+     <widget class="QLabel" name="labelGif">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>141</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">

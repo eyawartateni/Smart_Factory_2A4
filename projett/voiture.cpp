@@ -75,12 +75,13 @@ bool voiture::supprimer(int reference)
  {
         QSqlQuery query;
       QSqlQueryModel *model = new QSqlQueryModel();
-      int count =0;
+     int count =0;
       query.prepare("SELECT *from VOITURE1 where REFERENCE=:REFERENCE or MODELE=:MODELE or MARQUE=:MARQUE");
       query.bindValue(":REFERENCE",REFERENCE);
       query.bindValue(":MODELE",MODELE);
       query.bindValue(":MARQUE",MARQUE);
-      if(query.exec())
+      query.exec();
+     if(query.exec())
       {
         while(query.next())
         {

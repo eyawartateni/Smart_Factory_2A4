@@ -21,7 +21,6 @@
 #include <QSqlTableModel>
 #include<QSound>
 
-
 class QPrinter;
 class QSqlTableModel;
 
@@ -95,6 +94,8 @@ private slots:
 
     void on_pushButton_stat_clicked();
 
+
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
@@ -102,5 +103,7 @@ private:
     Statistique *stat;
     QSqlTableModel *model;
     QSound *son;
+
+
 };
 #endif // MAINWINDOW_H

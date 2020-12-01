@@ -2,5 +2,7 @@
     <qresource prefix="/new/prefix1">
         <file>2.jpg</file>
     </qresource>
-    <qresource prefix="/new/prefix2"/>
+    <qresource prefix="/new/prefix2">
+        <file>movie.gif</file>
+    </qresource>
 </RCC>

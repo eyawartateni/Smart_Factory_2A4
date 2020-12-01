@@ -16,6 +16,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 
+
 class PrintBorder : public PagePrepare {
 public:
     virtual void preparePage(QPainter *painter);
@@ -374,7 +375,7 @@ void MainWindow::on_comboBox_ch_currentIndexChanged()
    QString REFERENCE = ui->comboBox_ch->currentText();
     QSqlQuery query;
     query.prepare("select*  from CHAINE where REFERENCE =:REFERENCE");
-    query.bindValue(":REFERENCE",REFERENCE);
+  query.bindValue(":REFERENCE",REFERENCE);
        if(query.exec())
     {
        while(query.next())
@@ -464,3 +465,5 @@ void MainWindow::on_pushButton_stat_clicked()
     stat=new Statistique (this);
     stat->exec();
 }
+
+
