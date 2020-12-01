@@ -13,6 +13,8 @@
 #include <QSound>
 #include <QPrinter>
 #include <QSqlTableModel>
+#include <QMovie>
+#include <QLabel>
 
 class QPrinter;
 class QSqlTableModel;
@@ -32,6 +34,7 @@ public:
     QSortFilterProxyModel * proxyclient;
     QSqlRelationalTableModel *modFournisseur;
     QSortFilterProxyModel * proxyfournisseur;
+
 
 
 private slots:

@@ -3,7 +3,8 @@
 #include <connection.h>
 
 #include <QDialog>
-
+#include <QMovie>
+#include <QLabel>
 namespace Ui {
 class authentification;
 }
@@ -16,6 +17,8 @@ public:
     explicit authentification(QWidget *parent = nullptr);
     ~authentification();
    bool authentifier();
+   QMovie *movie;
+   QLabel *label_2;
 
 private slots:
     void on_pushButton_clicked();

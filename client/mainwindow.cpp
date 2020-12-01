@@ -37,6 +37,7 @@
 
 #include "dialog.h"
 
+
 class PrintBorder : public PagePrepare {
 public:
     virtual void preparePage(QPainter *painter);
@@ -58,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 
 
     son=new QSound("C:/Users/eyaou/Desktop/Smart_Factory_2A4/client/son.wav");
@@ -115,7 +117,16 @@ ui->tabfour->setModel(proxyfournisseur);
      ui->cinfour->setValidator(new QIntValidator(0,99999999,this));
       ui->lineEdit_paiement->setValidator(new QIntValidator(0,99999999,this));
       ui->prixpayer->setValidator(new QIntValidator(0,99999999,this));
+       ui->nbre->setValidator(new QIntValidator(0,99999999,this));
+        ui->date_naissance->setValidator(new QIntValidator(0,99999999,this));
+         ui->date_limite->setValidator(new QIntValidator(0,99999999,this));
       ui->lineEdit_achat->setValidator(new QIntValidator(0,99999999,this));
+      ui->lineEdit_nom->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+      ui->lineEdit_prenom->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+      ui->lineEdit_model->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+      ui->NomFournisseur_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+      ui->prenomfour->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+      ui->piecedemand->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
 
 
 

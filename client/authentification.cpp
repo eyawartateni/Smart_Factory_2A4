@@ -11,6 +11,14 @@ authentification::authentification(QWidget *parent) :
     ui(new Ui::authentification)
 {
     ui->setupUi(this);
+
+    movie = new QMovie("C:/Users/eyaou/Desktop/copie lekhra/client/client/images/giff.gif");
+
+
+
+
+movie->start();
+ui->label_2->setMovie(movie);
 }
 
 authentification::~authentification()
@@ -21,7 +29,7 @@ authentification::~authentification()
 
 void authentification::on_pushButton_clicked()
 {
-    QString username;
+    /*QString username;
     QString password;
     username=ui->username->text();
     password=ui->password->text();
@@ -40,7 +48,10 @@ void authentification::on_pushButton_clicked()
                     QObject::tr("connexion echouée.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
-    }
+    }*/
+    close();
+
+
 }
 
 
