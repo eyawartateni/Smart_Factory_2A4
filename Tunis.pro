@@ -1,6 +1,7 @@
 QT       += core gui sql
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui charts
+QT       +=printsupport
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 CONFIG += c++11
 
@@ -13,35 +14,13 @@ SOURCES += \
     connexion.cpp \
     employer.cpp \
     main.cpp \
-    mainwindow.cpp \
-    mimecontentformatter.cpp \
-    mimefile.cpp \
-    mimehtml.cpp \
-    mimeinlinefile.cpp \
-    mimemessage.cpp \
-    mimemultipart.cpp \
-    mimepart.cpp \
-    mimetext.cpp \
-    quotedprintable.cpp \
-    smtpclient.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    SmtpMime.h \
     agence.h \
     connexion.h \
     employer.h \
-    mainwindow.h \
-    mimecontentformatter.h \
-    mimefile.h \
-    mimehtml.h \
-    mimeinlinefile.h \
-    mimemessage.h \
-    mimemultipart.h \
-    mimepart.h \
-    mimetext.h \
-    quotedprintable.h \
-    smtpclient.h \
-    smtpexports.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
@@ -50,3 +29,14 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/release/ -lSMTPEmail
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/debug/ -lSMTPEmail
+else:unix: LIBS += -L$$PWD/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/ -lSMTPEmail
+LIBS +="C:/Users/Rostom/Desktop/New folder (7)/Tunis/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/debug/libeay32.dll"
+LIBS +="C:/Users/Rostom/Desktop/New folder (7)/Tunis/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/debug/ssleay32.dll"
+INCLUDEPATH += $$PWD/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/debug
+DEPENDPATH += $$PWD/build-SMTPEmail-Desktop_Qt_5_9_9_MinGW_32bit-Debug/debug
+
+RESOURCES += \
+    image.qrc

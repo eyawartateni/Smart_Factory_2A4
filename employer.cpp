@@ -33,6 +33,8 @@ query.bindValue(":nombre",getnombre());
 query.bindValue(":adresse",getadresse());
 query.bindValue(":passe",getpasse());
 return    query.exec();
+
+
 }
 QSqlQueryModel * employer::afficher()
 {
@@ -41,7 +43,7 @@ QSqlQueryModel * model= new QSqlQueryModel();
 
 model->setQuery("select * from TABLE1 ");
 
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom "));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prénom"));
 

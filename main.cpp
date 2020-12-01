@@ -8,7 +8,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     connexion c;
     MainWindow w;
-  w.show();
+w.setWindowTitle("Smart_Factory") ;
+
+    w.show();
     if(c.ouvrirConnexion())
     {
 

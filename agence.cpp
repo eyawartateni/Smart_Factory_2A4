@@ -46,15 +46,14 @@ model->setQuery("select * from AGENCE ");
 
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom "));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prénom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("ADRESSE"));
 return  model ;
 }
 
 bool agence::supprimer(QString idd)
 {
-QSqlQuery query;
-
+QSqlQuery query,query2;
 query.prepare("Delete from AGENCE where ID =:id ");
 query.bindValue(":id",idd );
-return    query.exec();
+return  query.exec();
 }

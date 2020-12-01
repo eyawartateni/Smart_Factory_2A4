@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QLabel>
+#include <QSound>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+QLabel *processLabel ;
 
 private:
     QString F_name ,L_name, ADRESSE ;
@@ -106,7 +109,19 @@ private slots:
 
   void on_btn_adm_tri_aff_clicked();
 
-  void on_comboBox_currentIndexChanged(const QString &arg1);
+
+
+  void on_btn_em_rec_clicked();
+
+  void on_but_adm_ajou_stat_clicked();
+
+
+
+  void on_btn_ag_export_3_clicked();
+
+  void on_btn_ag_export_clicked();
+
+  void on_btn_ag_imprimer_clicked();
 
 private:
     Ui::MainWindow *ui;

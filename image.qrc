@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>res/car-loader-gif-1.gif</file>
+        <file>res/back.jpg</file>
+        <file>res/oui.png</file>
+        <file>res/Welcome - Male Voice Speaks (128 kbps) (mp3cut.net)(1).wav</file>
+        <file>res/png-clipart-person-illustration-india-login-computer-icons-emoticon-medicine-user-login-icon-miscellaneous-d.png</file>
+    </qresource>
+</RCC>
