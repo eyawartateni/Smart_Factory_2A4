@@ -23,10 +23,6 @@ private slots:
 
     void on_supp_park_2_clicked();
 
-    //void on_comboBox_currentIndexChanged(const QString &arg1);
-
-    //void on_comboBox_currentIndexChanged(int index);
-
     void on_trier_2_clicked();
 
     void on_afficher_tab_park_2_clicked();

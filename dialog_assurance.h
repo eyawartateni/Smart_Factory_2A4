@@ -26,11 +26,11 @@ private slots:
 
     void on_recherche_clicked();
 
-    void on_export_4_clicked();
-
     void on_export_pdf_clicked();
 
     void on_afficher_tab_assu_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::dialog_assurance *ui;
