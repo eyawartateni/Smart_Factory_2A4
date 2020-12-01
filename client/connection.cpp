@@ -3,7 +3,7 @@
 //testttttt
 connection::connection()
 {
-db = QSqlDatabase::addDatabase("QODBC");
+db = QSqlDatabase::addDatabase("QODBC");  //initialisation du db qui établie la connexion
 }
 
 bool connection::createconnect()

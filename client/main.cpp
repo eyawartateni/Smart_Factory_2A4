@@ -13,8 +13,8 @@ aut.exec();
 
 
 
-    connection c;
-    bool test=c.createconnect();
+    connection c; //une seule instance de la classe connection
+    bool test=c.createconnect();  //etablir la connexion
 
     MainWindow w;
 

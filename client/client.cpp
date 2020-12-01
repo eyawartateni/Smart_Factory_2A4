@@ -74,14 +74,14 @@ Client::Client()
              if(count==1)
              {
                  QMessageBox msgBox;
-                 msgBox.setText(" fOUND");
+                 msgBox.setText(" trouvé");
                  msgBox.exec();
                 model->setQuery(query);
              }
              if(count<1 )
              {
                  QMessageBox msgBox;
-                 msgBox.setText("NOT fOUND");
+                 msgBox.setText("non trouvé");
                  msgBox.exec();
                  model=0;
              }

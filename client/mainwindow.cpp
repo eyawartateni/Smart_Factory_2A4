@@ -189,7 +189,7 @@ son->play();
 
             //ui->tabclient->setModel(tmpclient.rechercherclient(ui->cin_chercher->text(),ui->cher_nom->text(),ui->cher_prenom->text()));
             QMessageBox::information(nullptr, QObject::tr("ajouter un client"),
-                        QObject::tr("etudiant ajouté.\n"
+                        QObject::tr("client ajouté.\n"
                                     "Click Cancel to exit."), QMessageBox::Cancel);
 
         }
