@@ -1,9 +1,9 @@
 #include "parking.h"
 
-Parking::Parking(int Reference, QString Place, QString Nom)
+Parking::Parking(int Reference, int Place, QString Nom)
 {
     reference=Reference;
-    this->place=Place;
+    place=Place;
     this->nom=Nom;
 }
 

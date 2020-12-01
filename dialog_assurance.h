@@ -30,6 +30,8 @@ private slots:
 
     void on_export_pdf_clicked();
 
+    void on_afficher_tab_assu_clicked();
+
 private:
     Ui::dialog_assurance *ui;
     Assurance tmp;

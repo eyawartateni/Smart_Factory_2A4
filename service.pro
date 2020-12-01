@@ -40,8 +40,7 @@ FORMS += \
     admin.ui \
     dialog_assurance.ui \
     dialog_parking.ui \
-    mainwindow.ui \
-    user.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

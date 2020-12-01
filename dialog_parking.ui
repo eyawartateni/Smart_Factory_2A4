@@ -6,18 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
-    <height>623</height>
+    <width>826</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>-5</x>
+     <y>-5</y>
+     <width>831</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/image/smart-parking-man-user-with-smartphone-touch-screen-control-car-driving-park_33099-165.jpg);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>80</y>
+     <x>180</x>
+     <y>100</y>
      <width>511</width>
      <height>441</height>
     </rect>
@@ -26,19 +42,19 @@
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
-   <widget class="QWidget" name="tab_3">
+   <widget class="QWidget" name="tab_4">
     <attribute name="title">
      <string>Ajouter Place Parking</string>
     </attribute>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
        <width>511</width>
-       <height>301</height>
+       <height>421</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -48,11 +64,11 @@
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12">
+    <widget class="QLabel" name="label_16">
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>100</y>
+       <y>160</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -61,11 +77,11 @@
       <string>&lt;font color=white&gt; Nombre de Place</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="park_ajout">
+    <widget class="QPushButton" name="park_ajout_2">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>220</y>
+       <x>110</x>
+       <y>350</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -74,11 +90,11 @@
       <string>Ajouter</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_11">
+    <widget class="QLabel" name="label_17">
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>50</y>
+       <y>110</y>
        <width>181</width>
        <height>16</height>
       </rect>
@@ -87,21 +103,21 @@
       <string>&lt;font color=white&gt; Nom et Prenom de l'Employé</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="nom_employe">
+    <widget class="QLineEdit" name="nom_employe_2">
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>50</y>
+       <y>110</y>
        <width>113</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>150</y>
+       <y>210</y>
        <width>181</width>
        <height>16</height>
       </rect>
@@ -110,11 +126,11 @@
       <string>&lt;font color=white&gt; Reference</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="mod_park">
+    <widget class="QPushButton" name="mod_park_2">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>220</y>
+       <x>220</x>
+       <y>350</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -123,89 +139,68 @@
       <string>Modifier</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="reference">
+    <widget class="QLineEdit" name="reference_2">
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>150</y>
+       <y>210</y>
        <width>113</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="nbr_place">
+    <widget class="QLineEdit" name="nbr_place_2">
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>100</y>
+       <y>160</y>
        <width>113</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab_5">
-    <attribute name="title">
-     <string>Supprimer Place Parking</string>
-    </attribute>
-    <widget class="QLabel" name="label_13">
+    <widget class="QPushButton" name="supp_park_2">
      <property name="geometry">
       <rect>
-       <x>-5</x>
-       <y>-5</y>
-       <width>511</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/image/image/parking-dentreprise-e1561984478242.jpg);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="supp_park">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>190</y>
+       <x>330</x>
+       <y>350</y>
        <width>93</width>
        <height>28</height>
       </rect>
      </property>
      <property name="text">
-      <string>Continuer</string>
+      <string>Suuprimer</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14">
+    <widget class="QLabel" name="label_19">
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>110</y>
-       <width>251</width>
+       <y>250</y>
+       <width>261</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;font color=white&gt;Donner le Numero de Place à Supprimer</string>
+      <string>&lt;font color=white&gt;Donner la Reference de la Place à Supprimer</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="park_supp">
+    <widget class="QLineEdit" name="park_supp_2">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>110</y>
+       <x>330</x>
+       <y>250</y>
        <width>113</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_6">
+   <widget class="QWidget" name="tab_8">
     <attribute name="title">
      <string>Afficher Toutes les Places</string>
     </attribute>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="label_20">
      <property name="geometry">
       <rect>
        <x>-10</x>
@@ -221,7 +216,7 @@
       <string/>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView_parking">
+    <widget class="QTableView" name="tableView_parking_2">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -231,11 +226,11 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="trier">
+    <widget class="QPushButton" name="trier_2">
      <property name="geometry">
       <rect>
-       <x>390</x>
-       <y>80</y>
+       <x>10</x>
+       <y>20</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -244,14 +239,27 @@
       <string>Tri</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="choix">
+    <widget class="QComboBox" name="choix_2">
      <property name="geometry">
       <rect>
-       <x>400</x>
+       <x>110</x>
        <y>20</y>
-       <width>73</width>
+       <width>121</width>
        <height>22</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="afficher_tab_park_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>111</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Afficher Tableau</string>
      </property>
     </widget>
    </widget>

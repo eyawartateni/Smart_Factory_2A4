@@ -6,18 +6,18 @@
 
 class Parking
 {
-    QString nom , place;
-    int reference;
+    QString nom ;
+    int reference, place;
 public:
     Parking(){}
-    Parking(int,QString,QString);
+    Parking(int,int,QString);
 
     int getreference(){return reference;}
-    QString getplace(){return place;}
+    int getplace(){return place;}
     QString getnom(){return nom;}
 
     void setreference(int Reference){reference=Reference;}
-    void setplace(QString Place){place=Place;}
+    void setplace(int Place){place=Place;}
     void setnom(QString Nom){nom=Nom;}
 
     bool ajouter();

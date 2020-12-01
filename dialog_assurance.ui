@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/image/image/aaa.jpg);</string>
+    <string notr="true">border-image: url(:/image/image/smart-parking-man-user-with-smartphone-touch-screen-control-car-driving-park_33099-165.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -34,12 +34,12 @@
     <rect>
      <x>110</x>
      <y>110</y>
-     <width>511</width>
-     <height>341</height>
+     <width>571</width>
+     <height>391</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_9">
     <attribute name="title">
@@ -50,8 +50,8 @@
       <rect>
        <x>-5</x>
        <y>-5</y>
-       <width>511</width>
-       <height>331</height>
+       <width>571</width>
+       <height>371</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -66,7 +66,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>160</y>
+       <y>190</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -91,7 +91,7 @@
     <widget class="QLineEdit" name="ln_type">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>390</x>
        <y>70</y>
        <width>113</width>
        <height>22</height>
@@ -101,8 +101,8 @@
     <widget class="QPushButton" name="ajouter_assu">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>230</y>
+       <x>100</x>
+       <y>300</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -127,7 +127,7 @@
     <widget class="QLineEdit" name="ln_prix">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>390</x>
        <y>110</y>
        <width>113</width>
        <height>22</height>
@@ -137,8 +137,8 @@
     <widget class="QLineEdit" name="ln_compagnie">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>160</y>
+       <x>390</x>
+       <y>190</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -148,7 +148,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>190</y>
+       <y>220</y>
        <width>81</width>
        <height>16</height>
       </rect>
@@ -160,8 +160,8 @@
     <widget class="QLineEdit" name="ln_reference">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>190</y>
+       <x>390</x>
+       <y>220</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -170,8 +170,8 @@
     <widget class="QPushButton" name="mod_assu">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>230</y>
+       <x>220</x>
+       <y>300</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -180,32 +180,11 @@
       <string>Modifier</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab_11">
-    <attribute name="title">
-     <string>Supprimer Assurance</string>
-    </attribute>
-    <widget class="QLabel" name="label_29">
-     <property name="geometry">
-      <rect>
-       <x>-5</x>
-       <y>-5</y>
-       <width>511</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/image/image/b49ffd_500b234dccd544ec85f111c9702ef44e_mv2.jpg);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QPushButton" name="supprimer">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>180</y>
+       <x>340</x>
+       <y>300</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -217,21 +196,21 @@
     <widget class="QLabel" name="label_30">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>90</y>
-       <width>261</width>
+       <x>110</x>
+       <y>260</y>
+       <width>281</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;font color=white&gt;Donner le Type de l'Assurance à Supprimer</string>
+      <string>Donner la reference de l'Assurance à Supprimer</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="supp_assu">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>90</y>
+       <x>390</x>
+       <y>260</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -247,23 +226,23 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>511</width>
-       <height>321</height>
+       <width>581</width>
+       <height>371</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/image/image/b49ffd_500b234dccd544ec85f111c9702ef44e_mv2.jpg);</string>
      </property>
      <property name="text">
-      <string/>
+      <string>²</string>
      </property>
     </widget>
     <widget class="QTableView" name="tableView_assurance">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>110</y>
-       <width>511</width>
+       <y>170</y>
+       <width>571</width>
        <height>201</height>
       </rect>
      </property>
@@ -271,9 +250,9 @@
     <widget class="QPushButton" name="export_pdf">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>70</y>
-       <width>93</width>
+       <x>430</x>
+       <y>10</y>
+       <width>111</width>
        <height>28</height>
       </rect>
      </property>
@@ -284,14 +263,14 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>10</y>
        <width>121</width>
        <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;font color=white&gt;recherche reference:</string>
+      <string>&lt;font color=white&gt;recherche reference</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="reref">
@@ -307,8 +286,8 @@
     <widget class="QLineEdit" name="retype">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>10</y>
+       <x>150</x>
+       <y>90</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -317,8 +296,8 @@
     <widget class="QLineEdit" name="recom">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>70</y>
+       <x>150</x>
+       <y>50</y>
        <width>113</width>
        <height>22</height>
       </rect>
@@ -327,9 +306,9 @@
     <widget class="QPushButton" name="recherche">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>60</y>
-       <width>93</width>
+       <x>430</x>
+       <y>50</y>
+       <width>111</width>
        <height>28</height>
       </rect>
      </property>
@@ -340,27 +319,40 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>10</y>
-       <width>56</width>
+       <x>10</x>
+       <y>90</y>
+       <width>91</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>type</string>
+      <string>&lt;font color=white&gt;recherche type</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>70</y>
-       <width>56</width>
+       <x>10</x>
+       <y>50</y>
+       <width>131</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;font color=white&gt; compagnie</string>
+      <string>&lt;font color=white&gt;recherche compagnie</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="afficher_tab_assu">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>90</y>
+       <width>111</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Afficher Tableau</string>
      </property>
     </widget>
    </widget>

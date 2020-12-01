@@ -135,7 +135,7 @@ void dialog_assurance::on_recherche_clicked()
 {
     ui->tableView_assurance->setModel(tmp.recherche(ui->reref->text().toInt(),ui->retype->text(),ui->recom->text()));
 }
-
+/*
 void dialog_assurance::on_export_pdf_clicked()
 {
     QString strStream;
@@ -181,4 +181,9 @@ void dialog_assurance::on_export_pdf_clicked()
     doc.setHtml(strStream);
     doc.setPageSize(printer.pageRect().size());
     doc.print(&printer);
+}
+*/
+void dialog_assurance::on_afficher_tab_assu_clicked()
+{
+    ui->tableView_assurance->setModel(tmp.afficher());
 }

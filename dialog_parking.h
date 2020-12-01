@@ -17,17 +17,19 @@ public:
     ~dialog_parking();
 
 private slots:
-    void on_park_ajout_clicked();
+    void on_park_ajout_2_clicked();
 
-    void on_mod_park_clicked();
+    void on_mod_park_2_clicked();
 
-    void on_supp_park_clicked();
+    void on_supp_park_2_clicked();
 
-    void on_comboBox_currentIndexChanged(const QString &arg1);
+    //void on_comboBox_currentIndexChanged(const QString &arg1);
 
-    void on_comboBox_currentIndexChanged(int index);
+    //void on_comboBox_currentIndexChanged(int index);
 
-    void on_trier_clicked();
+    void on_trier_2_clicked();
+
+    void on_afficher_tab_park_2_clicked();
 
 private:
     Ui::dialog_parking *ui;
