@@ -26,6 +26,7 @@ public:
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int reference);
+    QSqlQueryModel * recherche(int reference,QString type,QString compagnie);
 };
 
 #endif // ASSURANCE_H

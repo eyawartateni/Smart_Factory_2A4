@@ -3,6 +3,7 @@
 
 #include"assurance.h"
 #include <QDialog>
+#include <QSortFilterProxyModel>
 
 namespace Ui {
 class dialog_assurance;
@@ -23,9 +24,16 @@ private slots:
 
     void on_mod_assu_clicked();
 
+    void on_recherche_clicked();
+
+    void on_export_4_clicked();
+
+    void on_export_pdf_clicked();
+
 private:
     Ui::dialog_assurance *ui;
     Assurance tmp;
+    QSortFilterProxyModel * proxy;
 };
 
 #endif // DIALOG_ASSURANCE_H

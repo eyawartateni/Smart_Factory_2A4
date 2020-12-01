@@ -1,4 +1,5 @@
 #include "assurance.h"
+#include <QMessageBox>
 
 Assurance::Assurance(QString compagnie,int Prix,QString type,int Reference)
 {
@@ -43,4 +44,41 @@ bool Assurance::supprimer(int reference)
     return query.exec();
 
 
+}
+
+
+QSqlQueryModel *Assurance::recherche(int reference, QString type, QString compagnie)
+{
+    QSqlQuery query;
+    QSqlQueryModel *model = new QSqlQueryModel();
+    int c=0;
+    query.prepare("SELECT *from assurance where reference=:reference or type=:type or compagnie=:compagnie");
+    query.bindValue(":reference",reference);
+    query.bindValue(":type",type);
+    query.bindValue(":compagnie",compagnie);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            c++;
+        }
+
+        if(c==1)
+        {
+            QMessageBox boxt;
+            boxt.setText("trouvé");
+            boxt.exec();
+            model->setQuery(query);
+        }
+        else
+            if(c<1)
+            {
+                QMessageBox boxpt;
+                boxpt.setText("pas trouvé");
+                boxpt.exec();
+                model=0;
+            }
+    }
+
+    return model;
 }

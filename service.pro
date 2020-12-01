@@ -1,4 +1,6 @@
 QT       += core gui sql
+QT += printsupport
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,7 +40,8 @@ FORMS += \
     admin.ui \
     dialog_assurance.ui \
     dialog_parking.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    user.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

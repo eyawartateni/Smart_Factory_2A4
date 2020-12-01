@@ -20,6 +20,8 @@ private slots:
 
     void on_parking_clicked();
 
+    void on_parking1_clicked();
+
 private:
     Ui::admin *ui;
 };

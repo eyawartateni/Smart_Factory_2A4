@@ -2,9 +2,26 @@
 #include <QMessageBox>
 #include "connection.h"
 #include <QApplication>
+#include "excelexporthelper.h"
+
 
 int main(int argc, char *argv[])
 {
+    /*try
+        {
+            const QString fileName = "g:\\temp\\kaka2.xlsx";
+
+            ExcelExportHelper helper;
+
+            helper.SetCellValue(1,1,"Test-11");
+            helper.SetCellValue(1,2,"Test-12");
+
+            helper.SaveAs(fileName);
+        }
+        catch (const exception& e)
+        {
+            QMessageBox::critical(this, "Error - Demo", e.what());
+        }*/
     QApplication a(argc, argv);
     Connection c;
         bool test=c.createconnect();

@@ -1,8 +1,8 @@
 #ifndef DIALOG_PARKING_H
 #define DIALOG_PARKING_H
 
+#include "parking.h"
 #include <QDialog>
-#include"parking.h"
 
 namespace Ui {
 class dialog_parking;
@@ -17,15 +17,22 @@ public:
     ~dialog_parking();
 
 private slots:
-    void on_park_ajout_2_clicked();
+    void on_park_ajout_clicked();
 
-    void on_mod_park_2_clicked();
+    void on_mod_park_clicked();
 
-    void on_supp_park_2_clicked();
+    void on_supp_park_clicked();
+
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_trier_clicked();
 
 private:
     Ui::dialog_parking *ui;
     Parking tmp1;
+
 };
 
 #endif // DIALOG_PARKING_H

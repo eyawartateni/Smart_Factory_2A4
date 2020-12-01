@@ -9,6 +9,7 @@
 #include<QMessageBox>
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,7 +32,7 @@ void MainWindow::on_connexion_clicked()
     QString username = ui->ln_user->text();
     QString password = ui->ln_password->text();
 
-    if(username == "youssef"  &&  password ==  "yoyo" )
+    if(username == "y"  &&  password ==  "y" )
     {
         hide();
         admin a;

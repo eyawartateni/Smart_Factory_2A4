@@ -6,24 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>697</width>
-    <height>566</height>
+    <width>770</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>-10</y>
-     <width>711</width>
-     <height>581</height>
+     <x>0</x>
+     <y>0</y>
+     <width>771</width>
+     <height>541</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/image/image/b49ffd_500b234dccd544ec85f111c9702ef44e_mv2.jpg);</string>
+    <string notr="true">border-image: url(:/image/image/aaa.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -32,14 +32,14 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>160</y>
+     <x>110</x>
+     <y>110</y>
      <width>511</width>
      <height>341</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_9">
     <attribute name="title">
@@ -154,7 +154,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;font color=white&gt; Reference :</string>
+      <string>&lt;font color=white&gt; Reference</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="ln_reference">
@@ -258,27 +258,109 @@
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="export_4">
+    <widget class="QTableView" name="tableView_assurance">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>50</y>
+       <x>0</x>
+       <y>110</y>
+       <width>511</width>
+       <height>201</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="export_pdf">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>70</y>
        <width>93</width>
        <height>28</height>
       </rect>
      </property>
      <property name="text">
-      <string>Export Excel</string>
+      <string>Export PDF</string>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView_assurance">
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>120</y>
-       <width>511</width>
-       <height>201</height>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="text">
+      <string>&lt;font color=white&gt;recherche reference:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="reref">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>10</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="retype">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>10</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="recom">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>70</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="recherche">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Recherche</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>10</y>
+       <width>56</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>type</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>70</y>
+       <width>56</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;font color=white&gt; compagnie</string>
      </property>
     </widget>
    </widget>

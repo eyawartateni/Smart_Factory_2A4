@@ -1,9 +1,9 @@
 #include "parking.h"
 
-Parking::Parking(int Reference,int Place,QString Nom)
+Parking::Parking(int Reference, QString Place, QString Nom)
 {
     reference=Reference;
-    place=Place;
+    this->place=Place;
     this->nom=Nom;
 }
 
@@ -11,23 +11,23 @@ bool Parking::ajouter()
 {
     QSqlQuery query;
     QString res = QString::number(reference);
-          query.prepare("INSERT INTO PARKING (REFERENCE, PLACE, NOM) "
-                        "VALUES (:reference, :place, :nom)");
-          query.bindValue(":reference",reference);
-          query.bindValue(":place", place);
-          query.bindValue(":nom",nom);
-          return query.exec();
+        query.prepare("INSERT INTO PARKING (REFERENCE, PLACE, NOM) "
+                      "VALUES (:reference, :place, :nom)");
+        query.bindValue(":reference",reference);
+        query.bindValue(":place",place);
+        query.bindValue(":nom",nom);
+        return query.exec();
 }
 
 QSqlQueryModel * Parking::afficher()
 {
     QSqlQueryModel * model = new QSqlQueryModel();
-        model->setQuery("select * from parking");
-        model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
-        model->setHeaderData(1,Qt::Horizontal,QObject::tr("place"));
-        model->setHeaderData(2,Qt::Horizontal,QObject::tr("nom"));
+    model->setQuery("select * from parking");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("place"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("nom"));
 
-        return model;
+    return model;
 }
 
 bool Parking::supprimer(int reference)
@@ -37,4 +37,40 @@ bool Parking::supprimer(int reference)
     query.prepare("Delete from parking where reference=:reference");
     query.bindValue(":reference",res);
     return query.exec();
+}
+
+
+QSqlQueryModel * Parking::trier(int test)
+{
+
+QSqlQueryModel *model=new QSqlQueryModel() ;
+
+             QSqlQuery query ;
+             model->setHeaderData(0, Qt::Horizontal, QObject::tr("REFERENCE"));
+             model->setHeaderData(1, Qt::Horizontal, QObject::tr("PLACE "));
+             model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom"));
+             if(test==1)
+
+             {
+                 query.prepare("SELECT *  FROM parking ORDER BY REFERENCE ASC ") ;
+             }
+             else if(test==2)
+             {
+                 query.prepare("SELECT *  FROM parking ORDER BY NOM ASC ") ;
+
+             }
+             else if(test==3)
+             {
+                  query.prepare("SELECT *  FROM parking ORDER BY PLACE ASC ") ;
+             }
+
+             if (query.exec()&&query.next())
+
+             {
+                 model->setQuery(query) ;
+             }
+
+
+   return model;
+
 }

@@ -23,8 +23,8 @@ void admin::on_assurance_clicked()
 
 
 
-void admin::on_parking_clicked()
+void admin::on_parking1_clicked()
 {
-    dialog_parking f;
-    f.exec();
+    dialog_parking p;
+    p.exec();
 }
