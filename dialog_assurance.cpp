@@ -49,7 +49,6 @@ void dialog_assurance::on_supprimer_clicked()
     if(test)
     {
         ui->tableView_assurance->setModel(tmp.afficher());// refresh => chaque ajout sera affiché
-        //ui->tableView_upark->setModel(tmp.afficher());
 
         QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
                     QObject::tr("OK.\n"
@@ -79,7 +78,6 @@ void dialog_assurance::on_ajouter_assu_clicked()
      if(test)
      {
          ui->tableView_assurance->setModel(tmp.afficher()); // refresh => chaque ajout sera affiché
-         //ui->tableView_upark->setModel(tmp.afficher());
          QMessageBox::information(nullptr, QObject::tr("Assurance Ajoutée"),
                      QObject::tr("OK.\n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
