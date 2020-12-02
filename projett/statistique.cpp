@@ -12,8 +12,6 @@ Statistique::Statistique(QWidget *parent) :
         series->append("REFERENCE", 80);
         series->append("NB_MACHINE", 70);
         series->append("TYPE_PRODUIT", 50);
-       // series->append("C#", 40);
-       // series->append("PHP", 30);
 
 
         QPieSlice *slice = series->slices().at(1);

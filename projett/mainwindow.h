@@ -20,6 +20,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include<QSound>
+#include<QMovie>
 
 class QPrinter;
 class QSqlTableModel;
@@ -103,7 +104,7 @@ private:
     Statistique *stat;
     QSqlTableModel *model;
     QSound *son;
-
+    QMovie *movie;
 
 };
 #endif // MAINWINDOW_H

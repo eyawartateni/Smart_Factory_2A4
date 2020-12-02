@@ -4,12 +4,12 @@
 
 connexion::connexion()
 {
- db = QSqlDatabase::addDatabase("QODBC");
+ db = QSqlDatabase::addDatabase("QODBC");//attribus de la classe cnx
 }
 
 bool connexion::createconnect()
 {bool test=false;
-db.setDatabaseName("projet");
+db.setDatabaseName("projet");//inserer le nom de la source de donnee
 db.setUserName("mayssa");
 db.setPassword("0000");
 

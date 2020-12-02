@@ -15,6 +15,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlTableModel>
+#include<QPixmap>
+
+
 
 
 class PrintBorder : public PagePrepare {
@@ -33,12 +36,22 @@ void PrintBorder::preparePage(QPainter *painter) { // print a border on each pag
     painter->drawText(0, 0, QString("Page %1").arg(pageNumber));
     pageNumber += 1;
 }
+
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    son =new QSound("C:/Users/Mayssa/Desktop/gestion_production/projett/son.wav");
      ui->setupUi(this);
+     QPixmap pix("C:/Users/Mayssa/Desktop/gestion_production/image1.jpg");
+     int w=ui->label_pic->width();
+     int h=ui->label_pic->height();
+     ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+     son =new QSound("C:/Users/Mayssa/Desktop/gestion_production/projett/son.wav");
+     movie=new QMovie("C:/Users/Mayssa/Desktop/gestion_production/projett/movie.gif");
+     movie->start();
+     ui->label_gif->setMovie(movie);
      ui->tableView->setModel(vtmp.afficher());
      ui->tableView_2->setModel(ctmp.afficher());
      ui->comboBox->setModel(vtmp.load());
@@ -46,9 +59,12 @@ MainWindow::MainWindow(QWidget *parent)
      ui->comboBox_2->addItem("NB_MACHINE");
      ui->comboBox_2->addItem("TYPE_PRODUIT");
      ui->comboBox_ch->setModel(ctmp.load_ch());
+     //pfd
      model = new QSqlTableModel;
      model->setTable("chaine");
      model->select();
+
+
      ui->tableView_2->setModel(model);
      ui->lineEdit_prix->setValidator(new QIntValidator(0,999999,this));
      ui->lineEdit_p->setValidator(new QIntValidator(0,999999,this));
@@ -61,7 +77,20 @@ MainWindow::MainWindow(QWidget *parent)
      ui->lineEdit_referencee->setValidator(new QIntValidator(0,99999999,this));
      ui->lineEdit_reff_ch->setValidator(new QIntValidator(0,99999999,this));
      ui->lineEdit_nb_mach->setValidator(new QIntValidator(0,999999,this));
-
+     ui->lineEdit_maq->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_marque->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_marquee->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_mod->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_modele->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_modelee->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_col->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_couleur->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_ops->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_option->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_typ->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_type->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_type_p->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+     ui->lineEdit_type_prod->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
 }
 
 MainWindow::~MainWindow()
@@ -444,10 +473,10 @@ void MainWindow::print(QPrinter *printer)
         qDebug() << tablePrinter.lastError();
     }
     // print second table
-    painter.translate(0, 100);
+   /* painter.translate(0, 100);
     if(!tablePrinter.printTable(ui->tableView_2->model(), columnStretch)) {
         qDebug() << tablePrinter.lastError();
-    }
+    }*/
     painter.end();
 }
 

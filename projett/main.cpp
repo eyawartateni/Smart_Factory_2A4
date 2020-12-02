@@ -9,8 +9,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    connexion c;
-    bool test=c.createconnect();
+    connexion c;//1 seul instance de la classe cnx
+    bool test=c.createconnect();//etablir la cnx
 
      MainWindow w;
     if(test)
