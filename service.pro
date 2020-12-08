@@ -18,28 +18,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    admin.cpp \
     assurance.cpp \
     connection.cpp \
-    dialog_assurance.cpp \
-    dialog_parking.cpp \
     main.cpp \
     mainwindow.cpp \
     parking.cpp
 
 HEADERS += \
-    admin.h \
     assurance.h \
     connection.h \
-    dialog_assurance.h \
-    dialog_parking.h \
     mainwindow.h \
     parking.h
 
 FORMS += \
-    admin.ui \
-    dialog_assurance.ui \
-    dialog_parking.ui \
     mainwindow.ui
 
 # Default rules for deployment.
