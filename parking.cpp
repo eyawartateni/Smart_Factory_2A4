@@ -76,13 +76,29 @@ QSqlQueryModel *model=new QSqlQueryModel() ;
 
 }
 
-QSqlQueryModel *Parking::recherche(int reference, QString nom)
+QSqlQueryModel *Parking::recherche(QString nom,int place)
 {
     QSqlQuery query;
     QSqlQueryModel *model = new QSqlQueryModel();
-    query.prepare("SELECT *from parking where reference=:reference or nom=:nom ");
-    query.bindValue(":reference",reference);
+    int c=0;
+    query.prepare("SELECT *from parking where NOM=:nom or place=:place ");
+    query.bindValue(":place",place);
     query.bindValue(":nom",nom);
+if(query.exec())
+{
+    while(query.next())
+        {
+           c++;
+        }
+    if(c==1)
+    {
+        model->setQuery(query);
+    }
+        if(c<1)
+        {
+            model=0;
+        }
+}
 
     return model;
 }

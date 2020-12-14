@@ -104,6 +104,12 @@ void MainWindow::on_ajouter_assu_clicked()
          QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Ajoutée"),
                      QObject::tr("OK.\n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
+
+     ui->ln_compagnie->clear();
+        ui->ln_type->clear();
+        ui->ln_prix->clear();
+        ui->ln_reference->clear();
+
 }
 
 void MainWindow::on_mod_assu_clicked()
@@ -131,6 +137,11 @@ void MainWindow::on_mod_assu_clicked()
                                           "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
+
+    ui->ln_compagnie->clear();
+       ui->ln_type->clear();
+       ui->ln_prix->clear();
+       ui->ln_reference->clear();
 }
 
 
@@ -192,6 +203,10 @@ void MainWindow::on_export_pdf_clicked()
 void MainWindow::on_recherche_clicked()
 {
     ui->tableView_assurance->setModel(tmp.recherche(ui->reref->text().toInt(),ui->retype->text(),ui->recom->text()));
+    ui->retype->clear();
+       ui->reref->clear();
+       ui->recom->clear();
+
 }
 
 void MainWindow::on_afficher_tab_assu_clicked()
@@ -201,15 +216,15 @@ void MainWindow::on_afficher_tab_assu_clicked()
 
 void MainWindow::on_park_ajout_2_clicked()
 {
-    //QSqlQueryModel * model= new QSqlQueryModel();
+    QSqlQueryModel * model= new QSqlQueryModel();
     int reference = ui->reference_2->text().toInt();
     int place = ui->nbr_place_2->text().toInt();
     QString nom = ui->nom_employe_2->text();
 
     Parking P(reference,place,nom);
-    //model=P.recherche(reference,nom);
-    //if(model==0)
-    //{
+    model=P.recherche(nom,place);
+    if(model==0)
+    {
         bool test=P.ajouter();
         if(test)
         {
@@ -220,15 +235,26 @@ void MainWindow::on_park_ajout_2_clicked()
         }
 
         else
+        {
+
+
             QMessageBox::critical(nullptr, QObject::tr("Parking pas ajouté"),
                          QObject::tr("OK.\n"
                                      "Click Cancel to exit."),QMessageBox::Cancel);
+}
 
-   /* }
+    }
     else
+
+    {
         QMessageBox::critical(nullptr, QObject::tr("Nom ou Place Deja Utilisée"),
                      QObject::tr("OK.\n"
-                                 "Click Cancel to exit."),QMessageBox::Cancel);*/
+                                 "Click Cancel to exit."),QMessageBox::Cancel);
+    }
+
+    ui->nbr_place_2->clear();
+       ui->nom_employe_2->clear();
+       ui->reference_2->clear();
 
 
 
@@ -256,6 +282,11 @@ void MainWindow::on_mod_park_2_clicked()
                                           "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
+
+    ui->nbr_place_2->clear();
+       ui->nom_employe_2->clear();
+       ui->reference_2->clear();
+
 }
 
 
@@ -299,6 +330,11 @@ void MainWindow::on_supp_park_2_clicked()
         QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
                     QObject::tr("OK.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+
+    ui->nbr_place_2->clear();
+       ui->nom_employe_2->clear();
+       ui->reference_2->clear();
+
 }
 
 void MainWindow::on_supprimer_clicked()
@@ -318,15 +354,21 @@ void MainWindow::on_supprimer_clicked()
         QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
                     QObject::tr("OK.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+
+    ui->ln_compagnie->clear();
+       ui->ln_type->clear();
+       ui->ln_prix->clear();
+       ui->ln_reference->clear();
 }
 
 void MainWindow::on_tableView_assurance_activated(const QModelIndex &index)
 {
     QString  val=ui->tableView_assurance->model()->data(index).toString();
+   // int  val1=ui->tableView_assurance->model()->data(index).toInt();
     QSqlQuery qry;
 
 
-    qry.prepare("select * from ASSURANCE  where PRIX='"+val+"'or REFERENCE='"+val+"'");
+    qry.prepare("select * from ASSURANCE  where COMPAGNIE='"+val+"'or TYPE='"+val+"'or PRIX='"+val+"' or REFERENCE='"+val+"'");
 
     if(qry.exec())
     {
@@ -349,7 +391,7 @@ void MainWindow::on_tableView_parking_2_activated(const QModelIndex &index)
     QSqlQuery qry;
 
 
-    qry.prepare("select * from PARKING  where REFERENCE='"+val+"'or NOM='"+val+"'");
+    qry.prepare("select * from PARKING  where REFERENCE='"+val+"'or NOM='"+val+"'  ");
 
     if(qry.exec())
     {
