@@ -27,8 +27,6 @@ private slots:
 
     void on_mod_assu_clicked();
 
-    void on_supprimer_clicked();
-
     void on_export_pdf_clicked();
 
     void on_recherche_clicked();
@@ -39,11 +37,19 @@ private slots:
 
     void on_mod_park_2_clicked();
 
-    void on_supp_park_2_clicked();
-
     void on_trier_2_clicked();
 
     void on_afficher_tab_park_2_clicked();
+
+
+
+    void on_supp_park_2_clicked();
+
+    void on_supprimer_clicked();
+
+    void on_tableView_assurance_activated(const QModelIndex &index);
+
+    void on_tableView_parking_2_activated(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;

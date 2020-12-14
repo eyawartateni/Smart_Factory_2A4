@@ -35,16 +35,23 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QPixmap bkgnd(":/image/image/be-our-service.jpg");
+  /*  QPixmap bkgnd(":/image/image/be-our-service.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bkgnd);
-    this->setPalette(palette);
+    this->setPalette(palette);*/
     ui->choix_2->addItem("reference");
     ui->choix_2->addItem("place");
     ui->choix_2->addItem("nom");
-    ui->tableView_parking_2->setModel(tmp1.afficher());
-    ui->tableView_assurance->setModel(tmp.afficher());
+
+    ui->ln_reference->setValidator(new QIntValidator(0,99999999,this));
+    ui->ln_prix->setValidator(new QIntValidator(0,99999999,this));
+    ui->ln_compagnie->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+    ui->ln_type->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+    ui->reference_2->setValidator(new QIntValidator( 0,99999999, this ));
+    ui->nbr_place_2->setValidator(new QIntValidator( 0,99999999, this ));
+    ui->nom_employe_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+
 }
 
 MainWindow::~MainWindow()
@@ -77,7 +84,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_ajouter_assu_clicked()
 {
     // recuperer les informations saisies dans l'interface
-
      QString compagnie = ui->ln_compagnie->text();
      int prix = ui->ln_prix->text().toInt();
      QString type = ui->ln_type->text();
@@ -127,24 +133,7 @@ void MainWindow::on_mod_assu_clicked()
     }
 }
 
-void MainWindow::on_supprimer_clicked()
-{
-    int reference = ui->supp_assu->text().toInt();
-    bool test=tmp.supprimer(reference);
-    if(test)
-    {
-        ui->tableView_assurance->setModel(tmp.afficher());// refresh => chaque ajout sera affiché
 
-        QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
-                    QObject::tr("OK.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-
-}
-    else
-        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
-                    QObject::tr("OK.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-}
 
 void MainWindow::on_export_pdf_clicked()
 {
@@ -212,25 +201,36 @@ void MainWindow::on_afficher_tab_assu_clicked()
 
 void MainWindow::on_park_ajout_2_clicked()
 {
-
+    //QSqlQueryModel * model= new QSqlQueryModel();
     int reference = ui->reference_2->text().toInt();
     int place = ui->nbr_place_2->text().toInt();
     QString nom = ui->nom_employe_2->text();
 
     Parking P(reference,place,nom);
-    bool test=P.ajouter();
-    if(test)
-    {
-        ui->tableView_parking_2->setModel(tmp1.afficher());
-        QMessageBox::information(nullptr, QObject::tr("Parking ajouté"),
-                     QObject::tr("OK.\n"
-                                 "Click Cancel to exit"),QMessageBox::Cancel);
-    }
+    //model=P.recherche(reference,nom);
+    //if(model==0)
+    //{
+        bool test=P.ajouter();
+        if(test)
+        {
+            ui->tableView_parking_2->setModel(tmp1.afficher());
+            QMessageBox::information(nullptr, QObject::tr("Parking ajouté"),
+                         QObject::tr("OK.\n"
+                                     "Click Cancel to exit"),QMessageBox::Cancel);
+        }
 
+        else
+            QMessageBox::critical(nullptr, QObject::tr("Parking pas ajouté"),
+                         QObject::tr("OK.\n"
+                                     "Click Cancel to exit."),QMessageBox::Cancel);
+
+   /* }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Parking pas ajouté"),
+        QMessageBox::critical(nullptr, QObject::tr("Nom ou Place Deja Utilisée"),
                      QObject::tr("OK.\n"
-                                 "Click Cancel to exit."),QMessageBox::Cancel);
+                                 "Click Cancel to exit."),QMessageBox::Cancel);*/
+
+
 
 }
 
@@ -258,24 +258,7 @@ void MainWindow::on_mod_park_2_clicked()
     }
 }
 
-void MainWindow::on_supp_park_2_clicked()
-{
-    int reference = ui->park_supp_2->text().toInt();
-    bool test=tmp1.supprimer(reference);
-    if(test)
-    {
-        ui->tableView_parking_2->setModel(tmp1.afficher());// refresh => chaque ajout sera affiché
 
-        QMessageBox::information(nullptr, QObject::tr("Parking Supprimé"),
-                    QObject::tr("OK.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-
-}
-    else
-        QMessageBox::critical(nullptr, QObject::tr("Parking Pas Supprimé"),
-                    QObject::tr("OK.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-}
 
 void MainWindow::on_trier_2_clicked()
 {
@@ -297,4 +280,86 @@ void MainWindow::on_trier_2_clicked()
 void MainWindow::on_afficher_tab_park_2_clicked()
 {
     ui->tableView_parking_2->setModel(tmp1.afficher());
+}
+
+void MainWindow::on_supp_park_2_clicked()
+{
+    int reference = ui->reference_2->text().toInt();
+    bool test=tmp1.supprimer(reference);
+    if(test)
+    {
+        ui->tableView_parking_2->setModel(tmp1.afficher());// refresh => chaque ajout sera affiché
+
+        QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_supprimer_clicked()
+{
+    int reference = ui->ln_reference->text().toInt();
+    bool test=tmp.supprimer(reference);
+    if(test)
+    {
+        ui->tableView_assurance->setModel(tmp.afficher());// refresh => chaque ajout sera affiché
+
+        QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_tableView_assurance_activated(const QModelIndex &index)
+{
+    QString  val=ui->tableView_assurance->model()->data(index).toString();
+    QSqlQuery qry;
+
+
+    qry.prepare("select * from ASSURANCE  where PRIX='"+val+"'or REFERENCE='"+val+"'");
+
+    if(qry.exec())
+    {
+       while(qry.next())
+       {
+           ui->ln_compagnie->setText(qry.value(0).toString());
+
+           ui->ln_type->setText(qry.value(1).toString());
+
+           ui->ln_prix->setText(qry.value(2).toString());
+
+           ui->ln_reference->setText(qry.value(3).toString());
+       }
+    }
+}
+
+void MainWindow::on_tableView_parking_2_activated(const QModelIndex &index)
+{
+    QString  val=ui->tableView_parking_2->model()->data(index).toString();
+    QSqlQuery qry;
+
+
+    qry.prepare("select * from PARKING  where REFERENCE='"+val+"'or NOM='"+val+"'");
+
+    if(qry.exec())
+    {
+       while(qry.next())
+       {
+           ui->reference_2->setText(qry.value(0).toString());
+
+           ui->nbr_place_2->setText(qry.value(1).toString());
+
+           ui->nom_employe_2->setText(qry.value(2).toString());
+       }
+    }
 }

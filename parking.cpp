@@ -1,4 +1,5 @@
 #include "parking.h"
+#include <QMessageBox>
 
 Parking::Parking(int Reference, int Place, QString Nom)
 {
@@ -73,4 +74,15 @@ QSqlQueryModel *model=new QSqlQueryModel() ;
 
    return model;
 
+}
+
+QSqlQueryModel *Parking::recherche(int reference, QString nom)
+{
+    QSqlQuery query;
+    QSqlQueryModel *model = new QSqlQueryModel();
+    query.prepare("SELECT *from parking where reference=:reference or nom=:nom ");
+    query.bindValue(":reference",reference);
+    query.bindValue(":nom",nom);
+
+    return model;
 }

@@ -24,6 +24,8 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int reference);
     QSqlQueryModel * trier(int test);
+    QSqlQueryModel * recherche(int reference, QString nom);
+
 
 };
 

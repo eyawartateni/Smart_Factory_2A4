@@ -82,3 +82,6 @@ QSqlQueryModel *Assurance::recherche(int reference, QString type, QString compag
 
     return model;
 }
+
+
+
