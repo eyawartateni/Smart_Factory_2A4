@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>image/back.jpg</file>
+        <file>image/car-loader-gif-1.gif</file>
+        <file>image/oui.png</file>
+        <file>image/Welcome - Male Voice Speaks (128 kbps) (mp3cut.net)(1).wav</file>
+        <file>image/car-loader-gif-1 - Copy.gif</file>
+    </qresource>
+</RCC>
