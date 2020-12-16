@@ -210,6 +210,8 @@ private slots:
 
     void on_pdf_client_clicked();
 
+    void on_imprimer_assu_clicked();
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;

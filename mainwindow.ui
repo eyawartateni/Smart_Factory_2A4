@@ -946,7 +946,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="login">
      <widget class="QFrame" name="frame_2">
@@ -15336,7 +15336,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="stackwidget_service">
        <attribute name="title">
@@ -15794,6 +15794,39 @@ QPushButton:hover
           <string>Exporter pdf</string>
          </property>
         </widget>
+        <widget class="QPushButton" name="imprimer_assu">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>390</y>
+           <width>101</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"> QPushButton
+{
+  color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Imprimer</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QPushButton" name="btn_existe_7">
         <property name="geometry">
@@ -16191,7 +16224,7 @@ background:orange;
      <x>0</x>
      <y>0</y>
      <width>1006</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

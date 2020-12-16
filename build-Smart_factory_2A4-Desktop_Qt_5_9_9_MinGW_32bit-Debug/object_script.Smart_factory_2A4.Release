@@ -1,0 +1,15 @@
+INPUT(
+./release/agence.o
+./release/assurance.o
+./release/chaine.o
+./release/client.o
+./release/connexion.o
+./release/employer.o
+./release/fournisseur.o
+./release/main.o
+./release/mainwindow.o
+./release/parking.o
+./release/voiture.o
+./release/qrc_image.o
+./release/moc_mainwindow.o
+);

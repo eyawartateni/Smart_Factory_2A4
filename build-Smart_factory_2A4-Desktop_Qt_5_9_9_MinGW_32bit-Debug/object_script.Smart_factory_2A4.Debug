@@ -1,0 +1,15 @@
+INPUT(
+./debug/agence.o
+./debug/assurance.o
+./debug/chaine.o
+./debug/client.o
+./debug/connexion.o
+./debug/employer.o
+./debug/fournisseur.o
+./debug/main.o
+./debug/mainwindow.o
+./debug/parking.o
+./debug/voiture.o
+./debug/qrc_image.o
+./debug/moc_mainwindow.o
+);

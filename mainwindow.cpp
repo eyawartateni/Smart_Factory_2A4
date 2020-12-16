@@ -2276,3 +2276,18 @@ void MainWindow::on_pdf_client_clicked()
 
              doc.print(&printer);
 }
+
+void MainWindow::on_imprimer_assu_clicked()
+{
+    //imprimer
+
+        QPrinter printer;
+
+        printer.setPrinterName("desiered printer name");
+
+      QPrintDialog dialog(&printer,this);
+
+        if(dialog.exec()== QDialog::Rejected)
+
+            return;
+}
