@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1006</width>
-    <height>659</height>
+    <width>1034</width>
+    <height>752</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -480,8 +480,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>941</width>
-      <height>561</height>
+      <width>1001</width>
+      <height>671</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -946,7 +946,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="login">
      <widget class="QFrame" name="frame_2">
@@ -8955,8 +8955,8 @@ background:orange;
        <rect>
         <x>30</x>
         <y>0</y>
-        <width>891</width>
-        <height>581</height>
+        <width>941</width>
+        <height>641</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -9421,7 +9421,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="voiture">
        <attribute name="title">
@@ -9432,8 +9432,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
          <rect>
           <x>9</x>
           <y>9</y>
-          <width>851</width>
-          <height>541</height>
+          <width>911</width>
+          <height>561</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -9970,8 +9970,8 @@ QPushButton:hover
        <widget class="QPushButton" name="btn_existe_3">
         <property name="geometry">
          <rect>
-          <x>680</x>
-          <y>570</y>
+          <x>720</x>
+          <y>580</y>
           <width>191</width>
           <height>31</height>
          </rect>
@@ -10009,10 +10009,10 @@ background:orange;
        <widget class="QGroupBox" name="groupBox_9">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>0</x>
           <y>0</y>
-          <width>841</width>
-          <height>511</height>
+          <width>931</width>
+          <height>571</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -10028,7 +10028,7 @@ font-color :#000000;</string>
           <rect>
            <x>410</x>
            <y>360</y>
-           <width>401</width>
+           <width>471</width>
            <height>131</height>
           </rect>
          </property>
@@ -10236,7 +10236,7 @@ QPushButton:hover
           <rect>
            <x>410</x>
            <y>80</y>
-           <width>401</width>
+           <width>471</width>
            <height>261</height>
           </rect>
          </property>
@@ -10413,12 +10413,45 @@ QPushButton:hover
              }</string>
          </property>
         </widget>
+        <widget class="QPushButton" name="stat_2">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>450</y>
+           <width>181</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"> QPushButton
+{
+  color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Surveiller temperature</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QPushButton" name="btn_existe_4">
         <property name="geometry">
          <rect>
-          <x>670</x>
-          <y>520</y>
+          <x>710</x>
+          <y>580</y>
           <width>191</width>
           <height>31</height>
          </rect>
@@ -10448,6 +10481,81 @@ background:orange;
          <string>retour</string>
         </property>
        </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="temp">
+     <widget class="QGroupBox" name="groupBox_19">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>60</y>
+        <width>431</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>      Surveillance temperature</string>
+      </property>
+      <widget class="QLabel" name="label_33">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>110</y>
+         <width>151</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Arreter temperature:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="arreter">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>110</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Arreter</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_existe_9">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>250</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+background:rgb(0, 0, 0);
+border-radius :60px;
+}
+
+QPushButton
+{
+	font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+
+	color:orange;
+border-radius:15px;
+}
+QPushButton:hover
+{
+color : #333;
+border-radius:15px;
+background:orange;
+}</string>
+       </property>
+       <property name="text">
+        <string>retour</string>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -16223,8 +16331,8 @@ background:orange;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1006</width>
-     <height>26</height>
+     <width>1034</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

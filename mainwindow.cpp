@@ -40,8 +40,42 @@ MainWindow::MainWindow(QWidget *parent)
 {
      ui->setupUi(this);
 
-     ui->stackedWidget->setCurrentWidget(ui->login) ;
+     //ui->stackedWidget->setCurrentWidget(ui->login) ;
 
+
+     ///arduino
+
+
+     arduino_is_available=false;
+     arduino_port_name="";
+
+     arduino = new QSerialPort;
+     foreach(const QSerialPortInfo &serial_port_info , QSerialPortInfo::availablePorts())
+     {
+         if(serial_port_info.hasProductIdentifier() && serial_port_info.hasVendorIdentifier())
+         {
+             if(serial_port_info.vendorIdentifier()==arduino_uno_vendor_id && serial_port_info.productIdentifier()==arduino_uno_producy_id)
+             {
+
+                 arduino_port_name = serial_port_info.portName();
+                   arduino_is_available=true;
+             }
+         }
+     }
+     qDebug()<<"arduino_port_name is:"<<arduino_port_name;
+     if(arduino_is_available)
+     {
+        arduino->setPortName(arduino_port_name);
+         if(arduino->open(QSerialPort::ReadWrite))
+         {
+             arduino->setBaudRate(QSerialPort::Baud9600);
+             arduino->setDataBits(QSerialPort::Data8);
+             arduino->setParity(QSerialPort::NoParity);
+             arduino->setStopBits(QSerialPort::OneStop);
+             arduino->setFlowControl(QSerialPort::NoFlowControl);
+         }
+
+ }
 
 
       ui->ag_aj_cin->setValidator(new QIntValidator(0,99999999,this));
@@ -206,10 +240,48 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
+
 MainWindow::~MainWindow()
 {
+    if(arduino->isOpen())
+    {
+        arduino->close();
+    }
     delete ui;
 }
+
+
+
+QByteArray MainWindow::read_from_arduino()
+{
+  if(arduino->isReadable())
+  {
+      data=arduino->readAll();
+
+  }
+   return data;
+}
+
+
+void MainWindow::write_to_arduino(QByteArray d)
+{
+  if(arduino->isWritable())
+  {
+      arduino->write(d);
+
+  }else
+
+      qDebug() <<"couldn't write to serial!";
+
+
+
+}
+
+void MainWindow::on_arreter_clicked()
+{
+      write_to_arduino("0");
+}
+
 
 void MainWindow::on_ajouter_voi_clicked()
 {
@@ -2290,4 +2362,14 @@ void MainWindow::on_imprimer_assu_clicked()
         if(dialog.exec()== QDialog::Rejected)
 
             return;
+}
+
+void MainWindow::on_btn_existe_9_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->voiture_ch);
+}
+
+void MainWindow::on_stat_2_clicked()
+{
+        ui->stackedWidget->setCurrentWidget(ui->temp);
 }

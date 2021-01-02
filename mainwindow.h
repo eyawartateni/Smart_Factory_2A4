@@ -39,6 +39,10 @@
 //#include "C:/Users/eyaou/Desktop/Qt-Table-Printer-master/tableprinter.h"
 //#include "C:/Users/eyaou/Desktop/Smart_Factory_2A4-master/Smart_factory_2A4/Qt-Table-Printer-master/tableprinter.h"
 #include <QMainWindow>
+#include<QtSerialPort/QSerialPort>
+#include<QtSerialPort/QSerialPortInfo>
+#include<QDebug>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -212,6 +216,13 @@ private slots:
 
     void on_imprimer_assu_clicked();
 
+    void on_btn_existe_9_clicked();
+
+
+    void on_arreter_clicked();
+
+    void on_stat_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
@@ -233,5 +244,14 @@ private:
     Assurance tmp;
     QSortFilterProxyModel * proxy;
     Parking tmp1;
+
+    QSerialPort *arduino;
+    void write_to_arduino(QByteArray);
+    QByteArray read_from_arduino();
+     QByteArray data;
+    static const quint16 arduino_uno_vendor_id=9025;
+      static const quint16 arduino_uno_producy_id=67;
+      QString arduino_port_name;
+      bool arduino_is_available;
 };
 #endif // MAINWINDOW_H
