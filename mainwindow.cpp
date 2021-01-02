@@ -2371,5 +2371,5 @@ void MainWindow::on_btn_existe_9_clicked()
 
 void MainWindow::on_stat_2_clicked()
 {
-        ui->stackedWidget->setCurrentWidget(ui->temp);
+      write_to_arduino("0");
 }

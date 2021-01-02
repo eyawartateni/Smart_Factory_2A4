@@ -193,6 +193,7 @@ public:
     QPushButton *pdf;
     QPushButton *trier_2;
     QComboBox *comboBox_ch;
+    QPushButton *stat_2;
     QPushButton *btn_existe_4;
     QWidget *page;
     QFrame *frame_chaine;
@@ -313,7 +314,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1006, 659);
+        MainWindow->resize(1034, 752);
         MainWindow->setStyleSheet(QLatin1String("QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
@@ -789,7 +790,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, 10, 941, 561));
+        stackedWidget->setGeometry(QRect(0, 10, 1001, 671));
         stackedWidget->setStyleSheet(QLatin1String("QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
@@ -8325,7 +8326,7 @@ public:
         voiture_ch->setObjectName(QStringLiteral("voiture_ch"));
         tabWidget_2 = new QTabWidget(voiture_ch);
         tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(30, 0, 891, 581));
+        tabWidget_2->setGeometry(QRect(30, 0, 941, 641));
         tabWidget_2->setStyleSheet(QLatin1String("QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
@@ -8801,7 +8802,7 @@ public:
         voiture->setObjectName(QStringLiteral("voiture"));
         groupBox_7 = new QGroupBox(voiture);
         groupBox_7->setObjectName(QStringLiteral("groupBox_7"));
-        groupBox_7->setGeometry(QRect(9, 9, 851, 541));
+        groupBox_7->setGeometry(QRect(9, 9, 911, 561));
         groupBox_7->setStyleSheet(QLatin1String("\n"
 "font: 9pt \"MS Reference Sans Serif\";\n"
 "font-color :#000000;\n"
@@ -9043,7 +9044,7 @@ public:
 ""));
         btn_existe_3 = new QPushButton(voiture);
         btn_existe_3->setObjectName(QStringLiteral("btn_existe_3"));
-        btn_existe_3->setGeometry(QRect(680, 570, 191, 31));
+        btn_existe_3->setGeometry(QRect(720, 580, 191, 31));
         btn_existe_3->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "background:rgb(0, 0, 0);\n"
@@ -9068,13 +9069,13 @@ public:
         chaine->setObjectName(QStringLiteral("chaine"));
         groupBox_9 = new QGroupBox(chaine);
         groupBox_9->setObjectName(QStringLiteral("groupBox_9"));
-        groupBox_9->setGeometry(QRect(30, 0, 841, 511));
+        groupBox_9->setGeometry(QRect(0, 0, 931, 571));
         groupBox_9->setStyleSheet(QLatin1String("\n"
 "font: 9pt \"MS Reference Sans Serif\";\n"
 "font-color :#000000;"));
         groupBox_10 = new QGroupBox(groupBox_9);
         groupBox_10->setObjectName(QStringLiteral("groupBox_10"));
-        groupBox_10->setGeometry(QRect(410, 360, 401, 131));
+        groupBox_10->setGeometry(QRect(410, 360, 471, 131));
         modifier_ch = new QPushButton(groupBox_10);
         modifier_ch->setObjectName(QStringLiteral("modifier_ch"));
         modifier_ch->setGeometry(QRect(60, 90, 101, 21));
@@ -9193,7 +9194,7 @@ public:
 ""));
         tableView_chaine = new QTableView(groupBox_9);
         tableView_chaine->setObjectName(QStringLiteral("tableView_chaine"));
-        tableView_chaine->setGeometry(QRect(410, 80, 401, 261));
+        tableView_chaine->setGeometry(QRect(410, 80, 471, 261));
         lineEdit_reference_ch = new QLineEdit(groupBox_9);
         lineEdit_reference_ch->setObjectName(QStringLiteral("lineEdit_reference_ch"));
         lineEdit_reference_ch->setGeometry(QRect(240, 80, 131, 21));
@@ -9276,9 +9277,30 @@ public:
 "\n"
 "              color:orange;\n"
 "             }"));
+        stat_2 = new QPushButton(groupBox_9);
+        stat_2->setObjectName(QStringLiteral("stat_2"));
+        stat_2->setGeometry(QRect(30, 450, 251, 31));
+        stat_2->setStyleSheet(QLatin1String(" QPushButton\n"
+"{\n"
+"  color: #b1b1b1;\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
+"    border-width: 1px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    border-radius: 6;\n"
+"    padding: 3px;\n"
+"    font-size: 12px;\n"
+"    padding-left: 5px;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);\n"
+"}\n"
+""));
         btn_existe_4 = new QPushButton(chaine);
         btn_existe_4->setObjectName(QStringLiteral("btn_existe_4"));
-        btn_existe_4->setGeometry(QRect(670, 520, 191, 31));
+        btn_existe_4->setGeometry(QRect(710, 580, 191, 31));
         btn_existe_4->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "background:rgb(0, 0, 0);\n"
@@ -14047,7 +14069,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1006, 26));
+        menubar->setGeometry(QRect(0, 0, 1034, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -14055,7 +14077,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(9);
+        stackedWidget->setCurrentIndex(6);
         tabWidget->setCurrentIndex(1);
         tabWidget_2->setCurrentIndex(1);
         tbl->setCurrentIndex(0);
@@ -14194,6 +14216,7 @@ public:
         label_19->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Type de produit</p></body></html>", Q_NULLPTR));
         pdf->setText(QApplication::translate("MainWindow", "Exporter pdf", Q_NULLPTR));
         trier_2->setText(QApplication::translate("MainWindow", "Trier", Q_NULLPTR));
+        stat_2->setText(QApplication::translate("MainWindow", "Arr\303\252ter Alarme Capteur Temperature", Q_NULLPTR));
         btn_existe_4->setText(QApplication::translate("MainWindow", "retour", Q_NULLPTR));
         tabWidget_2->setTabText(tabWidget_2->indexOf(chaine), QApplication::translate("MainWindow", "Gestion des chaines", Q_NULLPTR));
         btn_existe_5->setText(QApplication::translate("MainWindow", "retour", Q_NULLPTR));
