@@ -1,5 +1,6 @@
 QT       += core gui sql printsupport
 QT       += core gui sql
+QT       +=  core gui serialport
  QT += widgets multimedia
 QT       += core gui serialport
 QT       +=printsupport
@@ -14,6 +15,7 @@ CONFIG += c++11
 
 SOURCES += \
     agence.cpp \
+    arduino1.cpp \
     assurance.cpp \
     chaine.cpp \
     client.cpp \
@@ -27,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     agence.h \
+    arduino1.h \
     assurance.h \
     chaine.h \
     client.h \

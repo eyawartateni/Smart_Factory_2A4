@@ -223,6 +223,8 @@ private slots:
 
     void on_stat_2_clicked();
 
+    void on_btn_pointage_clicked();
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;

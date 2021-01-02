@@ -28,6 +28,7 @@
 #include <QFile>
 #include <QDataStream>
 #include <QTextStream>
+#include<arduino1.h>
 
 
 
@@ -2372,4 +2373,12 @@ void MainWindow::on_btn_existe_9_clicked()
 void MainWindow::on_stat_2_clicked()
 {
       write_to_arduino("0");
+}
+
+void MainWindow::on_btn_pointage_clicked()
+{   arduino1 a ;
+
+    ui->tab_pointage->setModel(a.afficher());
+    ui->stackedWidget->setCurrentWidget(ui->pointage) ;
+
 }
