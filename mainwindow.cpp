@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
      ui->setupUi(this);
 
-     //ui->stackedWidget->setCurrentWidget(ui->login) ;
+    // ui->stackedWidget->setCurrentWidget(ui->login) ;
 
 
      ///arduino
@@ -110,30 +110,6 @@ MainWindow::MainWindow(QWidget *parent)
             scene.addWidget(processLabel);
 
           }
-          //stat
-
-         /* QPieSeries *series = new QPieSeries();
-
-          series->append("REFERENCE", 80);
-          series->append("NB_MACHINE", 70);
-          series->append("TYPE_PRODUIT", 50);
-
-
-          QPieSlice *slice = series->slices().at(1);
-          slice->setExploded(true);
-          slice->setLabelVisible(true);
-          slice->setPen(QPen(Qt::darkGreen, 2));
-          slice->setBrush(Qt::green);
-
-
-          QChart *chart = new QChart();
-          chart->addSeries(series);
-          chart->setTitle("Chaine");
-
-
-          QChartView *chartview = new QChartView(chart);
-          chartview->setParent(ui->frame_chaine);
-          chartview->setGeometry(0,0,709,379);*/
 
 
           son =new QSound("C:/Users/Mayssa/Desktop/gestion_production/projett/son.wav");
@@ -595,13 +571,13 @@ void MainWindow::on_stat_clicked()
         query.prepare("select * from CHAINE ") ;
         if(query.exec()) {
             while(query.next()){
-       series->append(query.value(0).toString(), query.value(2).toInt());
+       series->append(query.value(2).toString(), query.value(1).toInt());
         QPieSlice *slice = series->slices().at(pos);
         slice->setLabelVisible(true);
         pos++ ;
         }
 
-        }
+          chart->addSeries(series);
         chart->setTheme( QChart::ChartThemeDark);
 
         chart->setAnimationOptions(QChart::AllAnimations);
@@ -616,9 +592,9 @@ void MainWindow::on_stat_clicked()
 
                    chartview->setParent(ui->frame_chaine);
 
-                //  chartview->setBaseSize(300,300);
+                   chartview->setBaseSize(300,300);
 
-                   chartview->setGeometry(-100,-180,1000,1300);
+                   chartview->setGeometry(0,0,1000,600);
 
 
         chart->addSeries(series);
@@ -629,7 +605,7 @@ void MainWindow::on_stat_clicked()
 
 
 }
-
+}
 
 void MainWindow::on_tableView_voiture_activated(const QModelIndex &index)
 {

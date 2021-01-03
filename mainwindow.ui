@@ -946,7 +946,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="login">
      <widget class="QFrame" name="frame_2">
@@ -9455,7 +9455,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="voiture">
        <attribute name="title">
