@@ -231,6 +231,54 @@ private slots:
 
     void on_imp_clicked();
 
+    void on_tutoriel_clicked();
+
+    void on_tutoriel_2_clicked();
+
+    void on_commandLinkButton_clicked();
+
+    void on_commandLinkButton_2_clicked();
+
+    void on_commandLinkButton_3_clicked();
+
+    void on_commandLinkButton_4_clicked();
+
+    void on_Tutorial_clicked();
+
+    void on_ajouter_assu_2_clicked();
+
+    void on_afficher_tab_assu_2_clicked();
+
+    void on_mod_assu_2_clicked();
+
+    void on_supprimer_2_clicked();
+
+    void on_export_pdf_2_clicked();
+
+    void on_recherche_2_clicked();
+
+    void on_park_ajout_3_clicked();
+
+    void on_afficher_tab_park_3_clicked();
+
+    void on_mod_park_3_clicked();
+
+    void on_supp_park_3_clicked();
+
+    void on_trier_parking_2_clicked();
+
+    void on_tableView_parking_3_activated(const QModelIndex &index);
+
+    void on_tableView_assurance_2_activated(const QModelIndex &index);
+
+    void on_btn_existe_10_clicked();
+
+    void on_btn_existe_123_clicked();
+
+    void on_Tutorial_2_clicked();
+
+    void on_Tutorial_55_clicked();
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
@@ -253,8 +301,10 @@ private:
     //youssef
 
     Assurance tmp;
+    Assurance tmp2;
     QSortFilterProxyModel * proxy;
     Parking tmp1;
+    Parking tmp3;
 
     QSerialPort *arduino;
     void write_to_arduino(QByteArray);

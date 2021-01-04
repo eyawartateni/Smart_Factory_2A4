@@ -199,6 +199,10 @@ MainWindow::MainWindow(QWidget *parent)
        ui->choix_2->addItem("place");
        ui->choix_2->addItem("nom");
 
+       ui->choix_3->addItem("reference");
+       ui->choix_3->addItem("parking number");
+       ui->choix_3->addItem("name");
+
        ui->ln_reference->setValidator(new QIntValidator(0,99999999,this));
        ui->ln_prix->setValidator(new QIntValidator(0,99999999,this));
        ui->ln_compagnie->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
@@ -2408,4 +2412,371 @@ void MainWindow::on_imp_clicked()
     if(dialog.exec()== QDialog::Rejected)
 
         return;
+}
+
+void MainWindow::on_tutoriel_clicked()
+{
+    QMessageBox::information(nullptr, QObject::tr("database is open"),
+             QObject::tr("Tutoriel.\n1)	Pour modifier appuyer sur la référence de l’élément à modifier 2 fois pour le sélectionner. Après la modification appuyer sur modifier (vous ne pouvez pas modifier la référence).\n2)	Export PDF n’exporte que les éléments dans le tableau, par exemple : si on cherche les compagnies dont le nom commence par ‘A’, c’est cette liste qui va être exporté.\n3)	Pour supprimer sélectionner ou écrivez la référence de l’élément à supprimer puis appuyez sur le bouton ‘Supprimer’.\n""Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_tutoriel_2_clicked()
+{
+    QMessageBox::information(nullptr, QObject::tr("Tutoriel"),
+             QObject::tr("1)	Pour modifier appuyer sur la référence de l’élément à modifier 2 fois pour le sélectionner. Après la modification appuyer sur modifier (vous ne pouvez pas modifier la référence).\n2)	Export PDF n’exporte que les éléments dans le tableau, par exemple : si on cherche les compagnies dont le nom commence par ‘A’, c’est cette liste qui va être exporté.\n3)	Pour supprimer sélectionner ou écrivez la référence de l’élément à supprimer puis appuyez sur le bouton ‘Supprimer’.\n""Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_commandLinkButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->service_anglais) ;
+}
+
+void MainWindow::on_commandLinkButton_2_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->service_anglais) ;
+}
+
+void MainWindow::on_commandLinkButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->service) ;
+}
+
+void MainWindow::on_commandLinkButton_4_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->service) ;
+}
+
+void MainWindow::on_Tutorial_clicked()
+{
+    QMessageBox::information(nullptr, QObject::tr("Tutorial"),
+             QObject::tr("1)	To edit press the reference of the item you change 2 times to select it. After the the modifications press edit (you cannot edit the reference).\n2)	Export PDF only exports items in the table, for example: if we look for companies whose name starts with ‘A’, it is this list that will be exported.\n3)	To delete select or write the reference of the item you want to delete and press the ‘Delete’ button.\n""Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_ajouter_assu_2_clicked()
+{
+    // recuperer les informations saisies dans l'interface
+     QString compagnie = ui->ln_compagnie_2->text();
+     int prix = ui->ln_prix_2->text().toInt();
+     QString type = ui->ln_type_2->text();
+     int reference = ui->ln_reference_2->text().toInt();
+
+     Assurance A(compagnie,prix,type,reference);
+     bool test=A.ajouter();
+
+     if(test)
+     {
+         ui->tableView_assurance_2->setModel(tmp2.afficher()); // refresh => chaque ajout sera affiché
+         QMessageBox::information(nullptr, QObject::tr("Assurance Ajoutée"),
+                     QObject::tr("OK.\n"
+                                 "Click Cancel to exit."), QMessageBox::Cancel);
+
+ }
+     else
+         QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Ajoutée"),
+                     QObject::tr("OK.\n"
+                                 "Click Cancel to exit."), QMessageBox::Cancel);
+
+     ui->ln_compagnie_2->clear();
+        ui->ln_type_2->clear();
+        ui->ln_prix_2->clear();
+        ui->ln_reference_2->clear();
+        ui->tableView_assurance_2->setModel(tmp2.afficher());
+}
+
+void MainWindow::on_afficher_tab_assu_2_clicked()
+{
+    ui->tableView_assurance_2->setModel(tmp.afficher());
+
+}
+
+void MainWindow::on_mod_assu_2_clicked()
+{
+    QString compagnie,type,reference,prix;
+    //int reference,prix;
+    compagnie=ui->ln_compagnie_2->text();
+    type=ui->ln_type_2->text();
+    prix=ui->ln_prix_2->text();
+    reference=ui->ln_reference_2->text();
+
+    QSqlQuery qry;
+    qry.prepare("update assurance set reference='"+reference+"',type='"+type+"',prix='"+prix+"',compagnie='"+compagnie+"'where reference='"+reference+"'");
+    if(qry.exec())
+    {
+        ui->tableView_assurance_2->setModel(tmp2.afficher());
+        //ui->tableView_upark->setModel(tmp.afficher());
+        QMessageBox::information(this,tr("Edit"),tr("Updated"));
+
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Modifiée"),
+                              QObject::tr("OK.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+    ui->tableView_assurance_2->setModel(tmp2.afficher());
+    ui->ln_compagnie_2->clear();
+       ui->ln_type_2->clear();
+       ui->ln_prix_2->clear();
+       ui->ln_reference_2->clear();
+}
+
+void MainWindow::on_supprimer_2_clicked()
+{
+    int reference = ui->ln_reference_2->text().toInt();
+    bool test=tmp2.supprimer(reference);
+    if(test)
+    {
+        ui->tableView_assurance->setModel(tmp2.afficher());// refresh => chaque ajout sera affiché
+
+        QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+ui->tableView_assurance->setModel(tmp2.afficher());
+    ui->ln_compagnie_2->clear();
+       ui->ln_type_2->clear();
+       ui->ln_prix_2->clear();
+       ui->ln_reference_2->clear();
+}
+
+void MainWindow::on_export_pdf_2_clicked()
+{
+    QString strStream;
+                     QTextStream out(&strStream);
+
+                     const int rowCount = ui->tableView_assurance_2->model()->rowCount();
+                     const int columnCount = ui->tableView_assurance_2->model()->columnCount();
+
+                     out <<  "<html>\n"
+                         "<head>\n"
+                         "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                         <<  QString("<title>%1</title>\n").arg("strTitle")
+                         <<  "</head>\n"
+                         "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                        //     "<align='right'> " << datefich << "</align>"
+                         "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+                     // headers
+                     out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                     for (int column = 0; column < columnCount; column++)
+                         if (!ui->tableView_assurance->isColumnHidden(column))
+                             out << QString("<th>%1</th>").arg(ui->tableView_assurance->model()->headerData(column, Qt::Horizontal).toString());
+                     out << "</tr></thead>\n";
+
+                     // data table
+                     for (int row = 0; row < rowCount; row++) {
+                         out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                         for (int column = 0; column < columnCount; column++) {
+                             if (!ui->tableView_assurance->isColumnHidden(column)) {
+                                 QString data = ui->tableView_assurance->model()->data(ui->tableView_assurance->model()->index(row, column)).toString().simplified();
+                                 out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                             }
+                         }
+                         out << "</tr>\n";
+                     }
+                     out <<  "</table> </center>\n"
+                         "</body>\n"
+                         "</html>\n";
+
+               QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                 if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+                QPrinter printer (QPrinter::PrinterResolution);
+                 printer.setOutputFormat(QPrinter::PdfFormat);
+                printer.setPaperSize(QPrinter::A4);
+               printer.setOutputFileName(fileName);
+
+                QTextDocument doc;
+                 doc.setHtml(strStream);
+                 doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                 doc.print(&printer);
+}
+
+void MainWindow::on_recherche_2_clicked()
+{
+    ui->tableView_assurance_2->setModel(tmp2.recherche(ui->reref_2->text().toInt(),ui->retype_2->text(),ui->recom_2->text()));
+    ui->retype_2->clear();
+       ui->reref_2->clear();
+       ui->recom_2->clear();
+}
+
+void MainWindow::on_park_ajout_3_clicked()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    int reference = ui->reference_3->text().toInt();
+    int place = ui->nbr_place_3->text().toInt();
+    QString nom = ui->nom_employe_3->text();
+
+    Parking P(reference,place,nom);
+    model=P.recherche(nom,place);
+    if(model==0)
+    {
+        bool test=P.ajouter();
+        if(test)
+        {
+            ui->tableView_parking_3->setModel(tmp3.afficher());
+            QMessageBox::information(nullptr, QObject::tr("Parking Added"),
+                         QObject::tr("OK.\n"
+                                     "Click Cancel to exit"),QMessageBox::Cancel);
+        }
+
+        else
+            QMessageBox::critical(nullptr, QObject::tr("Parking Not Added"),
+                         QObject::tr("OK.\n"
+                                     "Click Cancel to exit."),QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Parking Already Exists"),
+                     QObject::tr("OK.\n"
+                                 "Click Cancel to exit."),QMessageBox::Cancel);
+    ui->tableView_parking_3->setModel(tmp3.afficher());
+    ui->nbr_place_3->clear();
+           ui->nom_employe_3->clear();
+           ui->reference_3->clear();
+}
+
+void MainWindow::on_afficher_tab_park_3_clicked()
+{
+    ui->tableView_parking_3->setModel(tmp3.afficher());
+
+}
+
+void MainWindow::on_mod_park_3_clicked()
+{
+    QString reference,place,nom;
+    reference=ui->reference_3->text();
+    place=ui->nbr_place_3->text();
+    nom=ui->nom_employe_3->text();
+
+    QSqlQuery qry1;
+    qry1.prepare("update parking set reference='"+reference+"',place='"+place+"',nom='"+nom+"'where reference='"+reference+"'");
+    if(qry1.exec())
+    {
+        ui->tableView_parking_3->setModel(tmp3.afficher());
+        QMessageBox::information(this,tr("Edit"),tr("Updated"));
+
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Edited"),
+                              QObject::tr("OK.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+
+    ui->tableView_parking_3->setModel(tmp3.afficher());
+    ui->nbr_place_3->clear();
+       ui->nom_employe_3->clear();
+       ui->reference_3->clear();
+}
+
+void MainWindow::on_supp_park_3_clicked()
+{
+    int reference = ui->reference_3->text().toInt();
+    bool test=tmp3.supprimer(reference);
+    if(test)
+    {
+        ui->tableView_parking_3->setModel(tmp3.afficher());// refresh => chaque ajout sera affiché
+
+        QMessageBox::information(nullptr, QObject::tr("Inssurance Deteled"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Delted"),
+                    QObject::tr("OK.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+    ui->nbr_place_3->clear();
+       ui->nom_employe_3->clear();
+       ui->reference_3->clear();
+}
+
+void MainWindow::on_trier_parking_2_clicked()
+{
+    int test=0;
+
+          if (ui->choix_3->currentText()=="reference")
+                     {test=1;}
+
+          else if (ui->choix_3->currentText()=="name")
+                      {test=2;}
+
+          else if (ui->choix_3->currentText()=="parking number")
+                      {test=3;}
+
+
+          ui->tableView_parking_3->setModel(tmp3.trier(test)) ;
+}
+
+void MainWindow::on_tableView_parking_3_activated(const QModelIndex &index)
+{
+    QString  val=ui->tableView_parking_3->model()->data(index).toString();
+    QSqlQuery qry;
+
+
+    qry.prepare("select * from PARKING  where REFERENCE='"+val+"'or NOM='"+val+"'");
+
+    if(qry.exec())
+    {
+       while(qry.next())
+       {
+           ui->reference_3->setText(qry.value(0).toString());
+
+           ui->nbr_place_3->setText(qry.value(1).toString());
+
+           ui->nom_employe_3->setText(qry.value(2).toString());
+       }
+    }
+}
+
+void MainWindow::on_tableView_assurance_2_activated(const QModelIndex &index)
+{
+    QString  val=ui->tableView_assurance_2->model()->data(index).toString();
+    QSqlQuery qry;
+
+
+    qry.prepare("select * from ASSURANCE  where PRIX='"+val+"'or REFERENCE='"+val+"'");
+
+    if(qry.exec())
+    {
+       while(qry.next())
+       {
+           ui->ln_compagnie_2->setText(qry.value(0).toString());
+
+           ui->ln_type_2->setText(qry.value(1).toString());
+
+           ui->ln_prix_2->setText(qry.value(2).toString());
+
+           ui->ln_reference_2->setText(qry.value(3).toString());
+       }
+    }
+}
+
+void MainWindow::on_btn_existe_10_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Menu) ;
+}
+
+void MainWindow::on_btn_existe_123_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Menu) ;
+}
+
+
+void MainWindow::on_Tutorial_55_clicked()
+{
+    QMessageBox::information(nullptr, QObject::tr("Tutorial"),
+             QObject::tr("1)	To edit press the reference of the item you change 2 times to select it. After the the modifications press edit (you cannot edit the reference).\n2)	Export PDF only exports items in the table, for example: if we look for companies whose name starts with ‘A’, it is this list that will be exported.\n3)	To delete select or write the reference of the item you want to delete and press the ‘Delete’ button.\n""Click Cancel to exit."), QMessageBox::Cancel);
 }
