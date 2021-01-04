@@ -4,6 +4,8 @@ QT       +=  core gui serialport
  QT += widgets multimedia
 QT       += core gui serialport
 QT       +=printsupport
+QT       +=  core gui serialport
+QT       += core gui sql printsupport
 QT       += core gui charts
 QT       +=
 
@@ -27,6 +29,7 @@ SOURCES += \
     fournisseur.cpp \
     main.cpp \
     mainwindow.cpp \
+    messengerconnectiondialog.cpp \
     parking.cpp \
     voiture.cpp
 
@@ -41,12 +44,13 @@ HEADERS += \
     exportexcelobject.h \
     fournisseur.h \
     mainwindow.h \
+    messengerconnectiondialog.h \
     parking.h \
     voiture.h
 
 FORMS += \
     mainwindow.ui
-
+QMAKE_CXXFLAGS += -std=gnu++11
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

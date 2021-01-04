@@ -5,7 +5,7 @@ employer::employer()
 {
 
 }
-employer:: employer(int a ,QString z, QString e,QString r,QString t,QString y ,QString u ,float i, int o)  {
+employer:: employer(int a ,QString z, QString e,QString r,QString t,QString y ,QString u ,float i, int o,QString b)  {
     cin=a ;
     nom=z;
     prenom=e;
@@ -15,6 +15,7 @@ employer:: employer(int a ,QString z, QString e,QString r,QString t,QString y ,Q
     passe=u;
     salire=i;
     nombre=o ;
+    rfid=b ;
 
 }
 
@@ -22,8 +23,8 @@ bool employer::ajouter( )
 {
 QSqlQuery query;
 QString res= QString::number(getcin());
-query.prepare("INSERT INTO TABLE1 (CIN, NOM, PRENOM,SALAIRE,POSTE,ETAT,NOMBRE,ADRESSE,PASSE) "
-                   "VALUES (:cin, :nom, :prenom,:salaire,:poste,:etat,:nombre,:adresse,:passe)");
+query.prepare("INSERT INTO TABLE1 (CIN, NOM, PRENOM,SALAIRE,POSTE,ETAT,NOMBRE,ADRESSE,PASSE,RFID) "
+                   "VALUES (:cin, :nom, :prenom,:salaire,:poste,:etat,:nombre,:adresse,:passe,:rfid)");
 query.bindValue(":cin",res );
 query.bindValue(":nom",getnom());
 query.bindValue(":prenom",getprenom());
@@ -33,6 +34,7 @@ query.bindValue(":etat",getetat());
 query.bindValue(":nombre",getnombre());
 query.bindValue(":adresse",getadresse());
 query.bindValue(":passe",getpasse());
+query.bindValue(":rfid",rfid);
 return    query.exec();
 
 

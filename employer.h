@@ -14,7 +14,7 @@ private:
    int cin ,nombre ;
    float salire;
 public:
-
+   QString rfid ;
    void setnom(QString nv_nom) {nom=nv_nom;} ;
    void setprenom(QString nv_prenom) {prenom=nv_prenom;} ;
    void setposte(QString nv_poste) {poste=nv_poste;} ;
@@ -33,7 +33,7 @@ public:
    void setsalaire(int nv_salaire) {salire=nv_salaire;} ;
    int getnombre(){return nombre ;  } ;
    void setnombre(int nv_nombre) {nombre=nv_nombre;} ;
-   employer(int,QString,QString,QString,QString,QString,QString,float,int)  ;
+   employer(int,QString,QString,QString,QString,QString,QString,float,int,QString)  ;
    bool ajouter();
    bool supprimer(int);
    QSqlQueryModel * afficher();

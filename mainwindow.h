@@ -30,9 +30,11 @@
 #include<QChartView>
 #include<QPieSeries>
 #include<QPieSlice>
+#include"QTcpSocket"
 #include "fournisseur.h"
 #include "client.h"
 #include <QSound>
+#include<arduino1.h>
 #include <QSqlTableModel>
 //#include "C:/Users/Mayssa/Desktop/Qt-Table-Printer-master/Qt-Table-Printer-master/tableprinter.h"
 //#include "C:/Users/Rostom/Desktop/New folder (2)/Smart_factory_2A4/SmtpClient-for-Qt-1.1/src/SmtpMime"
@@ -64,6 +66,7 @@ QLabel *processLabel ;
  QSortFilterProxyModel * proxyfournisseur;
 
 private slots:
+ void update_label() ;
     void on_btn_login_clicked();
 
     void on_ajouterFour_clicked();
@@ -283,12 +286,21 @@ private slots:
 
     void on_reclamation_3_clicked();
 
+    void on_send_clicked();
+
+    void on_reclamation_4_clicked();
+
+    void on_reclamation_5_clicked();
+
 private:
     Ui::MainWindow *ui;
+     arduino1 A;
     voiture vtmp;
     chaine ctmp;
+    QTcpSocket *mSocket;
     QSqlTableModel *model;
     QSound *son;
+    QString name ;
     QChart *chart;
     ///eya
     ///

@@ -16,6 +16,7 @@
 #include <QtSql/QSqlQueryModel>
 #include <QtPrintSupport/QPrinter>
 #include <QVector2D>
+#include"messengerconnectiondialog.h"
 #include <QVector>
 #include <QDesktopServices>
 #include <QUrl>
@@ -210,8 +211,117 @@ MainWindow::MainWindow(QWidget *parent)
        ui->reference_2->setValidator(new QIntValidator( 0,99999999, this ));
        ui->nbr_place_2->setValidator(new QIntValidator( 0,99999999, this ));
        ui->nom_employe_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z0_]{0,255}"), this ));
+       int ret=A.connect_arduino();
+          switch(ret){
+
+            case (0):
+
+              qDebug() << "arduino is available and connect to : " << A.getarduino_port_name();
+              //QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(Pointage2()));
+              break;
+
+            case(1):qDebug() << "arduino is available and connect to : " << A.getarduino_port_name();
+             // QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(Pointage2()));
+              break;
+
+              case(-1):qDebug()<< "arduino is available and connect to : " ;
+              //QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(Pointage2()));
+              break;
+
+
+       QObject::connect(A.getserial(),SIGNAL(readyRead()) ,this,SLOT(update_label
+                                                                     ()) ) ;
 
 }
+}
+void MainWindow::update_label() {
+    data=A.read_from_arduino() ;
+    QString temp=QString::fromStdString(data.toStdString()) ;
+     qDebug()<<temp;
+    if(temp.isEmpty()) {
+    qDebug()<<"no";
+    }
+     else {
+        int count=0 ;
+          QSqlQuery query ;
+          query.prepare("SELECT * FROM  TABLE1 where RFID = :id ");
+QString a=temp ;
+          query.bindValue(":id", a );
+
+          if(query.exec())
+
+          {
+
+
+
+              while(query.next())
+
+              {
+
+                  count++;
+
+              }
+
+              if(count!=0)
+
+              {
+                     QDate d ;
+                     QTime t ;
+               query.first() ;
+
+               qDebug()<<query.value(0).toInt() ;
+               qDebug()<<query.value(1).toString() ;
+               qDebug()<<query.value(2).toString() ;
+               qDebug()<<d.currentDate()  ;
+               qDebug()<< t.currentTime().toString();
+                QSqlQuery query2 ;
+                          query2.first() ;
+                query2.prepare("INSERT INTO POINTAGE (CIN,NOM,PRENOM,D,TIME) "
+                                      "VALUES (:cin,:nom,:prenom,:date,:time)");
+                   query2.bindValue(":cin",query.value(0).toInt()  );
+                   query2.bindValue(":nom",query.value(1).toString() );
+                   query2.bindValue(":prenom",query.value(2).toString());
+                   query2.bindValue(":date", d.currentDate());
+                   query2.bindValue(":time",t.currentTime().toString());
+
+                   //query.bindValue(":adresse",getadresse());
+                   //query.bindValue(":passe",getpasse());
+                query2.exec() ;
+                QByteArray name ;
+
+                     name="Bienvenue "+query.value(2).toByteArray()+" "+query.value(1).toByteArray() ;
+                     A.write_to_arduino(name) ;
+                  arduino1 a ;
+
+
+
+                     //  A.write_to_arduino(query.value(8).toByteArray()) ;
+
+   }
+
+
+
+              }
+
+              if(count==0 )
+
+              {
+
+                    A.write_to_arduino("Acces refusé ") ;
+                   qDebug()<<"mabrouuk ";
+
+              }
+
+
+
+    }
+
+
+     //qDebug() <<"fooook ";
+
+
+}
+
 
 
 MainWindow::~MainWindow()
@@ -689,17 +799,39 @@ void MainWindow::on_btn_login_clicked()
 
 
           processLabel->hide() ;
+          ui->stackedWidget->setCurrentWidget(ui->Menu) ;
+          processLabel->hide() ;
+          mSocket= new QTcpSocket(this);
+          connect(mSocket,&QTcpSocket::readyRead,[&](){
+           QTextStream T(mSocket);
+           auto text=T.readAll();
+           ui->textEdit_message->append(text);
+
+          });
+          QTextStream T(mSocket);
+          MessengerConnectionDialog D ;
+          mSocket->connectToHost(D.hostname(), D.port());
 
           QSound *son=new QSound(":/new/prefix1/image/Welcome - Male Voice Speaks (128 kbps) (mp3cut.net)(1).wav");
           son->play() ;
          if(query.value(4).toString()=="administrateur") {
     //        ui->tabWidget->insertTab(max,ui->adm_menu,"Home") ;
 
-    ui->stackedWidget->setCurrentWidget(ui->Menu) ;
-         }
+
+
+
+
+    name=query.value(2).toString()+" " + query.value(1).toString()  ;
+     T<<name<<" is connected";
+   }
+
+
+
 
        else {
 
+            name=query.value(2).toString()+ " " + query.value(1).toString() ;
+            T<<name<<" is connected";
           //   processLabel->close() ;
      //   ui->tabWidget->insertTab(max,ui->em_profil,"Profile") ;
         ui->aff_cin->setText(query.value(0).toString() );
@@ -728,7 +860,7 @@ ui->log_add->clear() ;
 
 void MainWindow::on_ajouterFour_clicked()
 {
-    if(ui->adm_aj_cin->text().isEmpty()||ui->adm_aj_salaire->text().isEmpty()||ui->adm_aj_nom->text().isEmpty()|| ui->adm_aj_prenom->text().isEmpty() ||ui->adm_aj_poste->text().isEmpty() ) {
+    if(ui->adm_aj_cin->text().isEmpty()||ui->adm_aj_salaire->text().isEmpty()||ui->adm_aj_nom->text().isEmpty()|| ui->adm_aj_prenom->text().isEmpty() ||ui->adm_aj_poste->text().isEmpty() || ui->adm_aj_rfid->text().isEmpty() ) {
         QMessageBox::critical(nullptr, QObject::tr("Erreur"),
         QObject::tr("Information incomplete.\n""Click Cancel to exit."), QMessageBox::Cancel);
 }
@@ -778,12 +910,13 @@ void MainWindow::on_ajouterFour_clicked()
                 QDateTime time ;
                 QString passe= ui->adm_aj_cin->text()+ui->adm_aj_spin_nbrenfant->text()+ui->adm_aj_cin->text()+ui->adm_aj_spin_nbrenfant->text();
                 QString adresse=nom+"."+prenom+".factory@gamil.com" ;
+                QString rfid=ui->adm_aj_rfid->text() ;
 
 
 
 
 
-                employer e(cin,nom,prenom,poste,etat,adresse,passe,salaire,nombre) ;
+                employer e(cin,nom,prenom,poste,etat,adresse,passe,salaire,nombre,rfid) ;
 
 
 
@@ -951,6 +1084,7 @@ void MainWindow::on_adm_tab_aff_activated(const QModelIndex &index)
             else
              ui->adm_aj_combo_etat->setCurrentIndex(0) ;
            ui->adm_aj_spin_nbrenfant->setValue(query.value(6).toInt()) ;
+           ui->adm_aj_rfid->setText(query.value(9).toString()) ;
 
 
        }
@@ -959,7 +1093,7 @@ void MainWindow::on_adm_tab_aff_activated(const QModelIndex &index)
 }
 
 void MainWindow::on_modifier_emp_clicked()
-{  if (ui->adm_aj_nom->text().isEmpty()||ui->adm_aj_prenom->text().isEmpty()||ui->adm_aj_salaire->text().isEmpty()||ui->adm_aj_poste->text().isEmpty()) {
+{  if (ui->adm_aj_nom->text().isEmpty()||ui->adm_aj_prenom->text().isEmpty()||ui->adm_aj_salaire->text().isEmpty()||ui->adm_aj_poste->text().isEmpty()||ui->adm_aj_rfid->text().isEmpty()) {
         QMessageBox::critical(nullptr, QObject::tr("Erreur"),
                     QObject::tr("inforamation incomplete !.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
@@ -972,7 +1106,7 @@ void MainWindow::on_modifier_emp_clicked()
 
         //query.prepare("UPDATE  TABLE1 SET CIN='" +  ui->adm_aj_cin_2->text() + "' ,NAME='"+ ui->adm_aj_nom_2->text()+"' ,PRENOM= '"+ui->adm_aj_prenom_2->text()+"' ,SALAIRE='"+ui->adm_aj_salaire_2->text().toInt()+"',POSTE'"+ui->adm_aj_poste_2->text()+"',ETAT='"+ui->adm_mod_aff_combo_etat->currentText()+"',NOMBRE='"+ ui->adm_aj_spin_nbrenfant_2->value()+"',PASSE= '"+passe+ "',ADRESSE='"+adresse+ "' WHERE ,CIN='"+ui->adm_aj_cin_2->text() +"'") ;
 
-        query.prepare("UPDATE  TABLE1 SET  NOM=:nom, PRENOM=:prenom,SALAIRE=:salaire,POSTE=:poste,ETAT=:etat,NOMBRE=:nombre,ADRESSE=:adresse,PASSE=:passe WHERE CIN=:cin ");
+        query.prepare("UPDATE  TABLE1 SET  NOM=:nom, PRENOM=:prenom,SALAIRE=:salaire,POSTE=:poste,ETAT=:etat,NOMBRE=:nombre,ADRESSE=:adresse,PASSE=:passe,RFID=:rfid WHERE CIN=:cin ");
 
     query.bindValue(":cin",ui->adm_aj_cin->text().toInt());
     query.bindValue(":nom", ui->adm_aj_nom->text());
@@ -983,6 +1117,7 @@ void MainWindow::on_modifier_emp_clicked()
     query.bindValue(":nombre",ui->adm_aj_spin_nbrenfant->value());
     query.bindValue(":adresse",adresse);
     query.bindValue(":passe",passe);
+    query.bindValue(":rfid",ui->adm_aj_rfid->text());
 
 if(query.exec()) {
 
@@ -1338,7 +1473,7 @@ void MainWindow::on_btn_exporter_clicked()
 
 void MainWindow::on_btn_statistique_clicked()
 {
-   /* int pos=0 ;
+    int pos=0 ;
        QChart *chart = new QChart();
 
          QPieSeries *series = new QPieSeries();
@@ -1383,7 +1518,7 @@ void MainWindow::on_btn_statistique_clicked()
           chartview->setParent(ui->horizontalFrame);
           ui->stackedWidget->setCurrentWidget(ui->statistique) ;
 
-*/
+
 }
 
 void MainWindow::on_reclamation_clicked()
@@ -3012,4 +3147,22 @@ ui->stackedWidget->setCurrentWidget(ui->reclamation) ;
 
     }
 
+}
+
+void MainWindow::on_send_clicked()
+{
+    QTextStream T(mSocket);
+    T<<name<<":"<<ui->message->text();
+    mSocket->flush();
+    ui->message->clear();
+}
+
+void MainWindow::on_reclamation_4_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->chat_box) ;
+}
+
+void MainWindow::on_reclamation_5_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->chat_box) ;
 }
