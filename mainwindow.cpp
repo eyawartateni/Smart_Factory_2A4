@@ -33,12 +33,6 @@
 
 
 
-
-
-
-
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -49,11 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
      ///arduino
-
-
      arduino_is_available=false;
      arduino_port_name="";
-
      arduino = new QSerialPort;
      foreach(const QSerialPortInfo &serial_port_info , QSerialPortInfo::availablePorts())
      {
@@ -61,7 +52,6 @@ MainWindow::MainWindow(QWidget *parent)
          {
              if(serial_port_info.vendorIdentifier()==arduino_uno_vendor_id && serial_port_info.productIdentifier()==arduino_uno_producy_id)
              {
-
                  arduino_port_name = serial_port_info.portName();
                    arduino_is_available=true;
              }
@@ -79,9 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
              arduino->setStopBits(QSerialPort::OneStop);
              arduino->setFlowControl(QSerialPort::NoFlowControl);
          }
-
  }
-
 
       ui->ag_aj_cin->setValidator(new QIntValidator(0,99999999,this));
       ui->adm_id_supp->setValidator(new QIntValidator(0,99999999,this));
@@ -253,8 +241,6 @@ void MainWindow::write_to_arduino(QByteArray d)
   }else
 
       qDebug() <<"couldn't write to serial!";
-
-
 
 }
 
@@ -572,10 +558,10 @@ void MainWindow::on_stat_clicked()
     int pos=0 ;
          QPieSeries *series = new QPieSeries();
          QSqlQuery query ;
-        query.prepare("select * from CHAINE ") ;
+        query.prepare("select * from VOITURE1 ") ;
         if(query.exec()) {
             while(query.next()){
-       series->append(query.value(2).toString(), query.value(1).toInt());
+       series->append(query.value(1).toString(), query.value(3).toInt());
         QPieSlice *slice = series->slices().at(pos);
         slice->setLabelVisible(true);
         pos++ ;
@@ -590,7 +576,7 @@ void MainWindow::on_stat_clicked()
 
         chart->setAnimationEasingCurve(QEasingCurve::InOutBounce);
 
-                   chart->setTitle("nombre de machine");
+                   chart->setTitle("les prix");
 
                    QChartView *chartview = new QChartView(chart);
 
@@ -602,7 +588,7 @@ void MainWindow::on_stat_clicked()
 
 
         chart->addSeries(series);
-        chart->setTitle("NOMBRE DE MACHINE");
+        chart->setTitle("LES PRIX DES DIFFERENT MARQUE");
 
         chartview->setParent(ui->frame_chaine);
         ui->stackedWidget->setCurrentWidget(ui->page) ;
@@ -2408,4 +2394,18 @@ void MainWindow::on_excel_clicked()
 void MainWindow::on_NomFournisseur_4_textChanged(const QString &arg1)
 {
     proxyfournisseur->setFilterFixedString(arg1);
+}
+
+void MainWindow::on_imp_clicked()
+{
+
+    QPrinter printer;
+
+    printer.setPrinterName("desiered printer name");
+
+  QPrintDialog dialog(&printer,this);
+
+    if(dialog.exec()== QDialog::Rejected)
+
+        return;
 }

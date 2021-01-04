@@ -229,6 +229,8 @@ private slots:
 
     void on_NomFournisseur_4_textChanged(const QString &arg1);
 
+    void on_imp_clicked();
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
