@@ -42,7 +42,7 @@
 #include<QtSerialPort/QSerialPort>
 #include<QtSerialPort/QSerialPortInfo>
 #include<QDebug>
-
+#include "C:/Users/Rostom/Desktop/samart_factory_f/Smart_Factory_2A4/SmtpClient-for-Qt-1.1/src/SmtpMime"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -94,7 +94,7 @@ private slots:
 
     void on_btn_statistique_clicked();
 
-   // void on_btn_em_rec_clicked();
+    void on_btn_em_rec_clicked();
     
     void on_reclamation_clicked();
 
@@ -278,6 +278,10 @@ private slots:
     void on_Tutorial_2_clicked();
 
     void on_Tutorial_55_clicked();
+
+  //  void on_btn_em_rec_clicked();
+
+    void on_reclamation_3_clicked();
 
 private:
     Ui::MainWindow *ui;

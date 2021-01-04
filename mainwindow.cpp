@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
      ui->setupUi(this);
 
-    // ui->stackedWidget->setCurrentWidget(ui->login) ;
+     ui->stackedWidget->setCurrentWidget(ui->login) ;
 
 
      ///arduino
@@ -1389,6 +1389,80 @@ void MainWindow::on_btn_statistique_clicked()
 void MainWindow::on_reclamation_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2) ;
+    //QString a ;
+
+    //qDebug()<<(ui->textEdit->document()->isEmpty()) ;
+
+    if(ui->textEdit->document()->isEmpty()) {
+
+         QMessageBox::critical(nullptr, QObject::tr("MAIL Denied"),
+         QObject::tr("Desole le mail est vide .\n""Click Cancel to exit."), QMessageBox::Cancel);
+     }
+    else {
+        // This is a first demo application of the SmtpClient for Qt project
+
+
+        // First we need to create an SmtpClient object
+        // We will use the Gmail's smtp server (smtp.gmail.com, port 465, ssl)
+
+        SmtpClient smtp("smtp.gmail.com", 465, SmtpClient::SslConnection);
+
+        // We need to set the username (your email address) and password
+        // for smtp authentification.
+
+        smtp.setUser(ui->log_add->text());
+        smtp.setPassword(ui->logpass->text());
+
+        // Now we create a MimeMessage object. This is the email.
+
+        MimeMessage message;
+        QString name =ui->adm_aj_nom->text() ;
+        EmailAddress sender(ui->log_add->text(), name );
+        message.setSender(&sender);
+
+        EmailAddress to("ros.ch.factory@gmail.com", "Recipient's Name");
+        message.addRecipient(&to);
+
+        message.setSubject("RECLAMATION");
+
+        // Now add some text to the email.
+        // First we create a MimeText object.
+
+        MimeText text;
+
+        text.setText(ui->textEdit->toPlainText());
+
+        // Now add it to the mail
+
+        message.addPart(&text);
+
+        // Now we can send the mail
+
+        if (!smtp.connectToHost()) {
+            qDebug() << "Failed to connect to host!" << endl;
+
+        }
+
+        if (!smtp.login()) {
+            qDebug() << "Failed to login!" << endl;
+
+        }
+
+        if (!smtp.sendMail(message)) {
+            qDebug() << "Failed to send mail!" << endl;
+            QMessageBox::critical(nullptr, QObject::tr("MAILING"),
+            QObject::tr(" Mail NO send .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+
+        }
+        else {
+            QMessageBox::information(nullptr, QObject::tr("OK"),
+            QObject::tr("Mail envoye .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+
+        smtp.quit();
+}
 }
 
 /*
@@ -2779,4 +2853,163 @@ void MainWindow::on_Tutorial_55_clicked()
 {
     QMessageBox::information(nullptr, QObject::tr("Tutorial"),
              QObject::tr("1)	To edit press the reference of the item you change 2 times to select it. After the the modifications press edit (you cannot edit the reference).\n2)	Export PDF only exports items in the table, for example: if we look for companies whose name starts with ‘A’, it is this list that will be exported.\n3)	To delete select or write the reference of the item you want to delete and press the ‘Delete’ button.\n""Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_btn_em_rec_clicked()
+{
+    //QString a ;
+
+    //qDebug()<<(ui->textEdit->document()->isEmpty()) ;
+
+    if(ui->textEdit->document()->isEmpty()) {
+
+         QMessageBox::critical(nullptr, QObject::tr("MAIL Denied"),
+         QObject::tr("Desole le mail est vide .\n""Click Cancel to exit."), QMessageBox::Cancel);
+     }
+    else {
+        // This is a first demo application of the SmtpClient for Qt project
+
+
+        // First we need to create an SmtpClient object
+        // We will use the Gmail's smtp server (smtp.gmail.com, port 465, ssl)
+
+        SmtpClient smtp("smtp.gmail.com", 465, SmtpClient::SslConnection);
+
+        // We need to set the username (your email address) and password
+        // for smtp authentification.
+
+        smtp.setUser("aderssa.dhia.factory@gmail.com");
+        smtp.setPassword("15621562");
+
+        // Now we create a MimeMessage object. This is the email.
+
+        MimeMessage message;
+        QString name ="aderssa";
+        EmailAddress sender("aderssa.dhia.factory@gmail.com", name );
+        message.setSender(&sender);
+
+        EmailAddress to("ros.ch.factory@gmail.com", "Recipient's Name");
+        message.addRecipient(&to);
+
+        message.setSubject("RECLAMATION");
+
+        // Now add some text to the email.
+        // First we create a MimeText object.
+
+        MimeText text;
+
+        text.setText(ui->textEdit->toPlainText());
+
+        // Now add it to the mail
+
+        message.addPart(&text);
+
+        // Now we can send the mail
+
+        if (!smtp.connectToHost()) {
+            qDebug() << "Failed to connect to host!" << endl;
+
+        }
+
+        if (!smtp.login()) {
+            qDebug() << "Failed to login!" << endl;
+
+        }
+
+        if (!smtp.sendMail(message)) {
+            qDebug() << "Failed to send mail!" << endl;
+            QMessageBox::critical(nullptr, QObject::tr("MAILING"),
+            QObject::tr(" Mail NO send .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+
+        }
+        else {
+            QMessageBox::information(nullptr, QObject::tr("OK"),
+            QObject::tr("Mail envoye .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+
+        smtp.quit();
+
+    }
+}
+
+void MainWindow::on_reclamation_3_clicked()
+{
+    //QString a ;
+
+    //qDebug()<<(ui->textEdit->document()->isEmpty()) ;
+ui->stackedWidget->setCurrentWidget(ui->reclamation) ;
+    if(ui->textEdit->document()->isEmpty()) {
+
+         QMessageBox::critical(nullptr, QObject::tr("MAIL Denied"),
+         QObject::tr("Desole le mail est vide .\n""Click Cancel to exit."), QMessageBox::Cancel);
+     }
+    else {
+        // This is a first demo application of the SmtpClient for Qt project
+
+
+        // First we need to create an SmtpClient object
+        // We will use the Gmail's smtp server (smtp.gmail.com, port 465, ssl)
+
+        SmtpClient smtp("smtp.gmail.com", 465, SmtpClient::SslConnection);
+
+        // We need to set the username (your email address) and password
+        // for smtp authentification.
+
+        smtp.setUser("aderssa.dhia.factory@gmail.com");
+        smtp.setPassword("15621562");
+
+        // Now we create a MimeMessage object. This is the email.
+
+        MimeMessage message;
+        QString name ="aderssa";
+        EmailAddress sender("aderssa.dhia.factory@gmail.com", name );
+        message.setSender(&sender);
+
+        EmailAddress to("ros.ch.factory@gmail.com", "Recipient's Name");
+        message.addRecipient(&to);
+
+        message.setSubject("RECLAMATION");
+
+        // Now add some text to the email.
+        // First we create a MimeText object.
+
+        MimeText text;
+
+        text.setText(ui->textEdit->toPlainText());
+
+        // Now add it to the mail
+
+        message.addPart(&text);
+
+        // Now we can send the mail
+
+        if (!smtp.connectToHost()) {
+            qDebug() << "Failed to connect to host!" << endl;
+
+        }
+
+        if (!smtp.login()) {
+            qDebug() << "Failed to login!" << endl;
+
+        }
+
+        if (!smtp.sendMail(message)) {
+            qDebug() << "Failed to send mail!" << endl;
+            QMessageBox::critical(nullptr, QObject::tr("MAILING"),
+            QObject::tr(" Mail NO send .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+
+        }
+        else {
+            QMessageBox::information(nullptr, QObject::tr("OK"),
+            QObject::tr("Mail envoye .\n""Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+
+        smtp.quit();
+
+    }
+
 }
