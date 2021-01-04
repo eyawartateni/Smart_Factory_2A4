@@ -15,15 +15,15 @@ class Client
 {
 private:
     QString  cin, nom ,prenom,achat,paiement,model_choisi;
-QString  date_naissance;
+QDate  date_naissance;
 
 public:
     Client();
-    Client(QString,QString,QString,QString,QString,QString,QString);
+    Client(QString,QString,QString,QString,QString,QString,QDate);
     void setCin(QString c){cin=c;}
     void setPrenom(QString pr){prenom=pr;}
     void setnom(QString nm){nom=nm;}
-    void setdate_naissance(QString dt){date_naissance=dt;}
+    void setdate_naissance(QDate dt){date_naissance=dt;}
     void setpaiement(QString pay){paiement=pay;}
     void setachat(QString ach){achat=ach;}
     void setModelChoisi(QString mdl){model_choisi=mdl;}
@@ -33,7 +33,7 @@ public:
     QString getCin(){return cin;}
     QString getNom(){return nom;}
     QString getPrenom(){return prenom;}
-    QString getdate_naissance(){return date_naissance;}
+    QDate getdate_naissance(){return date_naissance;}
     QString getpaiement(){return paiement;}
     QString getachat(){return achat;}
     QString getModelChoisi(){return model_choisi;}

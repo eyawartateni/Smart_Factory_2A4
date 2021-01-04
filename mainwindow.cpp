@@ -1557,7 +1557,7 @@ void MainWindow::on_ajout_four_clicked()
     QString cin=ui->cinfour_2->text();
      QString nom=ui->NomFournisseur_4->text();
       QString prenom=ui->prenomfour_2->text();
-       QString dateLimite=ui->date_limite_2->text();
+       QDate dateLimite=ui->date_limite_2->date();
         QString piece_demandee=ui->piecedemand_2->text();
         QString nbre_piece=ui->nbre_2->text();
       QString prix_apayer=ui->prixpayer_4->text();
@@ -1632,7 +1632,7 @@ void MainWindow::on_modif_four_clicked()
 
       QString nom=ui->NomFournisseur_4->text();
        QString prenom=ui->prenomfour_2->text();
-        QString dateLimite=ui->date_limite_2->text();
+        QDate dateLimite=ui->date_limite_2->date();
          QString piece_demandee=ui->piecedemand_2->text();
          QString nbre_piece=ui->nbre_2->text();
        QString prix_apayer=ui->prixpayer_4->text();
@@ -1711,7 +1711,7 @@ void MainWindow::on_ajouter_client_clicked()
     QString cin=ui->lineEdit_cin_2->text();
      QString nom=ui->lineEdit_nom_2->text();
       QString prenom=ui->lineEdit_prenom_2->text();
-       QString date_naissance=ui->date_naissance_2->text();
+       QDate date_naissance=ui->date_naissance_2->date();
         QString achat=ui->lineEdit_achat_2->text();
         QString model_choisi=ui->lineEdit_model_2->text();
       QString paiement=ui->lineEdit_paiement_2->text();
@@ -1767,7 +1767,7 @@ void MainWindow::on_mod_client_clicked()
         QString cin=ui->lineEdit_cin_2->text();
          QString nom=ui->lineEdit_nom_2->text();
           QString prenom=ui->lineEdit_prenom_2->text();
-           QString date_naissance=ui->date_naissance_2->text();
+           QDate date_naissance=ui->date_naissance_2->date();
             QString achat=ui->lineEdit_achat_2->text();
             QString model_choisi=ui->lineEdit_model_2->text();
           QString paiement=ui->lineEdit_paiement_2->text();
@@ -1860,7 +1860,7 @@ void MainWindow::on_tabclient_2_activated(const QModelIndex &index)
            ui->lineEdit_achat_2->setText(qry.value(4).toString());
 
            ui->lineEdit_paiement_2->setText(qry.value(5).toString());
-ui->date_naissance_2->setText(qry.value(6).toString());
+ui->date_naissance_2->setDate(qry.value(6).toDate());
 
 
 
@@ -1890,7 +1890,7 @@ void MainWindow::on_tabfour_2_activated(const QModelIndex &index)
            ui->piecedemand_2->setText(qry.value(3).toString());
            ui->nbre_2->setText(qry.value(5).toString());
            ui->prixpayer_4->setText(qry.value(4).toString());
-           ui->date_limite_2->setText(qry.value(6).toString());
+           ui->date_limite_2->setDate(qry.value(6).toDate());
 
 
        }

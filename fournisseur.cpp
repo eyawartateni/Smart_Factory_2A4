@@ -5,7 +5,7 @@ fournisseur::fournisseur()
 {
 
 }
-fournisseur::fournisseur(QString cn,QString nm,QString prn,QString pdm,QString nbp,QString pr,QString dl)
+fournisseur::fournisseur(QString cn,QString nm,QString prn,QString pdm,QString nbp,QString pr,QDate dl)
 {
     nom=nm;
     cin=cn;
@@ -62,7 +62,7 @@ bool fournisseur::supprimerFour(QString CIN)
 bool fournisseur::modifierFour(QString CIN)
 {
    QSqlQuery query;
-    query.prepare("update fournisseur set nom='"+nom+"',prenom='"+prenom+"',piece_demandee='"+piece_demandee+"',nbre_piece='"+nbre_piece+"',prix_apayer='"+prix_apayer+"',datelimite='"+dateLimite+"' where CIN=:cin");
+    query.prepare("update fournisseur set nom=:nom,prenom=:prenom,piece_demandee=:piece_demandee,nbre_piece=:nbre_piece,prix_apayer=:prix_apayer,datelimite=:dateLimite where CIN=:cin");
     query.bindValue(":cin",CIN);
     return query.exec();
 }
