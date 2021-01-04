@@ -814,8 +814,20 @@ void MainWindow::on_btn_login_clicked()
 
           QSound *son=new QSound(":/new/prefix1/image/Welcome - Male Voice Speaks (128 kbps) (mp3cut.net)(1).wav");
           son->play() ;
-         if(query.value(4).toString()=="administrateur") {
+          QString qs = query.value(4).toString();
+
+
+         // Either this if you use UTF-8 anywhere
+         std::string utf8_text = qs.toUtf8().constData();
+         utf8_text.substr(0,13) ;
+
+         // or this if you're on Windows :-)
+        // std::string current_locale_text = qs.toLocal8Bit().constData();
+
+         if(utf8_text=="administrateur") {
     //        ui->tabWidget->insertTab(max,ui->adm_menu,"Home") ;
+
+
 
 
 

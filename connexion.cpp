@@ -21,12 +21,18 @@ db.setDatabaseName("source_de_donnes");
 db.setUserName("Rostom");//inserer nom de l'utilisateur
 db.setPassword("liverpool");//inserer mot de passe de cet utilisateur
 
+/*
+db.setDatabaseName("ross");
+db.setUserName("rostomcherni");//inserer nom de l'utilisateur
+db.setPassword("baba2021");//inserer mot de passe de cet utilisateur
+*/
 
-
+//
 //Mayssa
 /*db.setDatabaseName("projet");
 db.setUserName("mayssa");//inserer nom de l'utilisateur
 db.setPassword("0000");//inserer mot de passe de cet utilisateur*/
+//
 //EYA(PICHOU)
 /*db.setDatabaseName("Source_Projet2A");
 db.setUserName("eya");
