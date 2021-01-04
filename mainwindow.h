@@ -225,6 +225,10 @@ private slots:
 
     void on_btn_pointage_clicked();
 
+    void on_excel_clicked();
+
+    void on_NomFournisseur_4_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     voiture vtmp;
@@ -233,6 +237,9 @@ private:
     QSound *son;
     QChart *chart;
     ///eya
+    ///
+
+
     Client tmpclient;
     Client tmpclient2;
 

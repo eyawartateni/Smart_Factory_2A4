@@ -946,7 +946,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="login">
      <widget class="QFrame" name="frame_2">
@@ -15337,6 +15337,19 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 {
     border: 1px solid #444;
 }</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="excel">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>380</y>
+           <width>101</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>exporter excel</string>
          </property>
         </widget>
        </widget>

@@ -29,6 +29,10 @@
 #include <QDataStream>
 #include <QTextStream>
 #include<arduino1.h>
+#include "exportexcelobject.h"
+
+
+
 
 
 
@@ -183,7 +187,7 @@ MainWindow::MainWindow(QWidget *parent)
       proxyfournisseur=new QSortFilterProxyModel(this);
       proxyfournisseur->setSourceModel(modFournisseur);
       proxyfournisseur->setFilterCaseSensitivity(Qt::CaseInsensitive);
-      proxyfournisseur->setFilterKeyColumn(0);
+      proxyfournisseur->setFilterKeyColumn(1);
 
 
       ui->tabfour_2->setModel(proxyfournisseur);
@@ -1574,7 +1578,7 @@ void MainWindow::on_ajout_four_clicked()
            proxyfournisseur=new QSortFilterProxyModel(this);
            proxyfournisseur->setSourceModel(modFournisseur);
            proxyfournisseur->setFilterCaseSensitivity(Qt::CaseInsensitive);
-           proxyfournisseur->setFilterKeyColumn(-1);
+           proxyfournisseur->setFilterKeyColumn(1);
 
 
            ui->tabfour_2->setModel(proxyfournisseur);
@@ -1649,7 +1653,7 @@ void MainWindow::on_modif_four_clicked()
             proxyfournisseur=new QSortFilterProxyModel(this);
             proxyfournisseur->setSourceModel(modFournisseur);
             proxyfournisseur->setFilterCaseSensitivity(Qt::CaseInsensitive);
-            proxyfournisseur->setFilterKeyColumn(-1);
+            proxyfournisseur->setFilterKeyColumn(1);
 
 
             ui->tabfour_2->setModel(proxyfournisseur);
@@ -1685,7 +1689,7 @@ void MainWindow::on_supp_four_clicked()
         proxyfournisseur=new QSortFilterProxyModel(this);
         proxyfournisseur->setSourceModel(modFournisseur);
         proxyfournisseur->setFilterCaseSensitivity(Qt::CaseInsensitive);
-        proxyfournisseur->setFilterKeyColumn(-1);
+        proxyfournisseur->setFilterKeyColumn(1);
 
 
         ui->tabfour_2->setModel(proxyfournisseur);
@@ -2357,4 +2361,51 @@ void MainWindow::on_btn_pointage_clicked()
     ui->tab_pointage->setModel(a.afficher());
     ui->stackedWidget->setCurrentWidget(ui->pointage) ;
 
+}
+
+void MainWindow::on_excel_clicked()
+{
+   /* QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "xlsx_connection");
+    db.setDatabaseName("DRIVER={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + QString("C:/Users/eyaou/Desktop/projet/file.xls")); if(db.open())
+    {
+
+    QSqlQuery query("select * from fournisseur [" + QString("Sheet1") + "$]",db); // Select range, place A1:B5 after $
+    while (query.next())
+    {
+    QString column1= query.value(0).toString();
+    qDebug() << column1;
+    }
+}*/
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                        tr("Excel Files (*.xls)"));
+        if (fileName.isEmpty())
+            return;
+
+        ExportExcelObject obj(fileName, "mydata", ui->tabfour_2);
+
+        // you can change the column order and
+        // choose which colum to export
+        obj.addField(0, "1cin", "char(20)");
+        obj.addField(1, "2nom", "char(20)");
+        obj.addField(2, "3prenom", "char(20)");
+        obj.addField(3, "4piece", "char(20)");
+        obj.addField(4, "5nombre", "char(20)");
+        obj.addField(5, "6prix", "char(20)");
+        obj.addField(6, "7date", "char(20)");
+
+
+        int retVal = obj.export2Excel();
+
+        if( retVal > 0)
+        {
+            QMessageBox::information(this, tr("Done"),
+                                     QString(tr("%1 records exported!")).arg(retVal)
+                                     );
+        }
+}
+
+void MainWindow::on_NomFournisseur_4_textChanged(const QString &arg1)
+{
+    proxyfournisseur->setFilterFixedString(arg1);
 }

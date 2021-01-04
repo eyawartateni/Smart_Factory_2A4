@@ -5,6 +5,8 @@ QT       +=  core gui serialport
 QT       += core gui serialport
 QT       +=printsupport
 QT       += core gui charts
+QT       +=
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -21,6 +23,7 @@ SOURCES += \
     client.cpp \
     connexion.cpp \
     employer.cpp \
+    exportexcelobject.cpp \
     fournisseur.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -35,6 +38,7 @@ HEADERS += \
     client.h \
     connexion.h \
     employer.h \
+    exportexcelobject.h \
     fournisseur.h \
     mainwindow.h \
     parking.h \
