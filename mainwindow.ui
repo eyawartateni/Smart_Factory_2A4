@@ -946,7 +946,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
 }</string>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="login">
      <widget class="QFrame" name="frame_2">
@@ -9040,13 +9040,47 @@ background:orange;
      <widget class="QFrame" name="horizontalFrame">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>0</y>
+        <x>30</x>
+        <y>10</y>
         <width>1241</width>
-        <height>601</height>
+        <height>691</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </widget>
+     <widget class="QPushButton" name="btn_existe_11">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>600</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{
+background:rgb(0, 0, 0);
+border-radius :60px;
+}
+
+QPushButton
+{
+	font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+
+	color:orange;
+border-radius:15px;
+}
+QPushButton:hover
+{
+color : #333;
+border-radius:15px;
+background:orange;
+}</string>
+      </property>
+      <property name="text">
+       <string>retour</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="voiture_ch">
@@ -18310,7 +18344,7 @@ background-color:orange;
           </rect>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Employe's name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Employee's name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_62">

@@ -100,12 +100,20 @@ bool Client::supprimer(QString CIN)
     return query.exec();
 }
 
-bool Client::modifier(QString CIN)
+bool Client::modifier(QString CIN,QString prenom,QString  nom ,QString model,QString achat,QString paiement , QDate date_n )
 {
     QSqlQuery query;
  //query.prepare("UPDATE  TABLE1 SET  NOM=:nom, PRENOM=:prenom,SALAIRE=:salaire,POSTE=:poste,ETAT=:etat,NOMBRE=:nombre,ADRESSE=:adresse,PASSE=:passe WHERE CIN=:cin ");
-          query.prepare("update client set nom=:nom, prenom=:prenom, model=:model_choisi,achat=:achat,paiement=:+paiement+,date_naissance=:date_naissance where CIN=:cin");
-         query.bindValue(":cin", CIN);
+          query.prepare("update client set nom=:nom, prenom=:prenom, model=:model_choisi,achat=:achat,paiement=:paiement,date_naissance=:date_naissance where CIN=:cin");
+
+          query.bindValue(":cin", CIN);
+
+          query.bindValue(":nom", nom);
+          query.bindValue(":prenom", prenom);
+           query.bindValue(":achat", achat);
+           query.bindValue(":paiement", paiement);
+            query.bindValue(":model_choisi", model);
+           query.bindValue(":date_naissance",date_n);
 
       return   query.exec();
 

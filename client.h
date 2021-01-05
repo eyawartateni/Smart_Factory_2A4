@@ -40,7 +40,7 @@ public:
     bool ajouter();
     QSqlQueryModel *afficher();
     bool supprimer(QString cin);
-    bool modifier(QString cin);
+    bool modifier(QString cin,QString prenom,QString  nom ,QString model,QString achat,QString paiement , QDate date_n  );
     bool exporterpdf();
     QSqlRelationalTableModel *chercherclient();
     QSqlRelationalTableModel *modClient;

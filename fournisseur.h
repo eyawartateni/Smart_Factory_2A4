@@ -40,7 +40,7 @@ public:
     bool ajouterFour();
     QSqlQueryModel *afficherFour();
     bool supprimerFour(QString cin);
-    bool modifierFour(QString cin);
+    bool modifierFour(QString cin,QString nom ,QString prenom ,QString piece_demandee  ,QString nbre_piece ,QString prix_apayer, QDate dateLimite  );
 
 
     QSqlQueryModel *trier(int test);

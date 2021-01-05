@@ -59,11 +59,18 @@ bool fournisseur::supprimerFour(QString CIN)
    return query.exec();
 }
 
-bool fournisseur::modifierFour(QString CIN)
+bool fournisseur::modifierFour(QString CIN,QString nom ,QString prenom ,QString piece_demandee  ,QString nbre_piece ,QString prix_apayer, QDate dateLimite )
 {
    QSqlQuery query;
     query.prepare("update fournisseur set nom=:nom,prenom=:prenom,piece_demandee=:piece_demandee,nbre_piece=:nbre_piece,prix_apayer=:prix_apayer,datelimite=:dateLimite where CIN=:cin");
     query.bindValue(":cin",CIN);
+
+    query.bindValue(":nom", nom);
+    query.bindValue(":prenom", prenom);
+    query.bindValue(":prix_apayer", prix_apayer);
+    query.bindValue(":piece_demandee",piece_demandee );
+    query.bindValue(":nbre_piece", nbre_piece);
+    query.bindValue(":dateLimite",dateLimite);
     return query.exec();
 }
 QSqlQueryModel * fournisseur::trier(int test)

@@ -302,6 +302,8 @@ private slots:
 
     void on_export_excel_3_clicked();
 
+    void on_btn_existe_11_clicked();
+
 private:
     Ui::MainWindow *ui;
      arduino1 A;

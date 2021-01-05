@@ -1549,7 +1549,7 @@ void MainWindow::on_btn_statistique_clicked()
 
                   //   chartview->setBaseSize(300,300);
 
-                     chartview->setGeometry(-100,-180,981,821);
+                     chartview->setGeometry(-100,-100,1200,821);
 
 
           chart->addSeries(series);
@@ -1793,6 +1793,16 @@ void MainWindow::on_btn_echange_clicked()
 void MainWindow::on_aff_four_clicked()
 {
     ui->tabfour_2->setModel(tmpfournisseur.afficherFour());
+    modFournisseur= new QSqlRelationalTableModel(this);
+               modFournisseur->setTable("fournisseur");
+               modFournisseur->select();
+               proxyfournisseur=new QSortFilterProxyModel(this);
+               proxyfournisseur->setSourceModel(modFournisseur);
+               proxyfournisseur->setFilterCaseSensitivity(Qt::CaseInsensitive);
+               proxyfournisseur->setFilterKeyColumn(1);
+
+
+               ui->tabfour_2->setModel(proxyfournisseur);
 }
 
 void MainWindow::on_ajout_four_clicked()
@@ -1882,7 +1892,7 @@ void MainWindow::on_modif_four_clicked()
       fournisseur F(cin,nom,prenom,piece_demandee,nbre_piece,prix_apayer,dateLimite);
 
 
-        bool test=F.modifierFour(CIN);
+        bool test=F.modifierFour( cin, nom , prenom , piece_demandee  , nbre_piece , prix_apayer,  dateLimite );
         if(test)
         {
             ui->tabfour_2->setModel(tmpfournisseur.afficherFour()); //refresh
@@ -2015,7 +2025,9 @@ void MainWindow::on_mod_client_clicked()
             QString model_choisi=ui->lineEdit_model_2->text();
           QString paiement=ui->lineEdit_paiement_2->text();
          Client C(cin,nom,prenom,achat,paiement,model_choisi,date_naissance);
-           bool test=C.modifier(CIN);
+
+         //bool Client::modifier(QString CIN,QString prenom,QString  nom ,QString model,QString achat,QString paiement , QDate date_n )
+         bool test=C.modifier(CIN,prenom,nom,model_choisi,achat,paiement,date_naissance);
            if(test)
            {
                ui->tabclient_2->setModel(tmpclient.afficher()); //refresh
@@ -3233,8 +3245,8 @@ void MainWindow::on_excell_clicked()
         obj.addField(1, "2marque", "char(20)");
         obj.addField(2, "3modele", "char(20)");
         obj.addField(3, "4prix", "char(20)");
-        obj.addField(4, "5type de carburant", "char(20)");
-        obj.addField(5, "6prix options", "char(20)");
+        obj.addField(4, "5type_de_carburant", "char(20)");
+        obj.addField(5, "6prix_options", "char(20)");
         obj.addField(6, "7couleur", "char(20)");
         obj.addField(7, "8options", "char(20)");
 
@@ -3258,51 +3270,54 @@ void MainWindow::on_export_excel_4_clicked()
 {
 
     QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
-                                                        tr("Excel Files (*.xls)"));
-        if (fileName.isEmpty())
-            return;
+                                                            tr("Excel Files (*.xls)"));
+            if (fileName.isEmpty())
+                return;
 
-        ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_3);
+            ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_3);
 
-        // you can change the column order and
-        // choose which colum to export
-        obj.addField(0, "1name", "char(20)");
-        obj.addField(1, "2parking  number", "char(20)");
-        obj.addField(2, "3reference", "char(20)");
+            //colums to export
+            obj.addField(0, "Employee_s_name", "char(20)");
+            obj.addField(1, "Parking_Number", "char(20)");
+            obj.addField(2, "Reference", "char(20)");
 
 
-        int retVal = obj.export2Excel();
 
-        if( retVal > 0)
-        {
-            QMessageBox::information(this, tr("Done"),
-                                     QString(tr("%1 records exported!")).arg(retVal)
-                                     );
-        }
+            int retVal = obj.export2Excel();
+            if( retVal > 0)
+            {
+                QMessageBox::information(this, tr("Done"),
+                                         QString(tr("%1 records exported!")).arg(retVal)
+                                         );
+            }
 }
 
 void MainWindow::on_export_excel_3_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
-                                                        tr("Excel Files (*.xls)"));
-        if (fileName.isEmpty())
-            return;
+                                                            tr("Excel Files (*.xls)"));
+            if (fileName.isEmpty())
+                return;
 
-        ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_2);
+            ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_2);
 
-        // you can change the column order and
-        // choose which colum to export
-        obj.addField(0, "1nom", "char(20)");
-        obj.addField(1, "2nombre  de la place", "char(20)");
-        obj.addField(2, "3reference", "char(20)");
+            //colums to export
+            obj.addField(0, "Nom_et_Prenom_de_l_Employé", "char(20)");
+            obj.addField(1, "Nombre_de_Place", "char(20)");
+            obj.addField(2, "Reference", "char(20)");
 
 
-        int retVal = obj.export2Excel();
 
-        if( retVal > 0)
-        {
-            QMessageBox::information(this, tr("Done"),
-                                     QString(tr("%1 records exported!")).arg(retVal)
-                                     );
-        }
+            int retVal = obj.export2Excel();
+            if( retVal > 0)
+            {
+                QMessageBox::information(this, tr("Done"),
+                                         QString(tr("%1 records exported!")).arg(retVal)
+                                         );
+            }
+}
+
+void MainWindow::on_btn_existe_11_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->admin) ;
 }
