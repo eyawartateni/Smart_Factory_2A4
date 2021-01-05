@@ -278,7 +278,7 @@ private slots:
 
     void on_btn_existe_123_clicked();
 
-    void on_Tutorial_2_clicked();
+
 
     void on_Tutorial_55_clicked();
 
@@ -293,6 +293,14 @@ private slots:
     void on_reclamation_5_clicked();
 
     void on_btn_existe_124_clicked();
+
+    void on_excell_clicked();
+
+    void on_btn_rappel_clicked();
+
+    void on_export_excel_4_clicked();
+
+    void on_export_excel_3_clicked();
 
 private:
     Ui::MainWindow *ui;

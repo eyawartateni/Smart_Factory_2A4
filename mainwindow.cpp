@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent)
 
             processLabel->setAttribute(Qt::WA_TranslucentBackground,true);
 
-            processLabel->setGeometry(450,100,351,470);
+            processLabel->setGeometry(800,100,451,570);
 
             processLabel->setScaledContents(true);
             scene.addWidget(processLabel);
@@ -1754,7 +1754,7 @@ void MainWindow::on_btn_existe_2_clicked()
 
 void MainWindow::on_btn_retour_em_clicked()
 {
-     ui->stackedWidget->setCurrentWidget(ui->employer) ;
+     ui->stackedWidget->setCurrentWidget(ui->login) ;
 }
 
 void MainWindow::on_btn_retour_clicked()
@@ -2586,12 +2586,18 @@ void MainWindow::on_imprimer_assu_clicked()
 
 void MainWindow::on_btn_existe_9_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->voiture_ch);
+    ui->stackedWidget->setCurrentWidget(ui->Menu);
 }
 
 void MainWindow::on_stat_2_clicked()
 {
-      write_to_arduino("0");
+    int reponse = QMessageBox::question(this, "Warning", "voulez-vous etteindre la led?", QMessageBox::Yes);
+
+            if (reponse == QMessageBox::Yes)
+            {
+           write_to_arduino("0");
+            }
+     // write_to_arduino("0");
 }
 
 void MainWindow::on_btn_pointage_clicked()
@@ -2715,13 +2721,13 @@ void MainWindow::on_ajouter_assu_2_clicked()
      if(test)
      {
          ui->tableView_assurance_2->setModel(tmp2.afficher()); // refresh => chaque ajout sera affiché
-         QMessageBox::information(nullptr, QObject::tr("Assurance Ajoutée"),
+         QMessageBox::information(nullptr, QObject::tr("Inssurance Added"),
                      QObject::tr("OK.\n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
  }
      else
-         QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Ajoutée"),
+         QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Added"),
                      QObject::tr("OK.\n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -2758,7 +2764,7 @@ void MainWindow::on_mod_assu_2_clicked()
     }
     else
     {
-        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Modifiée"),
+        QMessageBox::critical(nullptr, QObject::tr("Inssurance not Added"),
                               QObject::tr("OK.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -2778,13 +2784,13 @@ void MainWindow::on_supprimer_2_clicked()
     {
         ui->tableView_assurance->setModel(tmp2.afficher());// refresh => chaque ajout sera affiché
 
-        QMessageBox::information(nullptr, QObject::tr("Assurance Supprimé"),
+        QMessageBox::information(nullptr, QObject::tr("Inssurance Deleted"),
                     QObject::tr("OK.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Assurance Pas Supprimé"),
+        QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Deleted"),
                     QObject::tr("OK.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -2942,7 +2948,7 @@ void MainWindow::on_supp_park_3_clicked()
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Delted"),
+        QMessageBox::critical(nullptr, QObject::tr("Inssurance Not Deleted"),
                     QObject::tr("OK.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -3210,4 +3216,93 @@ void MainWindow::on_reclamation_5_clicked()
 void MainWindow::on_btn_existe_124_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Menu) ;
+}
+
+void MainWindow::on_excell_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                        tr("Excel Files (*.xls)"));
+        if (fileName.isEmpty())
+            return;
+
+        ExportExcelObject obj(fileName, "mydata", ui->tableView_voiture);
+
+        // you can change the column order and
+        // choose which colum to export
+        obj.addField(0, "1reference", "char(20)");
+        obj.addField(1, "2marque", "char(20)");
+        obj.addField(2, "3modele", "char(20)");
+        obj.addField(3, "4prix", "char(20)");
+        obj.addField(4, "5type de carburant", "char(20)");
+        obj.addField(5, "6prix options", "char(20)");
+        obj.addField(6, "7couleur", "char(20)");
+        obj.addField(7, "8options", "char(20)");
+
+
+        int retVal = obj.export2Excel();
+
+        if( retVal > 0)
+        {
+            QMessageBox::information(this, tr("Done"),
+                                     QString(tr("%1 records exported!")).arg(retVal)
+                                     );
+        }
+}
+
+void MainWindow::on_btn_rappel_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->reclamation);
+}
+
+void MainWindow::on_export_excel_4_clicked()
+{
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                        tr("Excel Files (*.xls)"));
+        if (fileName.isEmpty())
+            return;
+
+        ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_3);
+
+        // you can change the column order and
+        // choose which colum to export
+        obj.addField(0, "1name", "char(20)");
+        obj.addField(1, "2parking  number", "char(20)");
+        obj.addField(2, "3reference", "char(20)");
+
+
+        int retVal = obj.export2Excel();
+
+        if( retVal > 0)
+        {
+            QMessageBox::information(this, tr("Done"),
+                                     QString(tr("%1 records exported!")).arg(retVal)
+                                     );
+        }
+}
+
+void MainWindow::on_export_excel_3_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                        tr("Excel Files (*.xls)"));
+        if (fileName.isEmpty())
+            return;
+
+        ExportExcelObject obj(fileName, "mydata", ui->tableView_parking_2);
+
+        // you can change the column order and
+        // choose which colum to export
+        obj.addField(0, "1nom", "char(20)");
+        obj.addField(1, "2nombre  de la place", "char(20)");
+        obj.addField(2, "3reference", "char(20)");
+
+
+        int retVal = obj.export2Excel();
+
+        if( retVal > 0)
+        {
+            QMessageBox::information(this, tr("Done"),
+                                     QString(tr("%1 records exported!")).arg(retVal)
+                                     );
+        }
 }
