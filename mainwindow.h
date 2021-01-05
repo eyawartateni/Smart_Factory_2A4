@@ -292,6 +292,8 @@ private slots:
 
     void on_reclamation_5_clicked();
 
+    void on_btn_existe_124_clicked();
+
 private:
     Ui::MainWindow *ui;
      arduino1 A;

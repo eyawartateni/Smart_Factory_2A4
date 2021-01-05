@@ -229,10 +229,10 @@ MainWindow::MainWindow(QWidget *parent)
               break;
 
 
-       QObject::connect(A.getserial(),SIGNAL(readyRead()) ,this,SLOT(update_label
-                                                                     ()) ) ;
+
 
 }
+          QObject::connect(A.getserial(),SIGNAL(readyRead()) ,this,SLOT(update_label()) ) ;
 }
 void MainWindow::update_label() {
     data=A.read_from_arduino() ;
@@ -245,7 +245,7 @@ void MainWindow::update_label() {
         int count=0 ;
           QSqlQuery query ;
           query.prepare("SELECT * FROM  TABLE1 where RFID = :id ");
-QString a=temp ;
+           QString a=temp ;
           query.bindValue(":id", a );
 
           if(query.exec())
@@ -291,7 +291,7 @@ QString a=temp ;
 
                      name="Bienvenue "+query.value(2).toByteArray()+" "+query.value(1).toByteArray() ;
                      A.write_to_arduino(name) ;
-                  arduino1 a ;
+                     ui->tab_pointage->setModel(A.afficher());
 
 
 
@@ -912,6 +912,32 @@ void MainWindow::on_ajouterFour_clicked()
             if(count==0 )
 
             {
+                int count2=0 ;
+                 QSqlQuery query2 ;
+                 query2.prepare("SELECT * FROM  TABLE1 where RFID = :rfid ");
+
+                 query2.bindValue(":rfid", ui->adm_aj_rfid->text());
+                query2.exec() ;
+                 while(query2.next())
+
+                 {
+
+                     count2++;
+
+                 }
+
+                 if(count2!=0)
+
+                 {
+
+                     QMessageBox::critical(nullptr, QObject::tr("Erreur"),
+                     QObject::tr(" RFID existe deja !.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
+                 }
+                 if(count2==0 )
+
+                 {
                 int cin=ui->adm_aj_cin->text().toInt() ;
                 int salaire=ui->adm_aj_salaire->text().toInt() ;
                 QString nom=ui->adm_aj_nom->text() ;
@@ -948,6 +974,7 @@ void MainWindow::on_ajouterFour_clicked()
 
             }
 
+            }
 
 
         }
@@ -1114,7 +1141,7 @@ void MainWindow::on_modifier_emp_clicked()
 
         QSqlQuery query ;
         QString passe= ui->adm_aj_cin->text()+ui->adm_aj_spin_nbrenfant->text()+ui->adm_aj_cin->text()+ui->adm_aj_spin_nbrenfant->text();
-        QString adresse=ui->adm_aj_nom->text()+"."+ui->adm_aj_prenom->text()+".factory@gamil.com" ;
+        QString adresse=ui->adm_aj_nom->text()+"."+ui->adm_aj_prenom->text()+".factory@gmail.com" ;
 
         //query.prepare("UPDATE  TABLE1 SET CIN='" +  ui->adm_aj_cin_2->text() + "' ,NAME='"+ ui->adm_aj_nom_2->text()+"' ,PRENOM= '"+ui->adm_aj_prenom_2->text()+"' ,SALAIRE='"+ui->adm_aj_salaire_2->text().toInt()+"',POSTE'"+ui->adm_aj_poste_2->text()+"',ETAT='"+ui->adm_mod_aff_combo_etat->currentText()+"',NOMBRE='"+ ui->adm_aj_spin_nbrenfant_2->value()+"',PASSE= '"+passe+ "',ADRESSE='"+adresse+ "' WHERE ,CIN='"+ui->adm_aj_cin_2->text() +"'") ;
 
@@ -1130,6 +1157,7 @@ void MainWindow::on_modifier_emp_clicked()
     query.bindValue(":adresse",adresse);
     query.bindValue(":passe",passe);
     query.bindValue(":rfid",ui->adm_aj_rfid->text());
+
 
 if(query.exec()) {
 
@@ -2297,7 +2325,7 @@ void MainWindow::on_park_ajout_2_clicked()
         QMessageBox::critical(nullptr, QObject::tr("Nom ou Place Deja Utilisée"),
                      QObject::tr("OK.\n"
                                  "Click Cancel to exit."),QMessageBox::Cancel);
-        ui->nbr_place_2->clear();
+           ui->nbr_place_2->clear();
            ui->nom_employe_2->clear();
            ui->reference_2->clear();
 }
@@ -3177,4 +3205,9 @@ void MainWindow::on_reclamation_4_clicked()
 void MainWindow::on_reclamation_5_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->chat_box) ;
+}
+
+void MainWindow::on_btn_existe_124_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Menu) ;
 }

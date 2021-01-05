@@ -21,10 +21,12 @@ db.setDatabaseName("source_de_donnes");
 db.setUserName("Rostom");//inserer nom de l'utilisateur
 db.setPassword("liverpool");//inserer mot de passe de cet utilisateur
 
+
 /*
 db.setDatabaseName("ross");
 db.setUserName("rostomcherni");//inserer nom de l'utilisateur
 db.setPassword("baba2021");//inserer mot de passe de cet utilisateur
+
 */
 
 //
